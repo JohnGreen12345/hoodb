@@ -1,82 +1,108 @@
-# pipelines/ingest_update.py
 """
-Smart updater:
-- Finds latest price_daily date
-- Fetches new bars (Yahoo or IBKR)
-- Updates price_daily and daily_features
-- Rebuilds weekly/monthly multi_tf_features by default
+Yahoo -> BigQuery daily price updater.
+
+Flow:
+1. Read active tickers from BigQuery `universe`
+2. Read latest loaded date from BigQuery `Daily_prices`
+3. Fetch missing daily bars from Yahoo
+4. Append new rows into BigQuery `Daily_prices`
+
+This script is intentionally separate from the DuckDB pipeline.
 """
 
 import argparse
 import datetime as dt
-import pathlib
+import os
 
-import duckdb
 import pandas as pd
 import yfinance as yf
-from features import REGISTRY
-from ib_insync import IB, util
-
-from pipelines.build_multi_tf_features import build_multi_tf_features
-from pipelines.symbols import (
-    canonicalize_list,
-    canonicalize_series,
-    ibkr_contract,
-    ibkr_what_to_show,
-    rename_map,
-    yahoo_symbol,
-)
-
-DB = pathlib.Path("data/stock_hub.duckdb").as_posix()
-
-p = argparse.ArgumentParser()
-p.add_argument("--source", choices=["yahoo", "ibkr"], default="yahoo", help="Data source")
-p.add_argument("--years", type=float, default=3.0, help="History length if DB empty")
-p.add_argument("--skip-multi-tf", action="store_true", help="skip rebuilding multi_tf_features")
-args = p.parse_args()
-
-con = duckdb.connect(DB)
-RENAMES = rename_map(pathlib.Path("data/ticker_renames.csv"))
+from google.cloud import bigquery
 
 
-def _ensure_daily_features_columns() -> None:
-    existing = set(con.sql("PRAGMA table_info('daily_features')").fetchdf()["name"])
-    for col, coltype in {
-        "open": "DOUBLE",
-        "high": "DOUBLE",
-        "low": "DOUBLE",
-        "close": "DOUBLE",
-        "volume": "BIGINT",
-    }.items():
-        if col not in existing:
-            con.execute(f'ALTER TABLE daily_features ADD COLUMN "{col}" {coltype}')
-            existing.add(col)
+DEFAULT_PROJECT_ID = "pricesz"
+DEFAULT_DATASET = "Hood"
+DEFAULT_UNIVERSE_TABLE = "universe"
+DEFAULT_PRICE_TABLE = "Daily_prices"
+YAHOO_SYMBOL_MAP = {
+    "VIX": "^VIX",
+}
 
 
-def fetch_yahoo(tickers: list[str], start: dt.date, end: dt.date) -> pd.DataFrame:
-    yahoo_tickers = [yahoo_symbol(t) for t in tickers]
-    yahoo_to_canonical = {yahoo_symbol(t): t for t in tickers}
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Update BigQuery Daily_prices from Yahoo Finance")
+    parser.add_argument("--project-id", default=os.getenv("GOOGLE_CLOUD_PROJECT", DEFAULT_PROJECT_ID))
+    parser.add_argument("--dataset", default=os.getenv("BIGQUERY_DATASET", DEFAULT_DATASET))
+    parser.add_argument("--universe-table", default=os.getenv("BIGQUERY_UNIVERSE_TABLE", DEFAULT_UNIVERSE_TABLE))
+    parser.add_argument("--price-table", default=os.getenv("BIGQUERY_PRICE_TABLE", DEFAULT_PRICE_TABLE))
+    parser.add_argument("--credentials", default=os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+    parser.add_argument(
+        "--full-refresh-years",
+        type=float,
+        default=1.0,
+        help="History length to pull if Daily_prices is empty",
+    )
+    return parser.parse_args()
+
+
+def make_client(project_id: str, credentials_path: str | None) -> bigquery.Client:
+    if credentials_path:
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_path
+    return bigquery.Client(project=project_id)
+
+
+def get_active_tickers(client: bigquery.Client, project_id: str, dataset: str, universe_table: str) -> list[str]:
+    query = f"""
+        SELECT ticker
+        FROM `{project_id}.{dataset}.{universe_table}`
+        WHERE COALESCE(active_flag, TRUE) = TRUE
+          AND COALESCE(type, 'stock') IN ('stock', 'etf', 'benchmark')
+          AND ticker IS NOT NULL
+    """
+    df = client.query(query).to_dataframe()
+    tickers = sorted(df["ticker"].dropna().astype(str).str.strip().unique().tolist())
+    return [ticker for ticker in tickers if ticker]
+
+
+def get_last_loaded_date(client: bigquery.Client, project_id: str, dataset: str, price_table: str) -> dt.date | None:
+    query = f"SELECT MAX(date) AS max_date FROM `{project_id}.{dataset}.{price_table}`"
+    row = client.query(query).result().to_dataframe().iloc[0]
+    max_date = row["max_date"]
+    if pd.isna(max_date):
+        return None
+    return pd.Timestamp(max_date).date()
+
+
+def to_yahoo_symbol(ticker: str) -> str:
+    if ticker in YAHOO_SYMBOL_MAP:
+        return YAHOO_SYMBOL_MAP[ticker]
+    return ticker.replace(".", "-")
+
+
+def fetch_yahoo_prices(tickers: list[str], start: dt.date, end: dt.date) -> pd.DataFrame:
+    yahoo_tickers = [to_yahoo_symbol(ticker) for ticker in tickers]
+    yahoo_to_canonical = {to_yahoo_symbol(ticker): ticker for ticker in tickers}
     dfyf = yf.download(
         yahoo_tickers,
         start=start,
-        end=end + dt.timedelta(1),
+        end=end + dt.timedelta(days=1),
         group_by="ticker",
         auto_adjust=False,
         progress=False,
     )
-    frames = []
+
+    frames: list[pd.DataFrame] = []
     if isinstance(dfyf.columns, pd.MultiIndex):
-        for y in yahoo_tickers:
-            if y not in dfyf or dfyf[y].empty:
+        for yahoo_ticker in yahoo_tickers:
+            if yahoo_ticker not in dfyf or dfyf[yahoo_ticker].empty:
                 continue
-            tmp = dfyf[y].copy()
+            tmp = dfyf[yahoo_ticker].copy()
             tmp.columns = tmp.columns.str.lower()
             tmp = tmp.reset_index().rename(columns={"Date": "date"})
             tmp = tmp[["date", "open", "high", "low", "close", "volume"]]
-            tmp["ticker"] = yahoo_to_canonical.get(y, y)
+            tmp["ticker"] = yahoo_to_canonical[yahoo_ticker]
             frames.append(tmp)
     else:
-        if not tickers or dfyf.empty:
+        if not yahoo_tickers or dfyf.empty:
             return pd.DataFrame()
         tmp = dfyf.copy()
         tmp.columns = tmp.columns.str.lower()
@@ -84,122 +110,85 @@ def fetch_yahoo(tickers: list[str], start: dt.date, end: dt.date) -> pd.DataFram
         tmp = tmp[["date", "open", "high", "low", "close", "volume"]]
         tmp["ticker"] = tickers[0]
         frames.append(tmp)
-    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+    if not frames:
+        return pd.DataFrame()
+
+    out = pd.concat(frames, ignore_index=True)
+    out["date"] = pd.to_datetime(out["date"]).dt.date
+    out["volume"] = out["volume"].fillna(0).astype("int64")
+    out = out[["date", "ticker", "open", "high", "low", "close", "volume"]]
+    out = out.drop_duplicates(subset=["date", "ticker"])
+    return out
 
 
-def fetch_ibkr(tickers: list[str], start: dt.date, end: dt.date) -> pd.DataFrame:
-    ib = IB()
-    ib.connect("127.0.0.1", 7497, clientId=102)
-    frames = []
-    days = max(1, (end - start).days + 1)
-    duration = f"{days} D" if days <= 365 else f"{(days + 364) // 365} Y"
-    for t in tickers:
-        contract = ibkr_contract(t)
-        bars = []
-        for what in ibkr_what_to_show(t):
-            bars = ib.reqHistoricalData(
-                contract,
-                endDateTime=end,
-                durationStr=duration,
-                barSizeSetting="1 day",
-                whatToShow=what,
-                useRTH=True,
-                formatDate=1,
-            )
-            if bars:
-                break
-        if not bars:
-            continue
-        df = util.df(bars)
-        if df is None or df.empty:
-            continue
-        df = df.rename(columns={"date": "date"})
-        df = df[["date", "open", "high", "low", "close", "volume"]]
-        df["ticker"] = t
-        frames.append(df)
-    ib.disconnect()
-    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+def summarize_fetch_results(requested_tickers: list[str], fetched: pd.DataFrame) -> None:
+    fetched_tickers = set()
+    if not fetched.empty:
+        fetched_tickers = set(fetched["ticker"].astype(str).unique().tolist())
+    failed_tickers = sorted(set(requested_tickers) - fetched_tickers)
+    print(f"[i] Yahoo fetched {len(fetched_tickers)}/{len(requested_tickers)} tickers")
+    if failed_tickers:
+        preview = ", ".join(failed_tickers[:10])
+        suffix = " ..." if len(failed_tickers) > 10 else ""
+        print(f"[!] Yahoo returned no data for {len(failed_tickers)} tickers: {preview}{suffix}")
 
 
-last = con.sql("SELECT MAX(date) AS d FROM price_daily").fetchone()[0]
-if last is None:
-    start = dt.date.today() - dt.timedelta(days=int(args.years * 365))
-else:
-    start = last + dt.timedelta(days=1)
-end = dt.date.today()
-if start > end:
-    start = end
+def filter_new_rows(df: pd.DataFrame, last_loaded_date: dt.date | None) -> pd.DataFrame:
+    if df.empty or last_loaded_date is None:
+        return df
+    return df[df["date"] > last_loaded_date].copy()
 
-tickers = con.sql(
-    """
-    SELECT ticker FROM universe
-    WHERE active_flag = TRUE AND type IN ('stock','etf','benchmark')
-"""
-).fetchdf()["ticker"].tolist()
-tickers = canonicalize_list(tickers, RENAMES)
-_ensure_daily_features_columns()
 
-raw_new = fetch_ibkr(tickers, start, end) if args.source == "ibkr" else fetch_yahoo(tickers, start, end)
-if raw_new.empty:
-    print("⚠ No new bars returned")
-    raise SystemExit(0)
+def upload_prices(
+    client: bigquery.Client,
+    df: pd.DataFrame,
+    project_id: str,
+    dataset: str,
+    price_table: str,
+) -> None:
+    if df.empty:
+        print("[i] No new Yahoo rows to upload")
+        return
 
-raw_new["ticker"] = canonicalize_series(raw_new["ticker"], RENAMES)
+    target = f"{project_id}.{dataset}.{price_table}"
+    job_config = bigquery.LoadJobConfig(write_disposition=bigquery.WriteDisposition.WRITE_APPEND)
+    job = client.load_table_from_dataframe(df.where(pd.notnull(df), None), target, job_config=job_config)
+    job.result()
+    print(f"[+] Uploaded {len(df)} rows to {target}")
 
-con.register("tmp", raw_new)
-con.execute(
-    """
-INSERT OR REPLACE INTO price_daily
-SELECT date::DATE, ticker, open, high, low, close, volume FROM tmp
-"""
-)
-con.unregister("tmp")
-print(f"[+] price_daily updated ({len(raw_new)} new rows)")
 
-lookback_days = 400
-if last:
-    ticker_csv = ",".join([f"'{t}'" for t in tickers])
-    ctx = con.sql(
-        f"""
-        SELECT date,ticker,open,high,low,close,volume
-        FROM price_daily
-        WHERE date >= DATE '{last}' - INTERVAL '{lookback_days} days'
-          AND date <= DATE '{last}'
-          AND ticker IN ({ticker_csv})
-    """
-    ).fetchdf()
-    raw = pd.concat([ctx, raw_new], ignore_index=True) if not ctx.empty else raw_new
-else:
-    raw = raw_new
+def main() -> None:
+    args = parse_args()
+    client = make_client(args.project_id, args.credentials)
 
-raw["date"] = pd.to_datetime(raw["date"])
-raw = raw.sort_values(["ticker", "date"])
-for fn in REGISTRY:
-    raw = fn(raw, con)
+    tickers = get_active_tickers(client, args.project_id, args.dataset, args.universe_table)
+    if not tickers:
+        print("[!] No active tickers found in BigQuery universe")
+        return
 
-if last:
-    raw = raw[raw["date"].dt.date > last]
+    last_loaded_date = get_last_loaded_date(client, args.project_id, args.dataset, args.price_table)
+    if last_loaded_date is None:
+        start_date = dt.date.today() - dt.timedelta(days=int(args.full_refresh_years * 365))
+    else:
+        start_date = last_loaded_date + dt.timedelta(days=1)
 
-base_cols = {"date", "ticker", "open", "high", "low", "close", "volume"}
-feature_cols = [c for c in raw.columns if c not in base_cols]
+    end_date = dt.date.today()
+    if start_date > end_date:
+        print(f"[i] Daily_prices is already current through {last_loaded_date}")
+        return
 
-existing = set(con.sql("PRAGMA table_info('daily_features')").fetchdf()["name"])
-for c in feature_cols:
-    if c not in existing:
-        con.execute(f'ALTER TABLE daily_features ADD COLUMN "{c}" DOUBLE')
+    print(f"[i] Fetching Yahoo prices for {len(tickers)} tickers from {start_date} to {end_date}")
+    fetched = fetch_yahoo_prices(tickers, start_date, end_date)
+    summarize_fetch_results(tickers, fetched)
+    new_rows = filter_new_rows(fetched, last_loaded_date)
 
-payload_cols = ["date", "ticker", "open", "high", "low", "close", "volume"] + feature_cols
-con.register("feat", raw[payload_cols])
-cols_csv = ", ".join([f'"{c}"' for c in payload_cols])
-con.execute(
-    f"""
-INSERT OR REPLACE INTO daily_features ({cols_csv})
-SELECT {cols_csv} FROM feat
-"""
-)
-con.unregister("feat")
-print(f"[+] daily_features updated with {len(raw)} new rows, OHLCV + {len(feature_cols)} feature cols")
+    if new_rows.empty:
+        print(f"[i] No new rows returned for {start_date} to {end_date}")
+        return
 
-if not args.skip_multi_tf:
-    build_multi_tf_features(DB)
-    print("[+] multi_tf_features refreshed")
+    upload_prices(client, new_rows, args.project_id, args.dataset, args.price_table)
+
+
+if __name__ == "__main__":
+    main()
