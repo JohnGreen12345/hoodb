@@ -26,6 +26,10 @@ DEFAULT_PRICE_TABLE = "Daily_prices"
 YAHOO_SYMBOL_MAP = {
     "VIX": "^VIX",
 }
+# PUBLISH_SPEC.md sec4a point 2: "fewer than ~260 rows" is the per-ticker
+# backfill trigger -- 260 trading days is one year, enough for a 200-day
+# moving average plus margin.
+MIN_HISTORY_ROWS = 260
 
 
 def parse_args() -> argparse.Namespace:
@@ -63,13 +67,46 @@ def get_active_tickers(client: bigquery.Client, project_id: str, dataset: str, u
     return [ticker for ticker in tickers if ticker]
 
 
-def get_last_loaded_date(client: bigquery.Client, project_id: str, dataset: str, price_table: str) -> dt.date | None:
-    query = f"SELECT MAX(date) AS max_date FROM `{project_id}.{dataset}.{price_table}`"
-    row = client.query(query).result().to_dataframe().iloc[0]
-    max_date = row["max_date"]
-    if pd.isna(max_date):
-        return None
-    return pd.Timestamp(max_date).date()
+def get_per_ticker_coverage(
+    client: bigquery.Client, project_id: str, dataset: str, price_table: str
+) -> dict[str, tuple[dt.date | None, int]]:
+    """{ticker: (last_date, row_count)} -- the per-ticker backfill fix
+    (PUBLISH_SPEC.md sec4a point 2) needs each ticker's own history length,
+    not one global last-loaded-date for the whole table."""
+    query = f"""
+        SELECT ticker, MAX(date) AS last_date, COUNT(*) AS n
+        FROM `{project_id}.{dataset}.{price_table}`
+        GROUP BY ticker
+    """
+    df = client.query(query).result().to_dataframe()
+    coverage: dict[str, tuple[dt.date | None, int]] = {}
+    for _, row in df.iterrows():
+        last_date = pd.Timestamp(row["last_date"]).date() if pd.notna(row["last_date"]) else None
+        coverage[str(row["ticker"])] = (last_date, int(row["n"]))
+    return coverage
+
+
+def plan_fetch_start_dates(
+    tickers: list[str],
+    coverage: dict[str, tuple[dt.date | None, int]],
+    today: dt.date,
+    full_refresh_years: float,
+    min_history_rows: int = MIN_HISTORY_ROWS,
+) -> dict[str, dt.date]:
+    """Per-ticker Yahoo fetch start date. A ticker with no rows yet, or
+    fewer than min_history_rows, gets a full backfill from scratch instead
+    of "yesterday's one bar" -- the bug PUBLISH_SPEC.md sec4a point 2
+    describes: a newly added ticker's 200-day average stayed empty for
+    ~10 months under the old "last global date + 1" rule."""
+    full_backfill_start = today - dt.timedelta(days=int(full_refresh_years * 365))
+    plan: dict[str, dt.date] = {}
+    for ticker in tickers:
+        last_date, row_count = coverage.get(ticker, (None, 0))
+        if last_date is None or row_count < min_history_rows:
+            plan[ticker] = full_backfill_start
+        else:
+            plan[ticker] = last_date + dt.timedelta(days=1)
+    return plan
 
 
 def to_yahoo_symbol(ticker: str) -> str:
@@ -90,24 +127,27 @@ def fetch_yahoo_prices(tickers: list[str], start: dt.date, end: dt.date) -> pd.D
         progress=False,
     )
 
+    price_cols = ["date", "open", "high", "low", "close", "adj_close", "volume"]
+    out_cols = ["date", "ticker", "open", "high", "low", "close", "adj_close", "volume"]
+
     frames: list[pd.DataFrame] = []
     if isinstance(dfyf.columns, pd.MultiIndex):
         for yahoo_ticker in yahoo_tickers:
             if yahoo_ticker not in dfyf or dfyf[yahoo_ticker].empty:
                 continue
             tmp = dfyf[yahoo_ticker].copy()
-            tmp.columns = tmp.columns.str.lower()
+            tmp.columns = tmp.columns.str.lower().str.replace(" ", "_")
             tmp = tmp.reset_index().rename(columns={"Date": "date"})
-            tmp = tmp[["date", "open", "high", "low", "close", "volume"]]
+            tmp = tmp[price_cols]
             tmp["ticker"] = yahoo_to_canonical[yahoo_ticker]
             frames.append(tmp)
     else:
         if not yahoo_tickers or dfyf.empty:
             return pd.DataFrame()
         tmp = dfyf.copy()
-        tmp.columns = tmp.columns.str.lower()
+        tmp.columns = tmp.columns.str.lower().str.replace(" ", "_")
         tmp = tmp.reset_index().rename(columns={"Date": "date"})
-        tmp = tmp[["date", "open", "high", "low", "close", "volume"]]
+        tmp = tmp[price_cols]
         tmp["ticker"] = tickers[0]
         frames.append(tmp)
 
@@ -116,28 +156,39 @@ def fetch_yahoo_prices(tickers: list[str], start: dt.date, end: dt.date) -> pd.D
 
     out = pd.concat(frames, ignore_index=True)
     out["date"] = pd.to_datetime(out["date"]).dt.date
+    out = out[(out["date"] >= start) & (out["date"] <= end)].copy()
+    if out.empty:
+        return pd.DataFrame(columns=out_cols)
     out["volume"] = out["volume"].fillna(0).astype("int64")
-    out = out[["date", "ticker", "open", "high", "low", "close", "volume"]]
+    out = out[out_cols]
     out = out.drop_duplicates(subset=["date", "ticker"])
     return out
 
 
-def summarize_fetch_results(requested_tickers: list[str], fetched: pd.DataFrame) -> None:
+def summarize_fetch_results(requested_tickers: list[str], fetched: pd.DataFrame, start: dt.date, end: dt.date) -> None:
     fetched_tickers = set()
     if not fetched.empty:
         fetched_tickers = set(fetched["ticker"].astype(str).unique().tolist())
-    failed_tickers = sorted(set(requested_tickers) - fetched_tickers)
-    print(f"[i] Yahoo fetched {len(fetched_tickers)}/{len(requested_tickers)} tickers")
-    if failed_tickers:
-        preview = ", ".join(failed_tickers[:10])
-        suffix = " ..." if len(failed_tickers) > 10 else ""
-        print(f"[!] Yahoo returned no data for {len(failed_tickers)} tickers: {preview}{suffix}")
+    missing_tickers = sorted(set(requested_tickers) - fetched_tickers)
+    print(f"[i] Yahoo returned rows for {len(fetched_tickers)}/{len(requested_tickers)} tickers in {start} to {end}")
+    if missing_tickers:
+        preview = ", ".join(missing_tickers[:10])
+        suffix = " ..." if len(missing_tickers) > 10 else ""
+        print(f"[!] Yahoo returned no rows in that range for {len(missing_tickers)} tickers: {preview}{suffix}")
 
 
-def filter_new_rows(df: pd.DataFrame, last_loaded_date: dt.date | None) -> pd.DataFrame:
-    if df.empty or last_loaded_date is None:
+def filter_new_rows_per_ticker(df: pd.DataFrame, last_dates: dict[str, dt.date | None]) -> pd.DataFrame:
+    """Per-ticker version of filter_new_rows: a backfilling ticker's fetch
+    starts well before some other ticker's last-loaded date (they're fetched
+    together in one Yahoo call, grouped by shared start date), so each row
+    must be checked against its OWN ticker's last-loaded date, not one
+    shared cutoff, or an already-loaded row would be re-inserted as a
+    duplicate."""
+    if df.empty:
         return df
-    return df[df["date"] > last_loaded_date].copy()
+    last_date_per_row = df["ticker"].map(last_dates)
+    keep = last_date_per_row.isna() | (df["date"] > last_date_per_row)
+    return df[keep].copy()
 
 
 def upload_prices(
@@ -167,24 +218,40 @@ def main() -> None:
         print("[!] No active tickers found in BigQuery universe")
         return
 
-    last_loaded_date = get_last_loaded_date(client, args.project_id, args.dataset, args.price_table)
-    if last_loaded_date is None:
-        start_date = dt.date.today() - dt.timedelta(days=int(args.full_refresh_years * 365))
-    else:
-        start_date = last_loaded_date + dt.timedelta(days=1)
-
     end_date = dt.date.today()
-    if start_date > end_date:
-        print(f"[i] Daily_prices is already current through {last_loaded_date}")
+    coverage = get_per_ticker_coverage(client, args.project_id, args.dataset, args.price_table)
+    fetch_starts = plan_fetch_start_dates(tickers, coverage, end_date, args.full_refresh_years)
+    last_dates = {ticker: coverage.get(ticker, (None, 0))[0] for ticker in tickers}
+
+    backfilling = sorted(t for t, s in fetch_starts.items() if coverage.get(t, (None, 0))[1] < MIN_HISTORY_ROWS)
+    if backfilling:
+        preview = ", ".join(backfilling[:10])
+        suffix = " ..." if len(backfilling) > 10 else ""
+        print(f"[i] {len(backfilling)} ticker(s) under {MIN_HISTORY_ROWS} rows, backfilling from scratch: {preview}{suffix}")
+
+    # Group tickers by identical fetch start date so each distinct window is
+    # only one Yahoo call, not one per ticker.
+    groups: dict[dt.date, list[str]] = {}
+    for ticker, start in fetch_starts.items():
+        if start <= end_date:
+            groups.setdefault(start, []).append(ticker)
+
+    if not groups:
+        print(f"[i] Daily_prices is already current through {end_date}")
         return
 
-    print(f"[i] Fetching Yahoo prices for {len(tickers)} tickers from {start_date} to {end_date}")
-    fetched = fetch_yahoo_prices(tickers, start_date, end_date)
-    summarize_fetch_results(tickers, fetched)
-    new_rows = filter_new_rows(fetched, last_loaded_date)
+    fetched_frames = []
+    for start, group_tickers in sorted(groups.items()):
+        print(f"[i] Fetching Yahoo prices for {len(group_tickers)} ticker(s) from {start} to {end_date}")
+        fetched = fetch_yahoo_prices(group_tickers, start, end_date)
+        summarize_fetch_results(group_tickers, fetched, start, end_date)
+        fetched_frames.append(fetched)
+
+    all_fetched = pd.concat(fetched_frames, ignore_index=True) if fetched_frames else pd.DataFrame()
+    new_rows = filter_new_rows_per_ticker(all_fetched, last_dates)
 
     if new_rows.empty:
-        print(f"[i] No new rows returned for {start_date} to {end_date}")
+        print(f"[i] No new rows returned through {end_date}")
         return
 
     upload_prices(client, new_rows, args.project_id, args.dataset, args.price_table)

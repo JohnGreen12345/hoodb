@@ -1,0 +1,19 @@
+# Credentials — NEVER commit these
+*.json
+!package.json
+*service-account*
+*credentials*
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local artifacts
+*.zip
+*.docx
+*.xlsx
+BA/

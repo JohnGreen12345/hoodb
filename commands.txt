@@ -1,0 +1,33 @@
+git remote add origin https://github.com/JohnGreen12345/hoodb.git
+
+git remote -v
+
+git add ingest_update.py
+git status
+
+git commit -m "add BigQuery ingestion script"
+
+git branch -M main
+git push -u origin main
+
+
+
+git pull origin main --allow-unrelated-histories
+
+
+====
+
+big query
+bq-ingestion@pricesz.iam.gserviceaccount.com
+
+$env:GOOGLE_APPLICATION_CREDENTIALS="bq-ingestion@pricesz.iam.gserviceaccount.com"
+
+
+
+gcloud iam service-accounts add-iam-policy-binding \
+  github-bigquery@PROJECT_ID.iam.gserviceaccount.com \
+  --role roles/iam.workloadIdentityUser \
+  --member "principalSet://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/attribute.repository/JohnGreen12345/Hoodb
+
+
+gcloud iam service-accounts add-iam-policy-binding github-bigquery@PROJECT_ID.iam.gserviceaccount.com --role roles/iam.workloadIdentityUser --member "principalSet://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/attribute.repository/JohnGreen12345/Hoodb"

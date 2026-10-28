@@ -1,0 +1,165 @@
+ticker,name,type,active_flag
+AA,AA,stock,True
+AAPL,AAPL,stock,True
+ABNB,ABNB,stock,True
+ACHR,ACHR,stock,True
+AFRM,AFRM,stock,True
+AIQ,AIQ ETF,etf,True
+ALB,ALB,stock,True
+AMAT,AMAT,stock,True
+AMD,AMD,stock,True
+AMKR,AMKR,stock,True
+AMZN,AMZN,stock,True
+APLD,APLD,stock,True
+APPN,APPN,stock,True
+ARKK,ARKK,etf,True
+ARKQ,Ark Robotic,etf,True
+ARM,ARM,stock,True
+ARQT,ARQT,stock,True
+ASML,ASML,stock,True
+ATEC,ATEC,stock,True
+BE,Bloomberg Energy,stock,True
+BEDZ,BEDZ ETF,etf,True
+BKCH,BKCH ETF,etf,True
+BOTZ,BOTZ ETF,etf,True
+BTDR,,stock,True
+CHWY,CHWY,stock,True
+CIBR,CIBR ETF,etf,True
+CIFR,Cifer,stock,True
+CNTA,CNTA,stock,True
+COHR,COHR,stock,True
+COIN,COIN,stock,True
+CRDO,CRDO,stock,True
+CRM,CRM,stock,True
+CRML,CRML,stock,True
+CRSP,CRSP,stock,True
+CRWD,CRWD,stock,True
+DAL,DAL,stock,True
+DQ,DQ,stock,True
+DTCR,DTCR ETF,etf,True
+EVTL,EVTL ETF,etf,True
+FCX,FCX,stock,True
+FINX,FINX ETF,etf,True
+FROG,FROG,stock,True
+FRPT,FRPT,stock,True
+FSLR,FSLR,stock,True
+FTAI,FTAI,stock,True
+FXI,China Index,etf,True
+GDX,GDX ETF,etf,True
+GE,GE,stock,True
+HAL,HAL,stock,True
+HIMS,HIMS,stock,True
+HOOD,HOOD,stock,True
+HUT,,stock,True
+ICLN,Global Clean Energy,etf,True
+IDRV,IDRV ETF,etf,True
+IGV,IGV ETF,etf,True
+IHF,IHF ETF,etf,True
+IHI,IHI ETF,etf,True
+ILMN,ILMN,stock,True
+INOD,INOD,stock,True
+INSM,INSM,stock,True
+INTC,INTC,stock,True
+IONQ,IONQ,stock,True
+ISRG,ISRG,stock,True
+ITA,ITA Etf,etf,True
+IWM,Russell 2000 ETF,etf,True
+JETS,JETS ETF,etf,True
+JOBY,JOBY,stock,True
+KVYO,KVYO,stock,True
+LAR,LAR,stock,True
+LASR,LASR,stock,True
+LIND,LIND,stock,True
+LIT,LIT ETF,etf,True
+MAGS,Magnificent 7 Proxy ETF,etf,True
+MDY,S&P MidCap 400 ETF,etf,True
+META,META,stock,True
+MNMD,MNMD,stock,True
+MP,MP,stock,True
+MU,Micron,stock,True
+NAMS,NAMS,stock,True
+NB,NB,stock,True
+NBIS,NBIS,stock,True
+NEM,NEM,stock,True
+NET,NET,stock,True
+NUE,NUE,stock,True
+NUGT,Gold2x,stock,True
+NVDA,NVDA,stock,True
+NXE,NXE,stock,True
+NXT,NXT,stock,True
+ODD,ODD,stock,True
+OIH,OIH ETF,etf,True
+OKLO,OKLO,stock,True
+ONON,ONON,stock,True
+OSCR,OSCR,stock,True
+OUT,OUT,stock,True
+PEJ,PEJ ETF,etf,True
+PL,Planet Labs,stock,True
+PLTR,PLTR,stock,True
+QBTS,QBTS,stock,True
+QQQ,Nasdaq 100 ETF,etf,True
+QTUM,QTUM ETF,etf,True
+RBLX,RBLX,stock,True
+RCL,RCL,stock,True
+RDDT,RDDT,stock,True
+REMX,Rare Earth,etf,True
+RERE,RERE,stock,True
+RIVN,RIVN,stock,True
+RKLB,RKLB,stock,True
+ROBO,ROBO ETF,etf,True
+RR,RR,stock,True
+RSP,Equal Weight S&P 500 ETF,etf,True
+RYAAY,RYAAY,stock,True
+RYTM,RYTM,stock,True
+SERV,SERV,stock,True
+SGML,SGML,stock,True
+SKYY,SKYY ETF,etf,True
+SLB,SLB,stock,True
+SLX,SLX ETF,etf,True
+SMR,SMR,stock,True
+SNDK,ScanDisk,etf,True
+SNOW,SNOW,stock,True
+SOCL,SOCL ETF,etf,True
+SOFI,SOFI,stock,True
+SONO,SONO,stock,True
+SOUN,SOUN,stock,True
+SOXX,SOXX ETF,etf,True
+SPHR,SPHR,stock,True
+SPY,S&P 500 ETF,etf,True
+STX,STX,stock,True
+SYM,SYM,stock,True
+TAN,TAN ETF,etf,True
+TERN,TERN,stock,True
+TEVA,TEVA,stock,True
+TME,TME,stock,True
+TSLA,TSLA,stock,True
+TTMI,TTMI,stock,True
+U,U,stock,True
+UAMY,UAMY,stock,True
+UBER,UBER,stock,True
+UNH,UNH,stock,True
+URA,URA ETF,etf,True
+USAR,USAR,stock,True
+VIK,VIK,stock,True
+WGS,WGS,stock,True
+WMT,WMT,stock,True
+XBI,XBI ETF,etf,True
+XLB,Materials Sector ETF,etf,True
+XLC,Communications Sector ETF,etf,True
+XLE,Energy Sector ETF,etf,True
+XLF,Financials Sector ETF,etf,True
+XLI,Industrials Sector ETF,etf,True
+XLK,Technology Sector ETF,etf,True
+XLP,Consumer Staples Sector ETF,etf,True
+XLRE,Real Estate Sector ETF,etf,True
+XLU,Utilities Sector ETF,etf,True
+XLV,Healthcare Sector ETF,etf,True
+XLY,Consumer Discretionary Sector ETF,etf,True
+XME,Metals & Mining ,etf,True
+XPEV,XPEV,stock,True
+XRT,XRT ETF,etf,True
+XYZ,XYZ,stock,True
+ZETA,ZETA,stock,True
+VIX,CBOE Volatility Index,benchmark,True
+DIA,Dow Jones Industrial Average ETF,etf,True
+SMH,Semiconductor Sector ETF,etf,True
