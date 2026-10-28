@@ -1,0 +1,41 @@
+name: Weekly full price refresh
+
+on:
+  schedule:
+    # Sundays 12:00 UTC -- markets closed, well clear of the Tue-Sat nightly
+    # ingest job. Re-fetches and replaces every active ticker's full history
+    # so a split that happened mid-week gets corrected everywhere at once,
+    # instead of the nightly job's append-only incremental fetch leaving a
+    # discontinuity at the split boundary (PUBLISH_SPEC.md sec4a point 3).
+    - cron: "0 12 * * 0"
+  workflow_dispatch: {}       # manual "Run workflow" button for testing
+
+jobs:
+  full_refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Run full refresh
+        run: python ingest_update.py --mode full_refresh --full-refresh-years 3
+
+      - name: Summary
+        if: always()
+        run: echo "Full refresh finished with status ${{ job.status }}"

@@ -43,7 +43,16 @@ def parse_args() -> argparse.Namespace:
         "--full-refresh-years",
         type=float,
         default=1.0,
-        help="History length to pull if Daily_prices is empty",
+        help="History length to pull if Daily_prices is empty, or for every ticker in --mode full_refresh",
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["incremental", "full_refresh"],
+        default="incremental",
+        help="incremental (default, the nightly job): fetch only what's missing per ticker. "
+        "full_refresh (the weekly job): re-fetch and replace every active ticker's full history -- "
+        "corrects the discontinuity a split creates in an append-only incremental pipeline (a split "
+        "after a ticker's rows are already stored never gets retroactively applied to them otherwise).",
     )
     return parser.parse_args()
 
@@ -213,6 +222,48 @@ def upload_prices(
     print(f"[+] Uploaded {len(df)} rows to {target}")
 
 
+def full_refresh(
+    client: bigquery.Client,
+    tickers: list[str],
+    project_id: str,
+    dataset: str,
+    price_table: str,
+    years: float,
+) -> None:
+    """The weekly job (PUBLISH_SPEC.md sec4a point 3's residual gap): the
+    nightly incremental job only ever appends "new" rows, so it never
+    retroactively corrects a ticker's already-stored rows once a split
+    happens -- the stored `close`/`adj_close` would start a discontinuity
+    exactly where PUBLISH_SPEC.md describes, just deferred rather than
+    fixed. Re-fetching every active ticker's full history in one shot
+    (same as the original backfill) and replacing its stored rows outright
+    is self-consistent regardless of any split that happened meanwhile,
+    because it's one fetch at one point in time -- same reasoning as why
+    the initial backfill had no jump.
+    """
+    end_date = dt.date.today()
+    start_date = end_date - dt.timedelta(days=int(years * 365))
+    print(f"[i] Full refresh: fetching {len(tickers)} ticker(s) from {start_date} to {end_date}")
+    fetched = fetch_yahoo_prices(tickers, start_date, end_date)
+    summarize_fetch_results(tickers, fetched, start_date, end_date)
+
+    if fetched.empty:
+        print("[!] Full refresh got no data from Yahoo -- not touching Daily_prices")
+        return
+
+    refreshed_tickers = sorted(fetched["ticker"].astype(str).unique().tolist())
+    table_ref = f"{project_id}.{dataset}.{price_table}"
+    job_config = bigquery.QueryJobConfig(
+        query_parameters=[bigquery.ArrayQueryParameter("tickers", "STRING", refreshed_tickers)]
+    )
+    client.query(
+        f"DELETE FROM `{table_ref}` WHERE ticker IN UNNEST(@tickers)", job_config=job_config
+    ).result()
+    print(f"[i] Cleared existing rows for {len(refreshed_tickers)} ticker(s) before reloading")
+
+    upload_prices(client, fetched, project_id, dataset, price_table)
+
+
 def main() -> None:
     args = parse_args()
     client = make_client(args.project_id, args.credentials)
@@ -220,6 +271,10 @@ def main() -> None:
     tickers = get_active_tickers(client, args.project_id, args.dataset, args.universe_table)
     if not tickers:
         print("[!] No active tickers found in BigQuery universe")
+        return
+
+    if args.mode == "full_refresh":
+        full_refresh(client, tickers, args.project_id, args.dataset, args.price_table, args.full_refresh_years)
         return
 
     end_date = dt.date.today()
