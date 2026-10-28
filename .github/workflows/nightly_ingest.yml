@@ -33,6 +33,9 @@ jobs:
       - name: Run ingest
         run: python ingest_update.py
 
+      - name: Rebuild events (vol_event)
+        run: python build_events.py
+
       - name: Summary
         if: always()
         run: echo "Ingest finished with status ${{ job.status }}"
