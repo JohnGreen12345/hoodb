@@ -1,165 +1,1117 @@
-ticker,name,type,active_flag
-AA,AA,stock,True
-AAPL,AAPL,stock,True
-ABNB,ABNB,stock,True
-ACHR,ACHR,stock,True
-AFRM,AFRM,stock,True
-AIQ,AIQ ETF,etf,True
-ALB,ALB,stock,True
-AMAT,AMAT,stock,True
-AMD,AMD,stock,True
-AMKR,AMKR,stock,True
-AMZN,AMZN,stock,True
-APLD,APLD,stock,True
-APPN,APPN,stock,True
-ARKK,ARKK,etf,True
-ARKQ,Ark Robotic,etf,True
-ARM,ARM,stock,True
-ARQT,ARQT,stock,True
-ASML,ASML,stock,True
-ATEC,ATEC,stock,True
-BE,Bloomberg Energy,stock,True
-BEDZ,BEDZ ETF,etf,True
-BKCH,BKCH ETF,etf,True
-BOTZ,BOTZ ETF,etf,True
-BTDR,,stock,True
-CHWY,CHWY,stock,True
-CIBR,CIBR ETF,etf,True
-CIFR,Cifer,stock,True
-CNTA,CNTA,stock,True
-COHR,COHR,stock,True
-COIN,COIN,stock,True
-CRDO,CRDO,stock,True
-CRM,CRM,stock,True
-CRML,CRML,stock,True
-CRSP,CRSP,stock,True
-CRWD,CRWD,stock,True
-DAL,DAL,stock,True
-DQ,DQ,stock,True
-DTCR,DTCR ETF,etf,True
-EVTL,EVTL ETF,etf,True
-FCX,FCX,stock,True
-FINX,FINX ETF,etf,True
-FROG,FROG,stock,True
-FRPT,FRPT,stock,True
-FSLR,FSLR,stock,True
-FTAI,FTAI,stock,True
-FXI,China Index,etf,True
-GDX,GDX ETF,etf,True
-GE,GE,stock,True
-HAL,HAL,stock,True
-HIMS,HIMS,stock,True
-HOOD,HOOD,stock,True
-HUT,,stock,True
-ICLN,Global Clean Energy,etf,True
-IDRV,IDRV ETF,etf,True
-IGV,IGV ETF,etf,True
-IHF,IHF ETF,etf,True
-IHI,IHI ETF,etf,True
-ILMN,ILMN,stock,True
-INOD,INOD,stock,True
-INSM,INSM,stock,True
-INTC,INTC,stock,True
-IONQ,IONQ,stock,True
-ISRG,ISRG,stock,True
-ITA,ITA Etf,etf,True
-IWM,Russell 2000 ETF,etf,True
-JETS,JETS ETF,etf,True
-JOBY,JOBY,stock,True
-KVYO,KVYO,stock,True
-LAR,LAR,stock,True
-LASR,LASR,stock,True
-LIND,LIND,stock,True
-LIT,LIT ETF,etf,True
-MAGS,Magnificent 7 Proxy ETF,etf,True
-MDY,S&P MidCap 400 ETF,etf,True
-META,META,stock,True
-MNMD,MNMD,stock,True
-MP,MP,stock,True
-MU,Micron,stock,True
-NAMS,NAMS,stock,True
-NB,NB,stock,True
-NBIS,NBIS,stock,True
-NEM,NEM,stock,True
-NET,NET,stock,True
-NUE,NUE,stock,True
-NUGT,Gold2x,stock,True
-NVDA,NVDA,stock,True
-NXE,NXE,stock,True
-NXT,NXT,stock,True
-ODD,ODD,stock,True
-OIH,OIH ETF,etf,True
-OKLO,OKLO,stock,True
-ONON,ONON,stock,True
-OSCR,OSCR,stock,True
-OUT,OUT,stock,True
-PEJ,PEJ ETF,etf,True
-PL,Planet Labs,stock,True
-PLTR,PLTR,stock,True
-QBTS,QBTS,stock,True
-QQQ,Nasdaq 100 ETF,etf,True
-QTUM,QTUM ETF,etf,True
-RBLX,RBLX,stock,True
-RCL,RCL,stock,True
-RDDT,RDDT,stock,True
-REMX,Rare Earth,etf,True
-RERE,RERE,stock,True
-RIVN,RIVN,stock,True
-RKLB,RKLB,stock,True
-ROBO,ROBO ETF,etf,True
-RR,RR,stock,True
-RSP,Equal Weight S&P 500 ETF,etf,True
-RYAAY,RYAAY,stock,True
-RYTM,RYTM,stock,True
-SERV,SERV,stock,True
-SGML,SGML,stock,True
-SKYY,SKYY ETF,etf,True
-SLB,SLB,stock,True
-SLX,SLX ETF,etf,True
-SMR,SMR,stock,True
-SNDK,ScanDisk,etf,True
-SNOW,SNOW,stock,True
-SOCL,SOCL ETF,etf,True
-SOFI,SOFI,stock,True
-SONO,SONO,stock,True
-SOUN,SOUN,stock,True
-SOXX,SOXX ETF,etf,True
-SPHR,SPHR,stock,True
-SPY,S&P 500 ETF,etf,True
-STX,STX,stock,True
-SYM,SYM,stock,True
-TAN,TAN ETF,etf,True
-TERN,TERN,stock,True
-TEVA,TEVA,stock,True
-TME,TME,stock,True
-TSLA,TSLA,stock,True
-TTMI,TTMI,stock,True
-U,U,stock,True
-UAMY,UAMY,stock,True
-UBER,UBER,stock,True
-UNH,UNH,stock,True
-URA,URA ETF,etf,True
-USAR,USAR,stock,True
-VIK,VIK,stock,True
-WGS,WGS,stock,True
-WMT,WMT,stock,True
-XBI,XBI ETF,etf,True
-XLB,Materials Sector ETF,etf,True
-XLC,Communications Sector ETF,etf,True
-XLE,Energy Sector ETF,etf,True
-XLF,Financials Sector ETF,etf,True
-XLI,Industrials Sector ETF,etf,True
-XLK,Technology Sector ETF,etf,True
-XLP,Consumer Staples Sector ETF,etf,True
-XLRE,Real Estate Sector ETF,etf,True
-XLU,Utilities Sector ETF,etf,True
-XLV,Healthcare Sector ETF,etf,True
-XLY,Consumer Discretionary Sector ETF,etf,True
-XME,Metals & Mining ,etf,True
-XPEV,XPEV,stock,True
-XRT,XRT ETF,etf,True
-XYZ,XYZ,stock,True
-ZETA,ZETA,stock,True
-VIX,CBOE Volatility Index,benchmark,True
-DIA,Dow Jones Industrial Average ETF,etf,True
-SMH,Semiconductor Sector ETF,etf,True
+ticker,name,type,source,sector,industry,active_flag,added_at,classified_at
+A,Agilent Technologies,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+AA,AA,stock,watchlist,Basic Materials,Aluminum,True,2026-10-28,2026-10-28
+AAL,American Airlines Group,stock,r1000,Industrials,Airlines,True,2026-10-28,2026-10-28
+AAON,AAON,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+AAPL,AAPL,stock,watchlist,Technology,Consumer Electronics,True,2026-10-28,2026-10-28
+ABBV,AbbVie,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+ABNB,ABNB,stock,watchlist,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+ABT,Abbott Laboratories,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+ACGL,Arch Capital Group,stock,r1000,Financial Services,Insurance - Diversified,True,2026-10-28,2026-10-28
+ACHC,Acadia Healthcare,stock,r1000,Healthcare,Medical Care Facilities,True,2026-10-28,2026-10-28
+ACHR,ACHR,stock,watchlist,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+ACI,Albertsons,stock,r1000,Consumer Defensive,Grocery Stores,True,2026-10-28,2026-10-28
+ACM,AECOM,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+ACN,Accenture,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+ADBE,Adobe Inc.,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+ADC,Agree Realty,stock,r1000,Real Estate,REIT - Retail,True,2026-10-28,2026-10-28
+ADI,Analog Devices,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+ADM,Archer Daniels Midland,stock,r1000,Consumer Defensive,Farm Products,True,2026-10-28,2026-10-28
+ADP,Automatic Data Processing,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+ADSK,Autodesk,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+ADT,ADT Inc.,stock,r1000,Industrials,Security & Protection Services,True,2026-10-28,2026-10-28
+AEE,Ameren,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+AEP,American Electric Power,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+AES,AES Corporation,stock,r1000,Utilities,Utilities - Diversified,True,2026-10-28,2026-10-28
+AFG,American Financial Group,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+AFL,Aflac,stock,r1000,Financial Services,Insurance - Life,True,2026-10-28,2026-10-28
+AFRM,AFRM,stock,watchlist,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+AGCO,AGCO,stock,r1000,Industrials,Farm & Heavy Construction Machinery,True,2026-10-28,2026-10-28
+AGNC,AGNC Investment,stock,r1000,Real Estate,REIT - Mortgage,True,2026-10-28,2026-10-28
+AGO,Assured Guaranty,stock,r1000,Financial Services,Insurance - Specialty,True,2026-10-28,2026-10-28
+AIG,American International Group,stock,r1000,Financial Services,Insurance - Diversified,True,2026-10-28,2026-10-28
+AIQ,AIQ ETF,etf,watchlist,,,True,2026-10-28,
+AIT,Applied Industrial Technologies,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+AIZ,Assurant,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+AJG,Arthur J. Gallagher & Co.,stock,r1000,Financial Services,Insurance Brokers,True,2026-10-28,2026-10-28
+AKAM,Akamai Technologies,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+AL,Air Lease Corporation,stock,r1000,,,True,2026-10-28,2026-10-28
+ALAB,Astera Labs,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+ALB,ALB,stock,watchlist,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+ALGM,Allegro MicroSystems,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+ALGN,Align Technology,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+ALK,Alaska Air Group,stock,r1000,Industrials,Airlines,True,2026-10-28,2026-10-28
+ALL,Allstate,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+ALLE,Allegion,stock,r1000,Industrials,Security & Protection Services,True,2026-10-28,2026-10-28
+ALLY,Ally Financial,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+ALNY,Alnylam Pharmaceuticals,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+ALSN,Allison Transmission,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+AM,Antero Midstream,stock,r1000,Energy,Oil & Gas Midstream,True,2026-10-28,2026-10-28
+AMAT,AMAT,stock,watchlist,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+AMCR,Amcor,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+AMD,AMD,stock,watchlist,Technology,Semiconductors,True,2026-10-28,2026-10-28
+AME,Ametek,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+AMG,Affiliated Managers Group,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+AMGN,Amgen,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+AMH,American Homes 4 Rent,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+AMKR,AMKR,stock,watchlist,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+AMP,Ameriprise Financial,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+AMT,American Tower,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+AMTM,Amentum,stock,r1000,Industrials,Specialty Business Services,True,2026-10-28,2026-10-28
+AMZN,AMZN,stock,watchlist,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+AN,AutoNation,stock,r1000,Consumer Cyclical,Auto & Truck Dealerships,True,2026-10-28,2026-10-28
+ANET,Arista Networks,stock,r1000,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+AON,Aon plc,stock,r1000,Financial Services,Insurance Brokers,True,2026-10-28,2026-10-28
+AOS,A. O. Smith,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+APA,APA Corporation,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+APD,Air Products,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+APG,APi Group,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+APH,Amphenol,stock,r1000,Technology,Electronic Components,True,2026-10-28,2026-10-28
+APLD,APLD,stock,watchlist,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+APO,Apollo Global Management,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+APP,AppLovin,stock,r1000,Communication Services,Advertising Agencies,True,2026-10-28,2026-10-28
+APPF,AppFolio,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+APPN,APPN,stock,watchlist,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+APTV,Aptiv,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+AR,Antero Resources,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+ARE,Alexandria Real Estate Equities,stock,r1000,Real Estate,REIT - Office,True,2026-10-28,2026-10-28
+ARES,Ares Management,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+ARKK,ARKK,etf,watchlist,,,True,2026-10-28,
+ARKQ,Ark Robotic,etf,watchlist,,,True,2026-10-28,
+ARM,ARM,stock,watchlist,Technology,Semiconductors,True,2026-10-28,2026-10-28
+ARMK,Aramark,stock,r1000,Industrials,Specialty Business Services,True,2026-10-28,2026-10-28
+ARQT,ARQT,stock,watchlist,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+ARW,Arrow Electronics,stock,r1000,Technology,Electronics & Computer Distribution,True,2026-10-28,2026-10-28
+AS,Amer Sports,stock,r1000,Consumer Cyclical,Leisure,True,2026-10-28,2026-10-28
+ASH,Ashland Global,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+ASML,ASML,stock,watchlist,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+ASTS,AST SpaceMobile,stock,r1000,Technology,Communication Equipment,True,2026-10-28,2026-10-28
+ATEC,ATEC,stock,watchlist,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+ATI,ATI Inc.,stock,r1000,Industrials,Metal Fabrication,True,2026-10-28,2026-10-28
+ATO,Atmos Energy,stock,r1000,Utilities,Utilities - Regulated Gas,True,2026-10-28,2026-10-28
+ATR,AptarGroup,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+AU,AngloGold Ashanti,stock,r1000,Basic Materials,Gold,True,2026-10-28,2026-10-28
+AUR,Aurora Innovation,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+AVB,AvalonBay Communities,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+AVGO,Broadcom,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+AVT,Avnet,stock,r1000,Technology,Electronics & Computer Distribution,True,2026-10-28,2026-10-28
+AVTR,Avantor,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+AVY,Avery Dennison,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+AWI,Armstrong World Industries,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+AWK,American Water Works,stock,r1000,Utilities,Utilities - Regulated Water,True,2026-10-28,2026-10-28
+AXON,Axon Enterprise,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+AXP,American Express,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+AXS,AXIS Capital,stock,r1000,Financial Services,Insurance - Specialty,True,2026-10-28,2026-10-28
+AXTA,Axalta,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+AYI,Acuity Brands,stock,r1000,Industrials,Electrical Equipment & Parts,True,2026-10-28,2026-10-28
+AZO,AutoZone,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+BA,Boeing,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+BAC,Bank of America,stock,r1000,Financial Services,Banks - Diversified,True,2026-10-28,2026-10-28
+BAH,Booz Allen Hamilton,stock,r1000,Industrials,Consulting Services,True,2026-10-28,2026-10-28
+BALL,Ball Corporation,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+BAM,Brookfield Asset Management,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+BAX,Baxter International,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+BBWI,"Bath & Body Works, Inc.",stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+BBY,Best Buy,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+BC,Brunswick Corporation,stock,r1000,Consumer Cyclical,Recreational Vehicles,True,2026-10-28,2026-10-28
+BDX,Becton Dickinson,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+BE,Bloomberg Energy,stock,watchlist,Industrials,Electrical Equipment & Parts,True,2026-10-28,2026-10-28
+BEDZ,BEDZ ETF,etf,watchlist,,,True,2026-10-28,
+BEN,Franklin Templeton Investments,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+BEPC,Brookfield Renewable Partners,stock,r1000,Utilities,Utilities - Renewable,True,2026-10-28,2026-10-28
+BF-A,Brown–Forman (Class A),stock,r1000,Consumer Defensive,Beverages - Wineries & Distilleries,True,2026-10-28,2026-10-28
+BF-B,Brown–Forman (Class B),stock,r1000,Consumer Defensive,Beverages - Wineries & Distilleries,True,2026-10-28,2026-10-28
+BFAM,Bright Horizons,stock,r1000,Consumer Cyclical,Personal Services,True,2026-10-28,2026-10-28
+BG,Bunge Global,stock,r1000,Consumer Defensive,Farm Products,True,2026-10-28,2026-10-28
+BHF,Brighthouse Financial,stock,r1000,Financial Services,Insurance - Life,True,2026-10-28,2026-10-28
+BIIB,Biogen,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+BILL,Bill.com,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+BIO,Bio-Rad Laboratories,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+BIRK,Birkenstock,stock,r1000,Consumer Cyclical,Footwear & Accessories,True,2026-10-28,2026-10-28
+BJ,BJ's Wholesale Club,stock,r1000,Consumer Defensive,Discount Stores,True,2026-10-28,2026-10-28
+BKCH,BKCH ETF,etf,watchlist,,,True,2026-10-28,
+BKNG,Booking Holdings,stock,r1000,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+BKR,Baker Hughes,stock,r1000,Energy,Oil & Gas Equipment & Services,True,2026-10-28,2026-10-28
+BLDR,Builders FirstSource,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+BLK,BlackRock,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+BLSH,Bullish,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+BMRN,BioMarin Pharmaceutical,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+BMY,Bristol Myers Squibb,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+BNY,BNY Mellon,stock,r1000,Financial Services,Banks - Diversified,True,2026-10-28,2026-10-28
+BOKF,BOK Financial Corporation,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+BOTZ,BOTZ ETF,etf,watchlist,,,True,2026-10-28,
+BPOP,"Popular, Inc.",stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+BR,Broadridge Financial Solutions,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+BRBR,BellRing Brands,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+BRK-B,Berkshire Hathaway,stock,r1000,Financial Services,Insurance - Diversified,True,2026-10-28,2026-10-28
+BRKR,Bruker,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+BRO,Brown & Brown,stock,r1000,Financial Services,Insurance Brokers,True,2026-10-28,2026-10-28
+BROS,Dutch Bros Inc.,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+BRX,Brixmor Property Group,stock,r1000,Real Estate,REIT - Retail,True,2026-10-28,2026-10-28
+BSX,Boston Scientific,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+BSY,Bentley Systems,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+BTDR,,stock,watchlist,Technology,Software - Application,True,2026-10-28,2026-10-28
+BURL,Burlington Stores,stock,r1000,Consumer Cyclical,Apparel Retail,True,2026-10-28,2026-10-28
+BWA,BorgWarner,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+BWXT,BWX Technologies,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+BX,Blackstone Inc.,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+BXP,"BXP, Inc.",stock,r1000,Real Estate,REIT - Office,True,2026-10-28,2026-10-28
+BYD,Boyd Gaming,stock,r1000,Consumer Cyclical,Resorts & Casinos,True,2026-10-28,2026-10-28
+C,Citigroup,stock,r1000,Financial Services,Banks - Diversified,True,2026-10-28,2026-10-28
+CACC,Credit Acceptance,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+CACI,CACI,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+CAG,Conagra Brands,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+CAH,Cardinal Health,stock,r1000,Healthcare,Medical Distribution,True,2026-10-28,2026-10-28
+CAI,Caris Life Sciences,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+CAR,Avis Budget Group,stock,r1000,Industrials,Rental & Leasing Services,True,2026-10-28,2026-10-28
+CARR,Carrier Global,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+CART,Maplebear Inc.,stock,r1000,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+CASY,Casey's,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+CAT,Caterpillar Inc.,stock,r1000,Industrials,Farm & Heavy Construction Machinery,True,2026-10-28,2026-10-28
+CAVA,Cava Group,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+CB,Chubb Limited,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+CBC,Central Bancompany,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+CBOE,Cboe Global Markets,stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+CBRE,CBRE Group,stock,r1000,Real Estate,Real Estate Services,True,2026-10-28,2026-10-28
+CBSH,Commerce Bancshares,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+CCC,CCC Intelligent Solutions,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+CCI,Crown Castle,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+CCK,Crown Holdings,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+CCL,Carnival Corporation,stock,r1000,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+CDNS,Cadence Design Systems,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+CDW,CDW,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+CE,Celanese,stock,r1000,Basic Materials,Chemicals,True,2026-10-28,2026-10-28
+CEG,Constellation Energy,stock,r1000,Utilities,Utilities - Independent Power Producers,True,2026-10-28,2026-10-28
+CELH,Celsius Holdings,stock,r1000,Consumer Defensive,Beverages - Non-Alcoholic,True,2026-10-28,2026-10-28
+CERT,"Certara, Inc.",stock,r1000,Healthcare,Health Information Services,True,2026-10-28,2026-10-28
+CF,CF Industries,stock,r1000,Basic Materials,Agricultural Inputs,True,2026-10-28,2026-10-28
+CFG,Citizens Financial Group,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+CFR,Frost Bank,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+CG,Carlyle Group (The),stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+CGNX,Cognex Corporation,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+CHD,Church & Dwight,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+CHDN,Churchill Downs Incorporated,stock,r1000,Consumer Cyclical,Gambling,True,2026-10-28,2026-10-28
+CHE,Chemed Corporation,stock,r1000,Healthcare,Medical Care Facilities,True,2026-10-28,2026-10-28
+CHH,Choice Hotels,stock,r1000,Consumer Cyclical,Lodging,True,2026-10-28,2026-10-28
+CHRD,Chord Energy,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+CHRW,C.H. Robinson,stock,r1000,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+CHTR,Charter Communications,stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+CHWY,CHWY,stock,watchlist,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+CI,Cigna,stock,r1000,Healthcare,Healthcare Plans,True,2026-10-28,2026-10-28
+CIBR,CIBR ETF,etf,watchlist,,,True,2026-10-28,
+CIEN,Ciena,stock,r1000,Technology,Communication Equipment,True,2026-10-28,2026-10-28
+CIFR,Cifer,stock,watchlist,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+CINF,Cincinnati Financial,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+CL,Colgate-Palmolive,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+CLF,Cleveland-Cliffs,stock,r1000,Basic Materials,Steel,True,2026-10-28,2026-10-28
+CLH,Clean Harbors,stock,r1000,Industrials,Waste Management,True,2026-10-28,2026-10-28
+CLVT,Clarivate,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+CLX,Clorox,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+CMCSA,Comcast,stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+CME,CME Group,stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+CMG,Chipotle Mexican Grill,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+CMI,Cummins,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+CMS,CMS Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+CNA,CNA Financial,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+CNC,Centene,stock,r1000,Healthcare,Healthcare Plans,True,2026-10-28,2026-10-28
+CNH,CNH Industrial,stock,r1000,Industrials,Farm & Heavy Construction Machinery,True,2026-10-28,2026-10-28
+CNM,Core & Main,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+CNP,Centerpoint Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+CNTA,CNTA,stock,watchlist,,,True,2026-10-28,2026-10-28
+CNXC,Concentrix,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+COF,Capital One,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+COHR,COHR,stock,watchlist,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+COIN,COIN,stock,watchlist,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+COKE,Coca-Cola Consolidated,stock,r1000,Consumer Defensive,Beverages - Non-Alcoholic,True,2026-10-28,2026-10-28
+COLB,Columbia Banking System,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+COLD,Americold,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+COLM,Columbia Sportswear,stock,r1000,Consumer Cyclical,Apparel Manufacturing,True,2026-10-28,2026-10-28
+COO,Cooper Companies (The),stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+COP,ConocoPhillips,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+COR,Cencora,stock,r1000,Healthcare,Medical Distribution,True,2026-10-28,2026-10-28
+CORT,Corcept Therapeutics,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+COST,Costco,stock,r1000,Consumer Defensive,Discount Stores,True,2026-10-28,2026-10-28
+COTY,Coty,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+CPAY,Corpay,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+CPB,Campbell Soup Company,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+CPNG,Coupang,stock,r1000,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+CPRT,Copart,stock,r1000,Industrials,Specialty Business Services,True,2026-10-28,2026-10-28
+CPT,Camden Property Trust,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+CR,Crane Co.,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+CRCL,Circle Internet Group,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+CRDO,CRDO,stock,watchlist,Technology,Semiconductors,True,2026-10-28,2026-10-28
+CRH,CRH plc,stock,r1000,Basic Materials,Building Materials,True,2026-10-28,2026-10-28
+CRL,Charles River Laboratories,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+CRM,CRM,stock,watchlist,Technology,Software - Application,True,2026-10-28,2026-10-28
+CRML,CRML,stock,watchlist,Basic Materials,Other Industrial Metals & Mining,True,2026-10-28,2026-10-28
+CROX,Crocs,stock,r1000,Consumer Cyclical,Footwear & Accessories,True,2026-10-28,2026-10-28
+CRS,Carpenter Technology Corporation,stock,r1000,Industrials,Metal Fabrication,True,2026-10-28,2026-10-28
+CRSP,CRSP,stock,watchlist,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+CRUS,Cirrus Logic,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+CRWD,CRWD,stock,watchlist,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+CSCO,Cisco,stock,r1000,Technology,Communication Equipment,True,2026-10-28,2026-10-28
+CSGP,CoStar Group,stock,r1000,Real Estate,Real Estate Services,True,2026-10-28,2026-10-28
+CSL,Carlisle Companies,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+CSX,CSX Corporation,stock,r1000,Industrials,Railroads,True,2026-10-28,2026-10-28
+CTAS,Cintas,stock,r1000,Industrials,Specialty Business Services,True,2026-10-28,2026-10-28
+CTSH,Cognizant,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+CTVA,Corteva,stock,r1000,Basic Materials,Agricultural Inputs,True,2026-10-28,2026-10-28
+CUBE,CubeSmart,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+CUZ,Cousins Properties,stock,r1000,Real Estate,REIT - Office,True,2026-10-28,2026-10-28
+CVNA,Carvana,stock,r1000,Consumer Cyclical,Auto & Truck Dealerships,True,2026-10-28,2026-10-28
+CVS,CVS Health,stock,r1000,Healthcare,Healthcare Plans,True,2026-10-28,2026-10-28
+CVX,Chevron Corporation,stock,r1000,Energy,Oil & Gas Integrated,True,2026-10-28,2026-10-28
+CW,Curtiss-Wright,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+CWEN,Clearway Energy (Class C),stock,r1000,Utilities,Utilities - Renewable,True,2026-10-28,2026-10-28
+CWEN-A,Clearway Energy (Class A),stock,r1000,,,True,2026-10-28,2026-10-28
+CXT,Crane NXT,stock,r1000,Industrials,Business Equipment & Supplies,True,2026-10-28,2026-10-28
+CZR,Caesars Entertainment,stock,r1000,Consumer Cyclical,Resorts & Casinos,True,2026-10-28,2026-10-28
+D,Dominion Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+DAL,DAL,stock,watchlist,Industrials,Airlines,True,2026-10-28,2026-10-28
+DAR,Darling Ingredients,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+DASH,DoorDash,stock,r1000,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+DBX,Dropbox,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+DCI,Donaldson Company,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+DD,DuPont,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+DDOG,Datadog,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+DDS,Dillard's,stock,r1000,Consumer Cyclical,Department Stores,True,2026-10-28,2026-10-28
+DE,Deere & Company,stock,r1000,Industrials,Farm & Heavy Construction Machinery,True,2026-10-28,2026-10-28
+DECK,Deckers Brands,stock,r1000,Consumer Cyclical,Footwear & Accessories,True,2026-10-28,2026-10-28
+DELL,Dell Technologies,stock,r1000,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+DG,Dollar General,stock,r1000,Consumer Defensive,Discount Stores,True,2026-10-28,2026-10-28
+DGX,Quest Diagnostics,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+DHI,D. R. Horton,stock,r1000,Consumer Cyclical,Residential Construction,True,2026-10-28,2026-10-28
+DHR,Danaher Corporation,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+DIA,Dow Jones Industrial Average ETF,etf,context,,,True,2026-10-28,
+DINO,HF Sinclair,stock,r1000,Energy,Oil & Gas Refining & Marketing,True,2026-10-28,2026-10-28
+DIS,Walt Disney Company (The),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+DJT,Trump Media & Technology Group,stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+DKNG,DraftKings,stock,r1000,Consumer Cyclical,Gambling,True,2026-10-28,2026-10-28
+DKS,Dick's Sporting Goods,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+DLB,Dolby Laboratories,stock,r1000,Industrials,Specialty Business Services,True,2026-10-28,2026-10-28
+DLR,Digital Realty,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+DLTR,Dollar Tree,stock,r1000,Consumer Defensive,Discount Stores,True,2026-10-28,2026-10-28
+DOC,Healthpeak Properties,stock,r1000,Real Estate,REIT - Healthcare Facilities,True,2026-10-28,2026-10-28
+DOCS,Doximity,stock,r1000,Healthcare,Health Information Services,True,2026-10-28,2026-10-28
+DOCU,DocuSign,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+DOV,Dover Corporation,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+DOW,Dow Inc.,stock,r1000,Basic Materials,Chemicals,True,2026-10-28,2026-10-28
+DOX,Amdocs,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+DPZ,Domino's,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+DQ,DQ,stock,watchlist,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+DRI,Darden Restaurants,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+DRS,Leonardo DRS,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+DT,Dynatrace,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+DTCR,DTCR ETF,etf,watchlist,,,True,2026-10-28,
+DTE,DTE Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+DTM,DT Midstream,stock,r1000,Energy,Oil & Gas Midstream,True,2026-10-28,2026-10-28
+DUK,Duke Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+DUOL,Duolingo,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+DV,DoubleVerify,stock,r1000,Communication Services,Advertising Agencies,True,2026-10-28,2026-10-28
+DVA,DaVita,stock,r1000,Healthcare,Medical Care Facilities,True,2026-10-28,2026-10-28
+DVN,Devon Energy,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+DXC,DXC Technology,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+DXCM,Dexcom,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+EA,Electronic Arts,stock,r1000,Communication Services,Electronic Gaming & Multimedia,True,2026-10-28,2026-10-28
+EBAY,eBay,stock,r1000,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+ECG,Everus Construction Group,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+ECL,Ecolab,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+ED,Consolidated Edison,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+EEFT,Euronet Worldwide,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+EFX,Equifax,stock,r1000,Industrials,Consulting Services,True,2026-10-28,2026-10-28
+EG,Everest Group,stock,r1000,Financial Services,Insurance - Reinsurance,True,2026-10-28,2026-10-28
+EGP,EastGroup Properties,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+EHC,Encompass Health,stock,r1000,Healthcare,Medical Care Facilities,True,2026-10-28,2026-10-28
+EIX,Edison International,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+EL,Estée Lauder Companies (The),stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+ELAN,Elanco,stock,r1000,Healthcare,Drug Manufacturers - Specialty & Generic,True,2026-10-28,2026-10-28
+ELF,e.l.f. Beauty,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+ELS,Equity Lifestyle Properties,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+ELV,Elevance Health,stock,r1000,Healthcare,Healthcare Plans,True,2026-10-28,2026-10-28
+EME,Emcor,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+EMN,Eastman Chemical Company,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+EMR,Emerson Electric,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+ENPH,Enphase Energy,stock,r1000,Technology,Solar,True,2026-10-28,2026-10-28
+ENTG,Entegris,stock,r1000,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+EOG,EOG Resources,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+EPAM,EPAM Systems,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+EPR,EPR Properties,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+EQH,Equitable Holdings,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+EQIX,Equinix,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+EQR,Equity Residential,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+EQT,EQT Corporation,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+ES,Eversource Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+ESAB,ESAB,stock,r1000,Industrials,Metal Fabrication,True,2026-10-28,2026-10-28
+ESI,Element Solutions,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+ESS,Essex Property Trust,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+ESTC,Elastic NV,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+ETN,Eaton Corporation,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+ETR,Entergy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+ETSY,Etsy,stock,r1000,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+EVR,Evercore,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+EVRG,Evergy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+EVTL,EVTL ETF,etf,watchlist,,,True,2026-10-28,
+EW,Edwards Lifesciences,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+EWBC,East West Bancorp,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+EXC,Exelon,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+EXE,Expand Energy,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+EXEL,Exelixis,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+EXLS,EXL Service,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+EXP,Eagle Materials,stock,r1000,Basic Materials,Building Materials,True,2026-10-28,2026-10-28
+EXPD,Expeditors International,stock,r1000,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+EXPE,Expedia Group,stock,r1000,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+EXR,Extra Space Storage,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+F,Ford Motor Company,stock,r1000,Consumer Cyclical,Auto Manufacturers,True,2026-10-28,2026-10-28
+FAF,First American Financial Corporation,stock,r1000,Financial Services,Insurance - Specialty,True,2026-10-28,2026-10-28
+FANG,Diamondback Energy,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+FAST,Fastenal,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+FBIN,Fortune Brands Innovations,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+FCN,FTI Consulting,stock,r1000,Industrials,Consulting Services,True,2026-10-28,2026-10-28
+FCNCA,First Citizens BancShares,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+FCX,FCX,stock,watchlist,Basic Materials,Copper,True,2026-10-28,2026-10-28
+FDS,FactSet,stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+FDX,FedEx,stock,r1000,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+FDXF,FedEx Freight,stock,r1000,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+FE,FirstEnergy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+FERG,Ferguson Enterprises,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+FFIV,"F5, Inc.",stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+FHB,"First Hawaiian, Inc.",stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+FHN,First Horizon Corporation,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+FICO,Fair Isaac,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+FIGR,Figure Technology Solutions,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+FINX,FINX ETF,etf,watchlist,,,True,2026-10-28,
+FIS,Fidelity National Information Services,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+FISV,Fiserv,stock,r1000,,,True,2026-10-28,2026-10-28
+FITB,Fifth Third Bancorp,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+FIVE,Five Below,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+FIX,Comfort Systems USA,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+FLEX,Flex Ltd.,stock,r1000,Technology,Electronic Components,True,2026-10-28,2026-10-28
+FLO,Flowers Foods,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+FLS,Flowserve,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+FLUT,Flutter Entertainment,stock,r1000,Consumer Cyclical,Gambling,True,2026-10-28,2026-10-28
+FMC,FMC Corporation,stock,r1000,Basic Materials,Agricultural Inputs,True,2026-10-28,2026-10-28
+FNB,FNB Corporation,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+FND,Floor & Decor,stock,r1000,Consumer Cyclical,Home Improvement Retail,True,2026-10-28,2026-10-28
+FNF,Fidelity National Financial,stock,r1000,Financial Services,Insurance - Specialty,True,2026-10-28,2026-10-28
+FOUR,Shift4,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+FOX,Fox Corporation (Class B),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+FOXA,Fox Corporation (Class A),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+FR,First Industrial Realty Trust,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+FRHC,Freedom Holding,stock,r1000,Financial Services,Financial Conglomerates,True,2026-10-28,2026-10-28
+FRMI,Fermi Inc.,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+FROG,FROG,stock,watchlist,Technology,Software - Application,True,2026-10-28,2026-10-28
+FRPT,FRPT,stock,watchlist,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+FRT,Federal Realty Investment Trust,stock,r1000,Real Estate,REIT - Retail,True,2026-10-28,2026-10-28
+FSLR,FSLR,stock,watchlist,Technology,Solar,True,2026-10-28,2026-10-28
+FTAI,FTAI,stock,watchlist,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+FTI,TechnipFMC,stock,r1000,Energy,Oil & Gas Equipment & Services,True,2026-10-28,2026-10-28
+FTNT,Fortinet,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+FTV,Fortive,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+FWONA,Liberty Formula 1 (Series A),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+FWONK,Liberty Formula 1 (Series C),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+FXI,China Index,etf,watchlist,,,True,2026-10-28,
+G,Genpact,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+GAP,Gap Inc.,stock,r1000,Consumer Cyclical,Apparel Retail,True,2026-10-28,2026-10-28
+GD,General Dynamics,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+GDDY,GoDaddy,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+GDX,GDX ETF,etf,watchlist,,,True,2026-10-28,
+GE,GE,stock,watchlist,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+GEHC,GE HealthCare,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+GEN,Gen Digital,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+GEV,GE Vernova,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+GFS,GlobalFoundries,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+GGG,Graco Inc.,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+GILD,Gilead Sciences,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+GIS,General Mills,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+GL,Globe Life,stock,r1000,Financial Services,Insurance - Life,True,2026-10-28,2026-10-28
+GLIBA,GCI Liberty (Series A),stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+GLIBK,GCI Liberty (Series C),stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+GLOB,Globant,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+GLPI,Gaming and Leisure Properties,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+GLW,Corning Inc.,stock,r1000,Technology,Electronic Components,True,2026-10-28,2026-10-28
+GM,General Motors,stock,r1000,Consumer Cyclical,Auto Manufacturers,True,2026-10-28,2026-10-28
+GME,GameStop,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+GMED,Globus Medical,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+GNRC,Generac,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+GNTX,Gentex,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+GOOG,Alphabet (Class C),stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+GOOGL,Alphabet (Class A),stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+GPC,Genuine Parts Company,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+GPK,Graphic Packaging,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+GPN,Global Payments,stock,r1000,Industrials,Specialty Business Services,True,2026-10-28,2026-10-28
+GRMN,Garmin,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+GS,Goldman Sachs,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+GTES,Gates Corporation,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+GTLB,GitLab,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+GTM,ZoomInfo,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+GWRE,Guidewire Software,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+GWW,W. W. Grainger,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+GXO,GXO Logistics,stock,r1000,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+H,Hyatt Hotels,stock,r1000,Consumer Cyclical,Lodging,True,2026-10-28,2026-10-28
+HAL,HAL,stock,watchlist,Energy,Oil & Gas Equipment & Services,True,2026-10-28,2026-10-28
+HALO,Halozyme,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+HAS,Hasbro,stock,r1000,Consumer Cyclical,Leisure,True,2026-10-28,2026-10-28
+HAYW,Hayward Holdings,stock,r1000,Industrials,Electrical Equipment & Parts,True,2026-10-28,2026-10-28
+HBAN,Huntington Bancshares,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+HCA,HCA Healthcare,stock,r1000,Healthcare,Medical Care Facilities,True,2026-10-28,2026-10-28
+HD,Home Depot (The),stock,r1000,Consumer Cyclical,Home Improvement Retail,True,2026-10-28,2026-10-28
+HEI,HEICO (Common),stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+HEI-A,HEICO (Class A),stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+HHH,Howard Hughes Holdings,stock,r1000,Real Estate,Real Estate - Development,True,2026-10-28,2026-10-28
+HIG,Hartford (The),stock,r1000,Financial Services,Insurance - Diversified,True,2026-10-28,2026-10-28
+HII,Huntington Ingalls Industries,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+HIMS,HIMS,stock,watchlist,Healthcare,Drug Manufacturers - Specialty & Generic,True,2026-10-28,2026-10-28
+HIW,Highwoods Properties,stock,r1000,Real Estate,REIT - Office,True,2026-10-28,2026-10-28
+HLI,Houlihan Lokey,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+HLNE,Hamilton Lane,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+HLT,Hilton Worldwide,stock,r1000,Consumer Cyclical,Lodging,True,2026-10-28,2026-10-28
+HOG,Harley-Davidson,stock,r1000,Consumer Cyclical,Recreational Vehicles,True,2026-10-28,2026-10-28
+HON,Honeywell Technologies,stock,r1000,Industrials,Conglomerates,True,2026-10-28,2026-10-28
+HONA,Honeywell Aerospace,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+HOOD,HOOD,stock,watchlist,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+HPE,Hewlett Packard Enterprise,stock,r1000,Technology,Communication Equipment,True,2026-10-28,2026-10-28
+HPQ,HP Inc.,stock,r1000,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+HR,Healthcare Realty Trust,stock,r1000,Real Estate,REIT - Healthcare Facilities,True,2026-10-28,2026-10-28
+HRB,H&R Block,stock,r1000,Consumer Cyclical,Personal Services,True,2026-10-28,2026-10-28
+HRL,Hormel Foods,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+HSIC,Schein (Henry),stock,r1000,Healthcare,Medical Distribution,True,2026-10-28,2026-10-28
+HST,Host Hotels & Resorts,stock,r1000,Real Estate,REIT - Hotel & Motel,True,2026-10-28,2026-10-28
+HSY,Hershey Company (The),stock,r1000,Consumer Defensive,Confectioners,True,2026-10-28,2026-10-28
+HUBB,Hubbell Incorporated,stock,r1000,Industrials,Electrical Equipment & Parts,True,2026-10-28,2026-10-28
+HUBS,HubSpot,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+HUM,Humana,stock,r1000,Healthcare,Healthcare Plans,True,2026-10-28,2026-10-28
+HUN,Huntsman Corporation,stock,r1000,Basic Materials,Chemicals,True,2026-10-28,2026-10-28
+HUT,,stock,watchlist,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+HWM,Howmet Aerospace,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+HXL,Hexcel,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+IBKR,Interactive Brokers,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+IBM,IBM,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+ICE,Intercontinental Exchange,stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+ICLN,Global Clean Energy,etf,watchlist,,,True,2026-10-28,
+IDA,Idacorp,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+IDRV,IDRV ETF,etf,watchlist,,,True,2026-10-28,
+IDXX,Idexx Laboratories,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+IEX,IDEX Corporation,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+IFF,International Flavors & Fragrances,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+IGV,IGV ETF,etf,context,,,True,2026-10-28,
+IHF,IHF ETF,etf,watchlist,,,True,2026-10-28,
+IHI,IHI ETF,etf,watchlist,,,True,2026-10-28,
+ILMN,ILMN,stock,watchlist,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+INCY,Incyte,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+INGM,Ingram Micro,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+INGR,Ingredion,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+INOD,INOD,stock,watchlist,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+INSM,INSM,stock,watchlist,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+INSP,Inspire Medical Systems,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+INTC,INTC,stock,watchlist,Technology,Semiconductors,True,2026-10-28,2026-10-28
+INTU,Intuit,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+INVH,Invitation Homes,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+IONQ,IONQ,stock,watchlist,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+IONS,Ionis Pharmaceuticals,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+IOT,Samsara,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+IP,International Paper,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+IPGP,IPG Photonics,stock,r1000,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+IQV,IQVIA,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+IR,Ingersoll Rand,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+IRDM,Iridium Communications,stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+IRM,Iron Mountain,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+ISRG,ISRG,stock,watchlist,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+IT,Gartner,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+ITA,ITA Etf,etf,watchlist,,,True,2026-10-28,
+ITT,ITT Inc.,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+ITW,Illinois Tool Works,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+IVZ,Invesco,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+IWM,Russell 2000 ETF,etf,context,,,True,2026-10-28,
+J,Jacobs Solutions,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+JAZZ,Jazz Pharmaceuticals,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+JBHT,J. B. Hunt,stock,r1000,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+JBL,Jabil,stock,r1000,Technology,Electronic Components,True,2026-10-28,2026-10-28
+JCI,Johnson Controls,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+JEF,Jefferies Financial Group,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+JETS,JETS ETF,etf,watchlist,,,True,2026-10-28,
+JHX,James Hardie Industries,stock,r1000,Basic Materials,Building Materials,True,2026-10-28,2026-10-28
+JKHY,Jack Henry & Associates,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+JLL,Jones Lang LaSalle,stock,r1000,Real Estate,Real Estate Services,True,2026-10-28,2026-10-28
+JNJ,Johnson & Johnson,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+JOBY,JOBY,stock,watchlist,Industrials,Airports & Air Services,True,2026-10-28,2026-10-28
+JPM,JPMorgan Chase,stock,r1000,Financial Services,Banks - Diversified,True,2026-10-28,2026-10-28
+KBR,"KBR, Inc.",stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+KD,Kyndryl,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+KDP,Keurig Dr Pepper,stock,r1000,Consumer Defensive,Beverages - Non-Alcoholic,True,2026-10-28,2026-10-28
+KEX,Kirby Corporation,stock,r1000,Industrials,Marine Shipping,True,2026-10-28,2026-10-28
+KEY,Keycorp,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+KEYS,Keysight,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+KHC,Kraft Heinz,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+KIM,Kimco Realty,stock,r1000,Real Estate,REIT - Retail,True,2026-10-28,2026-10-28
+KKR,KKR & Co. Inc.,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+KLAC,KLA Corporation,stock,r1000,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+KMB,Kimberly-Clark,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+KMI,Kinder Morgan,stock,r1000,Energy,Oil & Gas Midstream,True,2026-10-28,2026-10-28
+KMPR,Kemper Corporation,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+KMX,CarMax,stock,r1000,Consumer Cyclical,Auto & Truck Dealerships,True,2026-10-28,2026-10-28
+KNSL,Kinsale Capital Group,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+KNX,Knight-Swift,stock,r1000,Industrials,Trucking,True,2026-10-28,2026-10-28
+KO,Coca-Cola Company (The),stock,r1000,Consumer Defensive,Beverages - Non-Alcoholic,True,2026-10-28,2026-10-28
+KR,Kroger,stock,r1000,Consumer Defensive,Grocery Stores,True,2026-10-28,2026-10-28
+KRC,Kilroy Realty,stock,r1000,Real Estate,REIT - Office,True,2026-10-28,2026-10-28
+KRMN,Karman Holdings,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+KVUE,Kenvue,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+KVYO,KVYO,stock,watchlist,Technology,Software - Application,True,2026-10-28,2026-10-28
+L,Loews Corporation,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+LAD,Lithia Motors,stock,r1000,Consumer Cyclical,Auto & Truck Dealerships,True,2026-10-28,2026-10-28
+LAMR,Lamar Advertising,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+LAR,LAR,stock,watchlist,Basic Materials,Other Industrial Metals & Mining,True,2026-10-28,2026-10-28
+LASR,LASR,stock,watchlist,Technology,Semiconductors,True,2026-10-28,2026-10-28
+LAZ,Lazard,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+LBRDA,Liberty Broadband (Series A),stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+LBRDK,Liberty Broadband (Series C),stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+LBTYA,Liberty Global (Series A),stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+LBTYK,Liberty Global (Series C),stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+LCID,Lucid Motors,stock,r1000,Consumer Cyclical,Auto Manufacturers,True,2026-10-28,2026-10-28
+LDOS,Leidos,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+LEA,Lear Corporation,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+LECO,Lincoln Electric,stock,r1000,Industrials,Tools & Accessories,True,2026-10-28,2026-10-28
+LEN,Lennar (Class A),stock,r1000,Consumer Cyclical,Residential Construction,True,2026-10-28,2026-10-28
+LEN-B,Lennar (Class B),stock,r1000,Consumer Cyclical,Residential Construction,True,2026-10-28,2026-10-28
+LFUS,Littelfuse,stock,r1000,Technology,Electronic Components,True,2026-10-28,2026-10-28
+LH,Labcorp,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+LHX,L3Harris,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+LII,Lennox International,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+LIN,Linde plc,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+LIND,LIND,stock,watchlist,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+LINE,"Lineage, Inc.",stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+LIT,LIT ETF,etf,watchlist,,,True,2026-10-28,
+LITE,Lumentum,stock,r1000,Technology,Communication Equipment,True,2026-10-28,2026-10-28
+LKQ,LKQ Corporation,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+LLY,Lilly (Eli),stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+LLYVA,Liberty Live (Series A),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+LLYVK,Liberty Live (Series C),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+LMT,Lockheed Martin,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+LNC,Lincoln Financial,stock,r1000,Financial Services,Insurance - Life,True,2026-10-28,2026-10-28
+LNG,Cheniere Energy,stock,r1000,Energy,Oil & Gas Midstream,True,2026-10-28,2026-10-28
+LNT,Alliant Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+LOAR,Loar Holdings,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+LOPE,Grand Canyon Education,stock,r1000,Consumer Defensive,Education & Training Services,True,2026-10-28,2026-10-28
+LOW,Lowe's,stock,r1000,Consumer Cyclical,Home Improvement Retail,True,2026-10-28,2026-10-28
+LPLA,LPL Financial,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+LPX,Louisiana-Pacific,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+LRCX,Lam Research,stock,r1000,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+LSCC,Lattice Semiconductor,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+LSTR,Landstar,stock,r1000,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+LULU,Lululemon Athletica,stock,r1000,Consumer Cyclical,Apparel Retail,True,2026-10-28,2026-10-28
+LUV,Southwest Airlines,stock,r1000,Industrials,Airlines,True,2026-10-28,2026-10-28
+LVS,Las Vegas Sands,stock,r1000,Consumer Cyclical,Resorts & Casinos,True,2026-10-28,2026-10-28
+LW,Lamb Weston,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+LYB,LyondellBasell,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+LYFT,Lyft,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+LYV,Live Nation Entertainment,stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+M,"Macy's, Inc.",stock,r1000,Consumer Cyclical,Department Stores,True,2026-10-28,2026-10-28
+MA,Mastercard,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+MAA,Mid-America Apartment Communities,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+MAGS,Magnificent 7 Proxy ETF,etf,watchlist,,,True,2026-10-28,
+MAN,ManpowerGroup,stock,r1000,Industrials,Staffing & Employment Services,True,2026-10-28,2026-10-28
+MANH,Manhattan Associates,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+MAR,Marriott International,stock,r1000,Consumer Cyclical,Lodging,True,2026-10-28,2026-10-28
+MAS,Masco,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+MASI,Masimo,stock,r1000,,,True,2026-10-28,2026-10-28
+MAT,Mattel,stock,r1000,Consumer Cyclical,Leisure,True,2026-10-28,2026-10-28
+MCD,McDonald's,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+MCHP,Microchip Technology,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+MCK,McKesson Corporation,stock,r1000,Healthcare,Medical Distribution,True,2026-10-28,2026-10-28
+MCO,Moody's Corporation,stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+MDB,MongoDB Inc.,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+MDLN,Medline Inc.,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+MDLZ,Mondelez International,stock,r1000,Consumer Defensive,Confectioners,True,2026-10-28,2026-10-28
+MDT,Medtronic,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+MDU,MDU Resources,stock,r1000,Utilities,Utilities - Regulated Gas,True,2026-10-28,2026-10-28
+MDY,S&P MidCap 400 ETF,etf,watchlist,,,True,2026-10-28,
+MEDP,Medpace,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+MET,Metlife,stock,r1000,Financial Services,Insurance - Life,True,2026-10-28,2026-10-28
+META,META,stock,watchlist,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+MGM,MGM Resorts International,stock,r1000,Consumer Cyclical,Resorts & Casinos,True,2026-10-28,2026-10-28
+MHK,Mohawk Industries,stock,r1000,Consumer Cyclical,"Furnishings, Fixtures & Appliances",True,2026-10-28,2026-10-28
+MIDD,Middleby,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+MKC,McCormick & Company,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+MKL,Markel,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+MKSI,MKS Instruments,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+MKTX,MarketAxess,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+MLI,Mueller Industries,stock,r1000,Industrials,Metal Fabrication,True,2026-10-28,2026-10-28
+MLM,Martin Marietta Materials,stock,r1000,Basic Materials,Building Materials,True,2026-10-28,2026-10-28
+MMM,3M,stock,r1000,Industrials,Conglomerates,True,2026-10-28,2026-10-28
+MNMD,MNMD,stock,watchlist,,,True,2026-10-28,2026-10-28
+MNST,Monster Beverage,stock,r1000,Consumer Defensive,Beverages - Non-Alcoholic,True,2026-10-28,2026-10-28
+MO,Altria,stock,r1000,Consumer Defensive,Tobacco,True,2026-10-28,2026-10-28
+MOH,Molina Healthcare,stock,r1000,Healthcare,Healthcare Plans,True,2026-10-28,2026-10-28
+MORN,"Morningstar, Inc.",stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+MOS,Mosaic Company (The),stock,r1000,Basic Materials,Agricultural Inputs,True,2026-10-28,2026-10-28
+MP,MP,stock,watchlist,Basic Materials,Other Industrial Metals & Mining,True,2026-10-28,2026-10-28
+MPC,Marathon Petroleum,stock,r1000,Energy,Oil & Gas Refining & Marketing,True,2026-10-28,2026-10-28
+MPT,Medical Properties Trust,stock,r1000,Real Estate,REIT - Healthcare Facilities,True,2026-10-28,2026-10-28
+MPWR,Monolithic Power Systems,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+MRK,Merck & Co.,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+MRNA,Moderna,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+MRP,Millrose Properties,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+MRSH,Marsh McLennan,stock,r1000,Financial Services,Insurance Brokers,True,2026-10-28,2026-10-28
+MRVL,Marvell Technology,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+MS,Morgan Stanley,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+MSA,MSA Safety,stock,r1000,Industrials,Security & Protection Services,True,2026-10-28,2026-10-28
+MSCI,MSCI,stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+MSFT,Microsoft,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+MSGS,Madison Square Garden Sports,stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+MSI,Motorola Solutions,stock,r1000,Technology,Communication Equipment,True,2026-10-28,2026-10-28
+MSM,MSC Industrial Direct,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+MSTR,MicroStrategy,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+MTB,M&T Bank,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+MTCH,Match Group,stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+MTD,Mettler Toledo,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+MTDR,Matador Resources,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+MTG,MGIC Investment Corporation,stock,r1000,Financial Services,Insurance - Specialty,True,2026-10-28,2026-10-28
+MTN,Vail Resorts,stock,r1000,Consumer Cyclical,Resorts & Casinos,True,2026-10-28,2026-10-28
+MTSI,MACOM Technology Solutions,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+MTZ,MasTec,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+MU,Micron,stock,watchlist,Technology,Semiconductors,True,2026-10-28,2026-10-28
+MUSA,Murphy USA,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+NAMS,NAMS,stock,watchlist,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+NB,NB,stock,watchlist,Basic Materials,Other Industrial Metals & Mining,True,2026-10-28,2026-10-28
+NBIS,NBIS,stock,watchlist,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+NBIX,Neurocrine Biosciences,stock,r1000,Healthcare,Drug Manufacturers - Specialty & Generic,True,2026-10-28,2026-10-28
+NCLH,Norwegian Cruise Line Holdings,stock,r1000,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+NCNO,nCino,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+NDAQ,"Nasdaq, Inc.",stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+NDSN,Nordson,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+NEE,NextEra Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+NEM,NEM,stock,watchlist,Basic Materials,Gold,True,2026-10-28,2026-10-28
+NET,NET,stock,watchlist,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+NEU,NewMarket,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+NFG,National Fuel Gas,stock,r1000,Energy,Oil & Gas Integrated,True,2026-10-28,2026-10-28
+NFLX,Netflix,stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+NI,NiSource,stock,r1000,Utilities,Utilities - Regulated Gas,True,2026-10-28,2026-10-28
+NIQ,NIQ Global Intelligence,stock,r1000,,,True,2026-10-28,2026-10-28
+NKE,"Nike, Inc.",stock,r1000,Consumer Cyclical,Footwear & Accessories,True,2026-10-28,2026-10-28
+NLY,Annaly Capital Management,stock,r1000,Real Estate,REIT - Mortgage,True,2026-10-28,2026-10-28
+NNN,NNN Reit,stock,r1000,Real Estate,REIT - Retail,True,2026-10-28,2026-10-28
+NOC,Northrop Grumman,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+NOV,NOV Inc.,stock,r1000,Energy,Oil & Gas Equipment & Services,True,2026-10-28,2026-10-28
+NOW,ServiceNow,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+NRG,NRG Energy,stock,r1000,Utilities,Utilities - Independent Power Producers,True,2026-10-28,2026-10-28
+NSA,National Storage Affiliates,stock,r1000,,,True,2026-10-28,2026-10-28
+NSC,Norfolk Southern,stock,r1000,Industrials,Railroads,True,2026-10-28,2026-10-28
+NTAP,Netapp,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+NTNX,Nutanix,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+NTRA,Natera,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+NTRS,Northern Trust,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+NU,Nubank,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+NUE,NUE,stock,watchlist,Basic Materials,Steel,True,2026-10-28,2026-10-28
+NUGT,Gold2x,stock,watchlist,,,True,2026-10-28,2026-10-28
+NVDA,NVDA,stock,watchlist,Technology,Semiconductors,True,2026-10-28,2026-10-28
+NVR,"NVR, Inc.",stock,r1000,Consumer Cyclical,Residential Construction,True,2026-10-28,2026-10-28
+NVST,Envista,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+NVT,nVent Electric,stock,r1000,Industrials,Electrical Equipment & Parts,True,2026-10-28,2026-10-28
+NWL,Newell Brands,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+NWS,News Corp (Class B),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+NWSA,News Corp (Class A),stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+NXE,NXE,stock,watchlist,Energy,Uranium,True,2026-10-28,2026-10-28
+NXST,Nexstar Media Group,stock,r1000,Communication Services,Broadcasting,True,2026-10-28,2026-10-28
+NXT,NXT,stock,watchlist,Technology,Solar,True,2026-10-28,2026-10-28
+NYT,New York Times Company,stock,r1000,Communication Services,Publishing,True,2026-10-28,2026-10-28
+O,Realty Income,stock,r1000,Real Estate,REIT - Retail,True,2026-10-28,2026-10-28
+OC,Owens Corning,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+ODD,ODD,stock,watchlist,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+ODFL,Old Dominion Freight Line,stock,r1000,Industrials,Trucking,True,2026-10-28,2026-10-28
+OGE,OGE Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+OGN,Organon & Co.,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+OHI,Omega Healthcare Investors,stock,r1000,Real Estate,REIT - Healthcare Facilities,True,2026-10-28,2026-10-28
+OIH,OIH ETF,etf,watchlist,,,True,2026-10-28,
+OKE,Oneok,stock,r1000,Energy,Oil & Gas Midstream,True,2026-10-28,2026-10-28
+OKLO,OKLO,stock,watchlist,Utilities,Utilities - Independent Power Producers,True,2026-10-28,2026-10-28
+OKTA,"Okta, Inc.",stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+OLED,Universal Display Corporation,stock,r1000,Technology,Electronic Components,True,2026-10-28,2026-10-28
+OLLI,Ollie's Bargain Outlet,stock,r1000,Consumer Defensive,Discount Stores,True,2026-10-28,2026-10-28
+OLN,Olin Corporation,stock,r1000,Basic Materials,Chemicals,True,2026-10-28,2026-10-28
+OMC,Omnicom Group,stock,r1000,Communication Services,Advertising Agencies,True,2026-10-28,2026-10-28
+OMF,OneMain Financial,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+ON,ON Semiconductor,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+ONON,ONON,stock,watchlist,Consumer Cyclical,Footwear & Accessories,True,2026-10-28,2026-10-28
+ONTO,Onto Innovation,stock,r1000,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+ORCL,Oracle Corporation,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+ORI,Old Republic International,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+ORLY,O'Reilly Auto Parts,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+OSCR,OSCR,stock,watchlist,Healthcare,Healthcare Plans,True,2026-10-28,2026-10-28
+OSK,Oshkosh Corporation,stock,r1000,Industrials,Farm & Heavy Construction Machinery,True,2026-10-28,2026-10-28
+OTIS,Otis Worldwide,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+OUT,OUT,stock,watchlist,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+OVV,Ovintiv,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+OWL,Blue Owl Capital,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+OXY,Occidental Petroleum,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+OZK,Bank OZK,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+P,Everpure,stock,r1000,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+PAG,Penske Automotive Group,stock,r1000,Consumer Cyclical,Auto & Truck Dealerships,True,2026-10-28,2026-10-28
+PANW,Palo Alto Networks,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+PATH,UiPath,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+PAYC,Paycom,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+PAYX,Paychex,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+PB,Prosperity Bancshares,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+PCAR,Paccar,stock,r1000,Industrials,Farm & Heavy Construction Machinery,True,2026-10-28,2026-10-28
+PCG,PG&E Corporation,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+PCOR,Procore,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+PCTY,Paylocity,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+PEG,Public Service Enterprise Group,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+PEGA,Pegasystems,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+PEJ,PEJ ETF,etf,watchlist,,,True,2026-10-28,
+PEN,"Penumbra, Inc.",stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+PENN,Penn Entertainment,stock,r1000,Consumer Cyclical,Resorts & Casinos,True,2026-10-28,2026-10-28
+PEP,PepsiCo,stock,r1000,Consumer Defensive,Beverages - Non-Alcoholic,True,2026-10-28,2026-10-28
+PFE,Pfizer,stock,r1000,Healthcare,Drug Manufacturers - General,True,2026-10-28,2026-10-28
+PFG,Principal Financial Group,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+PFGC,Performance Food Group,stock,r1000,Consumer Defensive,Food Distribution,True,2026-10-28,2026-10-28
+PG,Procter & Gamble,stock,r1000,Consumer Defensive,Household & Personal Products,True,2026-10-28,2026-10-28
+PGR,Progressive Corporation,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+PH,Parker Hannifin,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+PHM,PulteGroup,stock,r1000,Consumer Cyclical,Residential Construction,True,2026-10-28,2026-10-28
+PINS,Pinterest,stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+PK,Park Hotels & Resorts,stock,r1000,Real Estate,REIT - Hotel & Motel,True,2026-10-28,2026-10-28
+PKG,Packaging Corporation of America,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+PL,Planet Labs,stock,watchlist,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+PLD,Prologis,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+PLNT,Planet Fitness,stock,r1000,Consumer Cyclical,Leisure,True,2026-10-28,2026-10-28
+PLTR,PLTR,stock,watchlist,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+PM,Philip Morris International,stock,r1000,Consumer Defensive,Tobacco,True,2026-10-28,2026-10-28
+PNC,PNC Financial Services,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+PNFP,Pinnacle Financial Partners,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+PNR,Pentair,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+PNW,Pinnacle West Capital,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+PODD,Insulet,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+POOL,Pool Corporation,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+POST,Post Holdings,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+PPC,Pilgrim's Pride,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+PPG,PPG Industries,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+PPL,PPL Corporation,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+PPLI,People Inc.,stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+PR,Permian Resources,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+PRGO,Perrigo,stock,r1000,Healthcare,Drug Manufacturers - Specialty & Generic,True,2026-10-28,2026-10-28
+PRI,Primerica,stock,r1000,Financial Services,Insurance - Life,True,2026-10-28,2026-10-28
+PRMB,Primo Brands,stock,r1000,Consumer Defensive,Beverages - Non-Alcoholic,True,2026-10-28,2026-10-28
+PRU,Prudential Financial,stock,r1000,Financial Services,Insurance - Life,True,2026-10-28,2026-10-28
+PSA,Public Storage,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+PSN,Parsons Corporation,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+PSX,Phillips 66,stock,r1000,Energy,Oil & Gas Refining & Marketing,True,2026-10-28,2026-10-28
+PTC,PTC Inc.,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+PVH,PVH Corp.,stock,r1000,Consumer Cyclical,Apparel Manufacturing,True,2026-10-28,2026-10-28
+PWR,Quanta Services,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+PYPL,PayPal,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+Q,Qnity Electronics,stock,r1000,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+QBTS,QBTS,stock,watchlist,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+QCOM,Qualcomm,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+QGEN,Qiagen,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+QQQ,Nasdaq 100 ETF,etf,context,,,True,2026-10-28,
+QRVO,Qorvo,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+QS,QuantumScape,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+QSR,Restaurant Brands International,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+QTUM,QTUM ETF,etf,watchlist,,,True,2026-10-28,
+QXO,"QXO, Inc.",stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+R,Ryder,stock,r1000,Industrials,Rental & Leasing Services,True,2026-10-28,2026-10-28
+RAL,Ralliant,stock,r1000,Technology,Electronic Components,True,2026-10-28,2026-10-28
+RARE,Ultragenyx,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+RBA,RB Global,stock,r1000,Industrials,Specialty Business Services,True,2026-10-28,2026-10-28
+RBC,RBC Bearings,stock,r1000,Industrials,Tools & Accessories,True,2026-10-28,2026-10-28
+RBLX,RBLX,stock,watchlist,Communication Services,Electronic Gaming & Multimedia,True,2026-10-28,2026-10-28
+RBRK,Rubrik,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+RCL,RCL,stock,watchlist,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+RDDT,RDDT,stock,watchlist,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+REG,Regency Centers,stock,r1000,Real Estate,REIT - Retail,True,2026-10-28,2026-10-28
+REGN,Regeneron Pharmaceuticals,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+REMX,Rare Earth,etf,watchlist,,,True,2026-10-28,
+RERE,RERE,stock,watchlist,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+REXR,Rexford Industrial,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+REYN,Reynolds Consumer Products,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+RF,Regions Financial Corporation,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+RGA,Reinsurance Group of America,stock,r1000,Financial Services,Insurance - Reinsurance,True,2026-10-28,2026-10-28
+RGEN,Repligen,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+RGLD,Royal Gold,stock,r1000,Basic Materials,Gold,True,2026-10-28,2026-10-28
+RH,RH,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+RHI,Robert Half,stock,r1000,Industrials,Staffing & Employment Services,True,2026-10-28,2026-10-28
+RITM,Rithm Capital,stock,r1000,Real Estate,REIT - Mortgage,True,2026-10-28,2026-10-28
+RIVN,RIVN,stock,watchlist,Consumer Cyclical,Auto Manufacturers,True,2026-10-28,2026-10-28
+RJF,Raymond James Financial,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+RKLB,RKLB,stock,watchlist,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+RKT,Rocket Companies,stock,r1000,Financial Services,Mortgage Finance,True,2026-10-28,2026-10-28
+RL,Ralph Lauren Corporation,stock,r1000,Consumer Cyclical,Apparel Manufacturing,True,2026-10-28,2026-10-28
+RLI,RLI Corp.,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+RMD,Resmed,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+RNG,RingCentral,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+RNR,RenaissanceRe,stock,r1000,Financial Services,Insurance - Reinsurance,True,2026-10-28,2026-10-28
+ROBO,ROBO ETF,etf,watchlist,,,True,2026-10-28,
+ROIV,Roivant Sciences,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+ROK,Rockwell Automation,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+ROKU,"Roku, Inc.",stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+ROL,"Rollins, Inc.",stock,r1000,Consumer Cyclical,Personal Services,True,2026-10-28,2026-10-28
+ROP,Roper Technologies,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+ROST,Ross Stores,stock,r1000,Consumer Cyclical,Apparel Retail,True,2026-10-28,2026-10-28
+RPM,RPM International,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+RPRX,Royalty Pharma,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+RR,RR,stock,watchlist,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+RRC,Range Resources,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+RRX,Regal Rexnord,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+RS,"Reliance, Inc.",stock,r1000,Basic Materials,Steel,True,2026-10-28,2026-10-28
+RSG,Republic Services,stock,r1000,Industrials,Waste Management,True,2026-10-28,2026-10-28
+RSP,Equal Weight S&P 500 ETF,etf,watchlist,,,True,2026-10-28,
+RTX,RTX Corporation,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+RVMD,Revolution Medicines,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+RVTY,Revvity,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+RYAAY,RYAAY,stock,watchlist,Industrials,Airlines,True,2026-10-28,2026-10-28
+RYAN,Ryan Specialty,stock,r1000,Financial Services,Insurance Brokers,True,2026-10-28,2026-10-28
+RYN,Rayonier,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+RYTM,RYTM,stock,watchlist,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+S,SentinelOne,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+SAIA,Saia,stock,r1000,Industrials,Trucking,True,2026-10-28,2026-10-28
+SAIC,SAIC,stock,r1000,Technology,Information Technology Services,True,2026-10-28,2026-10-28
+SAIL,SailPoint,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+SAM,Boston Beer Company,stock,r1000,Consumer Defensive,Beverages - Brewers,True,2026-10-28,2026-10-28
+SARO,StandardAero,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+SBAC,SBA Communications,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+SBUX,Starbucks,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+SCCO,Southern Copper,stock,r1000,Basic Materials,Copper,True,2026-10-28,2026-10-28
+SCHW,Charles Schwab Corporation,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+SCI,Service Corporation International,stock,r1000,Consumer Cyclical,Personal Services,True,2026-10-28,2026-10-28
+SEB,Seaboard Corporation,stock,r1000,Industrials,Conglomerates,True,2026-10-28,2026-10-28
+SEIC,SEI Investments Company,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+SERV,SERV,stock,watchlist,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+SF,Stifel,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+SFD,Smithfield Foods,stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+SFM,Sprouts Farmers Market,stock,r1000,Consumer Defensive,Grocery Stores,True,2026-10-28,2026-10-28
+SGI,Somnigroup International,stock,r1000,Consumer Cyclical,"Furnishings, Fixtures & Appliances",True,2026-10-28,2026-10-28
+SGML,SGML,stock,watchlist,Basic Materials,Other Industrial Metals & Mining,True,2026-10-28,2026-10-28
+SHC,Sotera Health,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+SHW,Sherwin-Williams,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+SIRI,SiriusXM,stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+SITE,SiteOne Landscape Supply,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+SJM,J.M. Smucker Company (The),stock,r1000,Consumer Defensive,Packaged Foods,True,2026-10-28,2026-10-28
+SKYY,SKYY ETF,etf,watchlist,,,True,2026-10-28,
+SLB,SLB,stock,watchlist,Energy,Oil & Gas Equipment & Services,True,2026-10-28,2026-10-28
+SLGN,Silgan Holdings,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+SLM,Sallie Mae,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+SLX,SLX ETF,etf,watchlist,,,True,2026-10-28,
+SMCI,Supermicro,stock,r1000,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+SMG,Scotts Miracle-Gro Company,stock,r1000,Basic Materials,Agricultural Inputs,True,2026-10-28,2026-10-28
+SMH,Semiconductor Sector ETF,etf,context,,,True,2026-10-28,
+SMMT,Summit Therapeutics,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+SMR,SMR,stock,watchlist,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+SN,SharkNinja,stock,r1000,Consumer Cyclical,"Furnishings, Fixtures & Appliances",True,2026-10-28,2026-10-28
+SNA,Snap-on,stock,r1000,Industrials,Tools & Accessories,True,2026-10-28,2026-10-28
+SNDK,ScanDisk,etf,watchlist,,,True,2026-10-28,
+SNDR,Schneider National,stock,r1000,Industrials,Trucking,True,2026-10-28,2026-10-28
+SNOW,SNOW,stock,watchlist,Technology,Software - Application,True,2026-10-28,2026-10-28
+SNPS,Synopsys,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+SNX,TD Synnex,stock,r1000,Technology,Electronics & Computer Distribution,True,2026-10-28,2026-10-28
+SO,Southern Company,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+SOCL,SOCL ETF,etf,watchlist,,,True,2026-10-28,
+SOFI,SOFI,stock,watchlist,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+SOLS,Solstice Advanced Materials,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+SOLV,Solventum,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+SON,Sonoco,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+SONO,SONO,stock,watchlist,Technology,Consumer Electronics,True,2026-10-28,2026-10-28
+SOUN,SOUN,stock,watchlist,Technology,Software - Application,True,2026-10-28,2026-10-28
+SOXX,SOXX ETF,etf,watchlist,,,True,2026-10-28,
+SPCX,SpaceX,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+SPG,Simon Property Group,stock,r1000,Real Estate,REIT - Retail,True,2026-10-28,2026-10-28
+SPGI,S&P Global,stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+SPHR,SPHR,stock,watchlist,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+SPOT,Spotify,stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+SPY,S&P 500 ETF,etf,context,,,True,2026-10-28,
+SRE,Sempra,stock,r1000,Utilities,Utilities - Diversified,True,2026-10-28,2026-10-28
+SRPT,Sarepta Therapeutics,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+SSB,SouthState Corporation,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+SSD,Simpson Manufacturing Company,stock,r1000,Basic Materials,Lumber & Wood Production,True,2026-10-28,2026-10-28
+SSNC,SS&C Technologies,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+ST,Sensata Technologies,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+STAG,STAG Industrial,stock,r1000,Real Estate,REIT - Industrial,True,2026-10-28,2026-10-28
+STE,Steris,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+STLD,Steel Dynamics,stock,r1000,Basic Materials,Steel,True,2026-10-28,2026-10-28
+STT,State Street Corporation,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+STWD,Starwood Property Trust,stock,r1000,Real Estate,REIT - Mortgage,True,2026-10-28,2026-10-28
+STX,STX,stock,watchlist,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+STZ,Constellation Brands,stock,r1000,Consumer Defensive,Beverages - Brewers,True,2026-10-28,2026-10-28
+SUI,Sun Communities,stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+SW,Smurfit Westrock,stock,r1000,Consumer Cyclical,Packaging & Containers,True,2026-10-28,2026-10-28
+SWK,Stanley Black & Decker,stock,r1000,Industrials,Tools & Accessories,True,2026-10-28,2026-10-28
+SWKS,Skyworks Solutions,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+SYF,Synchrony Financial,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+SYK,Stryker Corporation,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+SYM,SYM,stock,watchlist,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+SYY,Sysco,stock,r1000,Consumer Defensive,Food Distribution,True,2026-10-28,2026-10-28
+T,AT&T,stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+TAN,TAN ETF,etf,watchlist,,,True,2026-10-28,
+TAP,Molson Coors,stock,r1000,Consumer Defensive,Beverages - Brewers,True,2026-10-28,2026-10-28
+TDC,Teradata,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+TDG,TransDigm Group,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+TDY,Teledyne Technologies,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+TEAM,Atlassian,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+TECH,Bio-Techne,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+TEM,Tempus AI,stock,r1000,Healthcare,Health Information Services,True,2026-10-28,2026-10-28
+TER,Teradyne,stock,r1000,Technology,Semiconductor Equipment & Materials,True,2026-10-28,2026-10-28
+TERN,TERN,stock,watchlist,,,True,2026-10-28,2026-10-28
+TEVA,TEVA,stock,watchlist,Healthcare,Drug Manufacturers - Specialty & Generic,True,2026-10-28,2026-10-28
+TFC,Truist Financial,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+TFSL,Third Federal S&L,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+TFX,Teleflex,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+TGT,Target Corporation,stock,r1000,Consumer Defensive,Discount Stores,True,2026-10-28,2026-10-28
+THC,Tenet Healthcare,stock,r1000,Healthcare,Medical Care Facilities,True,2026-10-28,2026-10-28
+THG,Hanover Insurance,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+THO,Thor Industries,stock,r1000,Consumer Cyclical,Recreational Vehicles,True,2026-10-28,2026-10-28
+TIGO,Millicom,stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+TJX,TJX Companies,stock,r1000,Consumer Cyclical,Apparel Retail,True,2026-10-28,2026-10-28
+TKO,TKO Group Holdings,stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+TKR,Timken Company,stock,r1000,Industrials,Tools & Accessories,True,2026-10-28,2026-10-28
+TLN,Talen Energy,stock,r1000,Utilities,Utilities - Independent Power Producers,True,2026-10-28,2026-10-28
+TME,TME,stock,watchlist,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+TMO,Thermo Fisher Scientific,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+TMUS,T-Mobile US,stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+TNL,Travel + Leisure Co.,stock,r1000,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+TOL,Toll Brothers,stock,r1000,Consumer Cyclical,Residential Construction,True,2026-10-28,2026-10-28
+TOST,"Toast, Inc.",stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+TPG,TPG Inc.,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+TPL,Texas Pacific Land Corporation,stock,r1000,Energy,Oil & Gas E&P,True,2026-10-28,2026-10-28
+TPR,"Tapestry, Inc.",stock,r1000,Consumer Cyclical,Luxury Goods,True,2026-10-28,2026-10-28
+TREX,"Trex Company, Inc.",stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+TRGP,Targa Resources,stock,r1000,Energy,Oil & Gas Midstream,True,2026-10-28,2026-10-28
+TRMB,Trimble Inc.,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+TROW,T. Rowe Price,stock,r1000,Financial Services,Asset Management,True,2026-10-28,2026-10-28
+TRU,TransUnion,stock,r1000,Financial Services,Financial Data & Stock Exchanges,True,2026-10-28,2026-10-28
+TRV,Travelers Companies (The),stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+TSCO,Tractor Supply Company,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+TSLA,TSLA,stock,watchlist,Consumer Cyclical,Auto Manufacturers,True,2026-10-28,2026-10-28
+TSN,Tyson Foods,stock,r1000,Consumer Defensive,Farm Products,True,2026-10-28,2026-10-28
+TT,Trane Technologies,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+TTC,Toro Company (The),stock,r1000,Industrials,Tools & Accessories,True,2026-10-28,2026-10-28
+TTD,Trade Desk (The),stock,r1000,Communication Services,Advertising Agencies,True,2026-10-28,2026-10-28
+TTEK,Tetra Tech,stock,r1000,Industrials,Engineering & Construction,True,2026-10-28,2026-10-28
+TTMI,TTMI,stock,watchlist,Technology,Electronic Components,True,2026-10-28,2026-10-28
+TTWO,Take-Two Interactive,stock,r1000,Communication Services,Electronic Gaming & Multimedia,True,2026-10-28,2026-10-28
+TW,Tradeweb,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+TWLO,Twilio,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+TXN,Texas Instruments,stock,r1000,Technology,Semiconductors,True,2026-10-28,2026-10-28
+TXRH,Texas Roadhouse,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+TXT,Textron,stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+TYL,Tyler Technologies,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+U,U,stock,watchlist,Technology,Software - Application,True,2026-10-28,2026-10-28
+UA,Under Armour (Class C),stock,r1000,Consumer Cyclical,Apparel Manufacturing,True,2026-10-28,2026-10-28
+UAA,Under Armour (Class A),stock,r1000,Consumer Cyclical,Apparel Manufacturing,True,2026-10-28,2026-10-28
+UAL,United Airlines Holdings,stock,r1000,Industrials,Airlines,True,2026-10-28,2026-10-28
+UAMY,UAMY,stock,watchlist,Basic Materials,Other Industrial Metals & Mining,True,2026-10-28,2026-10-28
+UBER,UBER,stock,watchlist,Technology,Software - Application,True,2026-10-28,2026-10-28
+UDR,"UDR, Inc.",stock,r1000,Real Estate,REIT - Residential,True,2026-10-28,2026-10-28
+UGI,UGI Corporation,stock,r1000,Utilities,Utilities - Regulated Gas,True,2026-10-28,2026-10-28
+UHAL,U-Haul,stock,r1000,Industrials,Rental & Leasing Services,True,2026-10-28,2026-10-28
+UHAL-B,U-Haul (Series N),stock,r1000,Industrials,Rental & Leasing Services,True,2026-10-28,2026-10-28
+UHS,Universal Health Services,stock,r1000,Healthcare,Medical Care Facilities,True,2026-10-28,2026-10-28
+UI,Ubiquiti,stock,r1000,Technology,Communication Equipment,True,2026-10-28,2026-10-28
+ULTA,Ulta Beauty,stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+UNH,UNH,stock,watchlist,Healthcare,Healthcare Plans,True,2026-10-28,2026-10-28
+UNM,Unum,stock,r1000,Financial Services,Insurance - Life,True,2026-10-28,2026-10-28
+UNP,Union Pacific Corporation,stock,r1000,Industrials,Railroads,True,2026-10-28,2026-10-28
+UPS,United Parcel Service,stock,r1000,Industrials,Integrated Freight & Logistics,True,2026-10-28,2026-10-28
+URA,URA ETF,etf,watchlist,,,True,2026-10-28,
+URI,United Rentals,stock,r1000,Industrials,Rental & Leasing Services,True,2026-10-28,2026-10-28
+USAR,USAR,stock,watchlist,Basic Materials,Other Industrial Metals & Mining,True,2026-10-28,2026-10-28
+USB,U.S. Bancorp,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+USFD,US Foods,stock,r1000,Consumer Defensive,Food Distribution,True,2026-10-28,2026-10-28
+UTHR,United Therapeutics,stock,r1000,Healthcare,Drug Manufacturers - Specialty & Generic,True,2026-10-28,2026-10-28
+UWMC,United Wholesale Mortgage,stock,r1000,Financial Services,Mortgage Finance,True,2026-10-28,2026-10-28
+V,Visa Inc.,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+VEEV,Veeva Systems,stock,r1000,Healthcare,Health Information Services,True,2026-10-28,2026-10-28
+VFC,VF Corporation,stock,r1000,Consumer Cyclical,Apparel Manufacturing,True,2026-10-28,2026-10-28
+VGNT,Versigent,stock,r1000,Consumer Cyclical,Auto Parts,True,2026-10-28,2026-10-28
+VICI,Vici Properties,stock,r1000,Real Estate,REIT - Diversified,True,2026-10-28,2026-10-28
+VIK,VIK,stock,watchlist,Consumer Cyclical,Travel Services,True,2026-10-28,2026-10-28
+VIRT,Virtu Financial,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+VIX,CBOE Volatility Index,benchmark,context,,,True,2026-10-28,
+VKTX,Viking Therapeutics,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+VLO,Valero Energy,stock,r1000,Energy,Oil & Gas Refining & Marketing,True,2026-10-28,2026-10-28
+VLTO,Veralto,stock,r1000,Industrials,Pollution & Treatment Controls,True,2026-10-28,2026-10-28
+VMC,Vulcan Materials,stock,r1000,Basic Materials,Building Materials,True,2026-10-28,2026-10-28
+VMI,Valmont Industries,stock,r1000,Industrials,Conglomerates,True,2026-10-28,2026-10-28
+VNO,Vornado Realty Trust,stock,r1000,Real Estate,REIT - Office,True,2026-10-28,2026-10-28
+VNOM,Viper Energy,stock,r1000,Energy,Oil & Gas Midstream,True,2026-10-28,2026-10-28
+VNT,Vontier,stock,r1000,Technology,Scientific & Technical Instruments,True,2026-10-28,2026-10-28
+VOYA,Voya Financial,stock,r1000,Financial Services,Financial Conglomerates,True,2026-10-28,2026-10-28
+VRSK,Verisk Analytics,stock,r1000,Industrials,Consulting Services,True,2026-10-28,2026-10-28
+VRSN,Verisign,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+VRT,Vertiv,stock,r1000,Industrials,Electrical Equipment & Parts,True,2026-10-28,2026-10-28
+VRTX,Vertex Pharmaceuticals,stock,r1000,Healthcare,Biotechnology,True,2026-10-28,2026-10-28
+VSNT,Versant,stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+VST,Vistra Corp.,stock,r1000,Utilities,Utilities - Independent Power Producers,True,2026-10-28,2026-10-28
+VTR,"Ventas, Inc.",stock,r1000,Real Estate,REIT - Healthcare Facilities,True,2026-10-28,2026-10-28
+VTRS,Viatris,stock,r1000,Healthcare,Drug Manufacturers - Specialty & Generic,True,2026-10-28,2026-10-28
+VVV,Valvoline,stock,r1000,Consumer Cyclical,Auto & Truck Dealerships,True,2026-10-28,2026-10-28
+VZ,Verizon,stock,r1000,Communication Services,Telecom Services,True,2026-10-28,2026-10-28
+W,Wayfair,stock,r1000,Consumer Cyclical,Internet Retail,True,2026-10-28,2026-10-28
+WAB,Wabtec,stock,r1000,Industrials,Railroads,True,2026-10-28,2026-10-28
+WAL,Western Alliance Bancorporation,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+WAT,Waters Corporation,stock,r1000,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+WBD,Warner Bros. Discovery,stock,r1000,Communication Services,Entertainment,True,2026-10-28,2026-10-28
+WBS,Webster Bank,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+WCC,Wesco International,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+WDAY,"Workday, Inc.",stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+WDC,Western Digital,stock,r1000,Technology,Computer Hardware,True,2026-10-28,2026-10-28
+WEC,WEC Energy Group,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+WELL,Welltower,stock,r1000,Real Estate,REIT - Healthcare Facilities,True,2026-10-28,2026-10-28
+WEN,Wendy's Company (The),stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+WEX,WEX Inc.,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+WFC,Wells Fargo,stock,r1000,Financial Services,Banks - Diversified,True,2026-10-28,2026-10-28
+WFRD,Weatherford International,stock,r1000,Energy,Oil & Gas Equipment & Services,True,2026-10-28,2026-10-28
+WGS,WGS,stock,watchlist,Healthcare,Diagnostics & Research,True,2026-10-28,2026-10-28
+WH,Wyndham Hotels & Resorts,stock,r1000,Consumer Cyclical,Lodging,True,2026-10-28,2026-10-28
+WHR,Whirlpool Corporation,stock,r1000,Consumer Cyclical,"Furnishings, Fixtures & Appliances",True,2026-10-28,2026-10-28
+WING,Wingstop,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+WLK,Westlake Corporation,stock,r1000,Basic Materials,Specialty Chemicals,True,2026-10-28,2026-10-28
+WM,"Waste Management, Inc.",stock,r1000,Industrials,Waste Management,True,2026-10-28,2026-10-28
+WMB,Williams Companies,stock,r1000,Energy,Oil & Gas Midstream,True,2026-10-28,2026-10-28
+WMS,Advanced Drainage Systems,stock,r1000,Industrials,Building Products & Equipment,True,2026-10-28,2026-10-28
+WMT,WMT,stock,watchlist,Consumer Defensive,Discount Stores,True,2026-10-28,2026-10-28
+WPC,W. P. Carey,stock,r1000,Real Estate,REIT - Diversified,True,2026-10-28,2026-10-28
+WRB,W. R. Berkley Corporation,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+WSC,WillScot Mobile Mini,stock,r1000,Industrials,Rental & Leasing Services,True,2026-10-28,2026-10-28
+WSM,"Williams-Sonoma, Inc.",stock,r1000,Consumer Cyclical,Specialty Retail,True,2026-10-28,2026-10-28
+WSO,Watsco,stock,r1000,Industrials,Industrial Distribution,True,2026-10-28,2026-10-28
+WST,West Pharmaceutical Services,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+WTFC,Wintrust Financial,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+WTM,White Mountains Insurance Group,stock,r1000,Financial Services,Insurance - Property & Casualty,True,2026-10-28,2026-10-28
+WTRG,Essential Utilities,stock,r1000,Utilities,Utilities - Regulated Water,True,2026-10-28,2026-10-28
+WTW,Willis Towers Watson,stock,r1000,Financial Services,Insurance Brokers,True,2026-10-28,2026-10-28
+WU,Western Union,stock,r1000,Financial Services,Credit Services,True,2026-10-28,2026-10-28
+WWD,"Woodward, Inc.",stock,r1000,Industrials,Aerospace & Defense,True,2026-10-28,2026-10-28
+WY,Weyerhaeuser,stock,r1000,Real Estate,REIT - Specialty,True,2026-10-28,2026-10-28
+WYNN,Wynn Resorts,stock,r1000,Consumer Cyclical,Resorts & Casinos,True,2026-10-28,2026-10-28
+XBI,XBI ETF,etf,watchlist,,,True,2026-10-28,
+XEL,Xcel Energy,stock,r1000,Utilities,Utilities - Regulated Electric,True,2026-10-28,2026-10-28
+XLB,Materials Sector ETF,etf,context,,,True,2026-10-28,
+XLC,Communications Sector ETF,etf,context,,,True,2026-10-28,
+XLE,Energy Sector ETF,etf,context,,,True,2026-10-28,
+XLF,Financials Sector ETF,etf,context,,,True,2026-10-28,
+XLI,Industrials Sector ETF,etf,context,,,True,2026-10-28,
+XLK,Technology Sector ETF,etf,context,,,True,2026-10-28,
+XLP,Consumer Staples Sector ETF,etf,context,,,True,2026-10-28,
+XLRE,Real Estate Sector ETF,etf,context,,,True,2026-10-28,
+XLU,Utilities Sector ETF,etf,context,,,True,2026-10-28,
+XLV,Healthcare Sector ETF,etf,context,,,True,2026-10-28,
+XLY,Consumer Discretionary Sector ETF,etf,context,,,True,2026-10-28,
+XME,Metals & Mining ,etf,watchlist,,,True,2026-10-28,
+XOM,ExxonMobil,stock,r1000,Energy,Oil & Gas Integrated,True,2026-10-28,2026-10-28
+XP,XP Inc.,stock,r1000,Financial Services,Capital Markets,True,2026-10-28,2026-10-28
+XPEV,XPEV,stock,watchlist,Consumer Cyclical,Auto Manufacturers,True,2026-10-28,2026-10-28
+XPO,"XPO, Inc.",stock,r1000,Industrials,Trucking,True,2026-10-28,2026-10-28
+XRAY,Dentsply Sirona,stock,r1000,Healthcare,Medical Instruments & Supplies,True,2026-10-28,2026-10-28
+XRT,XRT ETF,etf,watchlist,,,True,2026-10-28,
+XYL,Xylem Inc.,stock,r1000,Industrials,Specialty Industrial Machinery,True,2026-10-28,2026-10-28
+XYZ,XYZ,stock,watchlist,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+YETI,Yeti Holdings,stock,r1000,Consumer Cyclical,Leisure,True,2026-10-28,2026-10-28
+YUM,Yum! Brands,stock,r1000,Consumer Cyclical,Restaurants,True,2026-10-28,2026-10-28
+Z,Zillow (Class C),stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+ZBH,Zimmer Biomet,stock,r1000,Healthcare,Medical Devices,True,2026-10-28,2026-10-28
+ZBRA,Zebra Technologies,stock,r1000,Technology,Communication Equipment,True,2026-10-28,2026-10-28
+ZETA,ZETA,stock,watchlist,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+ZG,Zillow (Class A),stock,r1000,Communication Services,Internet Content & Information,True,2026-10-28,2026-10-28
+ZION,Zions Bancorporation,stock,r1000,Financial Services,Banks - Regional,True,2026-10-28,2026-10-28
+ZM,Zoom Communications,stock,r1000,Technology,Software - Application,True,2026-10-28,2026-10-28
+ZS,Zscaler,stock,r1000,Technology,Software - Infrastructure,True,2026-10-28,2026-10-28
+ZTS,Zoetis,stock,r1000,Healthcare,Drug Manufacturers - Specialty & Generic,True,2026-10-28,2026-10-28

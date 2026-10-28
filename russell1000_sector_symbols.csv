@@ -1,0 +1,1004 @@
+ticker,sector_symbol,company_name
+MMM,XLI,3M
+AOS,XLI,A. O. Smith
+AAON,XLI,AAON
+ABT,XLV,Abbott Laboratories
+ABBV,XLV,AbbVie
+ACHC,XLV,Acadia Healthcare
+ACN,XLK,Accenture
+AYI,XLI,Acuity Brands
+ADBE,XLK,Adobe Inc.
+ADT,XLY,ADT Inc.
+WMS,XLI,Advanced Drainage Systems
+AMD,XLK,Advanced Micro Devices
+ACM,XLI,AECOM
+AES,XLU,AES Corporation
+AMG,XLF,Affiliated Managers Group
+AFRM,XLK,Affirm Holdings
+AFL,XLF,Aflac
+AGCO,XLI,AGCO
+A,XLV,Agilent Technologies
+ADC,XLRE,Agree Realty
+AGNC,XLF,AGNC Investment
+AL,XLI,Air Lease Corporation
+APD,XLB,Air Products
+ABNB,XLY,Airbnb
+AKAM,XLK,Akamai Technologies
+ALK,XLI,Alaska Air Group
+ALB,XLB,Albemarle Corporation
+ACI,XLP,Albertsons
+AA,XLB,Alcoa
+ARE,XLRE,Alexandria Real Estate Equities
+ALGN,XLV,Align Technology
+ALLE,XLI,Allegion
+ALGM,XLK,Allegro MicroSystems
+LNT,XLU,Alliant Energy
+ALSN,XLI,Allison Transmission
+ALL,XLF,Allstate
+ALLY,XLF,Ally Financial
+ALNY,XLV,Alnylam Pharmaceuticals
+GOOGL,XLC,Alphabet (Class A)
+GOOG,XLC,Alphabet (Class C)
+MO,XLP,Altria
+AMZN,XLY,Amazon
+AMCR,XLB,Amcor
+DOX,XLK,Amdocs
+AMTM,XLI,Amentum
+AS,XLY,Amer Sports
+AEE,XLU,Ameren
+AAL,XLI,American Airlines Group
+AEP,XLU,American Electric Power
+AXP,XLF,American Express
+AFG,XLF,American Financial Group
+AMH,XLRE,American Homes 4 Rent
+AIG,XLF,American International Group
+AMT,XLRE,American Tower
+AWK,XLU,American Water Works
+COLD,XLRE,Americold
+AMP,XLF,Ameriprise Financial
+AME,XLI,Ametek
+AMGN,XLV,Amgen
+AMKR,XLK,Amkor Technology
+APH,XLK,Amphenol
+ADI,XLK,Analog Devices
+AU,XLB,AngloGold Ashanti
+NLY,XLF,Annaly Capital Management
+AM,XLE,Antero Midstream
+AR,XLE,Antero Resources
+AON,XLF,Aon plc
+APA,XLE,APA Corporation
+APG,XLI,APi Group
+APO,XLF,Apollo Global Management
+APPF,XLK,AppFolio
+AAPL,XLK,Apple Inc.
+AIT,XLI,Applied Industrial Technologies
+AMAT,XLK,Applied Materials
+APP,XLK,AppLovin
+ATR,XLB,AptarGroup
+APTV,XLY,Aptiv
+ARMK,XLY,Aramark
+ACGL,XLF,Arch Capital Group
+ADM,XLP,Archer Daniels Midland
+ARES,XLF,Ares Management
+ANET,XLK,Arista Networks
+AWI,XLI,Armstrong World Industries
+ARW,XLK,Arrow Electronics
+AJG,XLF,Arthur J. Gallagher & Co.
+ASH,XLB,Ashland Global
+AIZ,XLF,Assurant
+AGO,XLF,Assured Guaranty
+ALAB,XLK,Astera Labs
+ASTS,XLC,AST SpaceMobile
+T,XLC,AT&T
+ATI,XLI,ATI Inc.
+TEAM,XLK,Atlassian
+ATO,XLU,Atmos Energy
+AUR,XLK,Aurora Innovation
+ADSK,XLK,Autodesk
+ADP,XLI,Automatic Data Processing
+AN,XLY,AutoNation
+AZO,XLY,AutoZone
+AVB,XLRE,AvalonBay Communities
+AVTR,XLV,Avantor
+AVY,XLB,Avery Dennison
+CAR,XLI,Avis Budget Group
+AVT,XLK,Avnet
+AXTA,XLB,Axalta
+AXS,XLF,AXIS Capital
+AXON,XLI,Axon Enterprise
+BKR,XLE,Baker Hughes
+BALL,XLB,Ball Corporation
+BAC,XLF,Bank of America
+OZK,XLF,Bank OZK
+BBWI,XLY,"Bath & Body Works, Inc."
+BAX,XLV,Baxter International
+BDX,XLV,Becton Dickinson
+BRBR,XLP,BellRing Brands
+BSY,XLK,Bentley Systems
+BRK-B,XLF,Berkshire Hathaway
+BBY,XLY,Best Buy
+BILL,XLK,Bill.com
+BIO,XLV,Bio-Rad Laboratories
+TECH,XLV,Bio-Techne
+BIIB,XLV,Biogen
+BMRN,XLV,BioMarin Pharmaceutical
+BIRK,XLY,Birkenstock
+BJ,XLP,BJ's Wholesale Club
+BLK,XLF,BlackRock
+BX,XLF,Blackstone Inc.
+HRB,XLY,H&R Block
+XYZ,XLF,"Block, Inc."
+OWL,XLF,Blue Owl Capital
+BNY,XLF,BNY Mellon
+BA,XLI,Boeing
+BOKF,XLF,BOK Financial Corporation
+BKNG,XLY,Booking Holdings
+BAH,XLI,Booz Allen Hamilton
+BWA,XLY,BorgWarner
+SAM,XLP,Boston Beer Company
+BSX,XLV,Boston Scientific
+BYD,XLY,Boyd Gaming
+BFAM,XLY,Bright Horizons
+BHF,XLF,Brighthouse Financial
+BMY,XLV,Bristol Myers Squibb
+BRX,XLRE,Brixmor Property Group
+AVGO,XLK,Broadcom
+BR,XLI,Broadridge Financial Solutions
+BAM,XLF,Brookfield Asset Management
+BEPC,XLU,Brookfield Renewable Partners
+BRO,XLF,Brown & Brown
+BF-A,XLP,Brown–Forman (Class A)
+BF-B,XLP,Brown–Forman (Class B)
+BRKR,XLV,Bruker
+BC,XLY,Brunswick Corporation
+BLDR,XLI,Builders FirstSource
+BLSH,XLF,Bullish
+BG,XLP,Bunge Global
+BURL,XLY,Burlington Stores
+BWXT,XLI,BWX Technologies
+BXP,XLRE,"BXP, Inc."
+CHRW,XLI,C.H. Robinson
+CACI,XLI,CACI
+CDNS,XLK,Cadence Design Systems
+CZR,XLY,Caesars Entertainment
+CPT,XLRE,Camden Property Trust
+CPB,XLP,Campbell Soup Company
+COF,XLF,Capital One
+CAH,XLV,Cardinal Health
+CAI,XLV,Caris Life Sciences
+CSL,XLI,Carlisle Companies
+CG,XLF,Carlyle Group (The)
+KMX,XLY,CarMax
+CCL,XLY,Carnival Corporation
+CRS,XLB,Carpenter Technology Corporation
+CARR,XLI,Carrier Global
+CVNA,XLY,Carvana
+CASY,XLP,Casey's
+CAT,XLI,Caterpillar Inc.
+CAVA,XLY,Cava Group
+CBOE,XLF,Cboe Global Markets
+CBRE,XLRE,CBRE Group
+CCC,XLK,CCC Intelligent Solutions
+CDW,XLK,CDW
+CE,XLB,Celanese
+CELH,XLP,Celsius Holdings
+COR,XLV,Cencora
+CNC,XLV,Centene
+CNP,XLU,Centerpoint Energy
+CBC,XLF,Central Bancompany
+CERT,XLV,"Certara, Inc."
+CF,XLB,CF Industries
+CRL,XLV,Charles River Laboratories
+SCHW,XLF,Charles Schwab Corporation
+CHTR,XLC,Charter Communications
+CHE,XLV,Chemed Corporation
+LNG,XLE,Cheniere Energy
+CVX,XLE,Chevron Corporation
+CHWY,XLY,Chewy
+CMG,XLY,Chipotle Mexican Grill
+CHH,XLY,Choice Hotels
+CHRD,XLE,Chord Energy
+CB,XLF,Chubb Limited
+CHD,XLP,Church & Dwight
+CHDN,XLY,Churchill Downs Incorporated
+CIEN,XLK,Ciena
+CI,XLV,Cigna
+CINF,XLF,Cincinnati Financial
+CTAS,XLI,Cintas
+CRCL,XLK,Circle Internet Group
+CRUS,XLK,Cirrus Logic
+CSCO,XLK,Cisco
+C,XLF,Citigroup
+CFG,XLF,Citizens Financial Group
+CLVT,XLI,Clarivate
+CLH,XLI,Clean Harbors
+CWEN-A,XLU,Clearway Energy (Class A)
+CWEN,XLU,Clearway Energy (Class C)
+CLF,XLB,Cleveland-Cliffs
+CLX,XLP,Clorox
+NET,XLK,Cloudflare
+CME,XLF,CME Group
+CMS,XLU,CMS Energy
+CNA,XLF,CNA Financial
+CNH,XLI,CNH Industrial
+KO,XLP,Coca-Cola Company (The)
+COKE,XLP,Coca-Cola Consolidated
+CGNX,XLK,Cognex Corporation
+CTSH,XLK,Cognizant
+COHR,XLK,Coherent Corp.
+COIN,XLF,Coinbase
+CL,XLP,Colgate-Palmolive
+COLB,XLF,Columbia Banking System
+COLM,XLY,Columbia Sportswear
+CMCSA,XLC,Comcast
+FIX,XLI,Comfort Systems USA
+CBSH,XLF,Commerce Bancshares
+CAG,XLP,Conagra Brands
+CNXC,XLK,Concentrix
+COP,XLE,ConocoPhillips
+ED,XLU,Consolidated Edison
+STZ,XLP,Constellation Brands
+CEG,XLU,Constellation Energy
+COO,XLV,Cooper Companies (The)
+CPRT,XLI,Copart
+CORT,XLV,Corcept Therapeutics
+CNM,XLI,Core & Main
+GLW,XLK,Corning Inc.
+CPAY,XLF,Corpay
+CTVA,XLB,Corteva
+CSGP,XLRE,CoStar Group
+COST,XLP,Costco
+COTY,XLP,Coty
+CPNG,XLY,Coupang
+CUZ,XLRE,Cousins Properties
+CR,XLI,Crane Co.
+CXT,XLI,Crane NXT
+CACC,XLF,Credit Acceptance
+CRH,XLB,CRH plc
+CROX,XLY,Crocs
+CRWD,XLK,CrowdStrike
+CCI,XLRE,Crown Castle
+CCK,XLB,Crown Holdings
+CSX,XLI,CSX Corporation
+CUBE,XLRE,CubeSmart
+CMI,XLI,Cummins
+CW,XLI,Curtiss-Wright
+CVS,XLV,CVS Health
+DHI,XLY,D. R. Horton
+DHR,XLV,Danaher Corporation
+DRI,XLY,Darden Restaurants
+DAR,XLP,Darling Ingredients
+DDOG,XLK,Datadog
+DVA,XLV,DaVita
+DECK,XLY,Deckers Brands
+DE,XLI,Deere & Company
+DAL,XLI,Delta Air Lines
+DELL,XLK,Dell Technologies
+XRAY,XLV,Dentsply Sirona
+DVN,XLE,Devon Energy
+DXCM,XLV,Dexcom
+FANG,XLE,Diamondback Energy
+DKS,XLY,Dick's Sporting Goods
+DLR,XLRE,Digital Realty
+DDS,XLY,Dillard's
+DOCU,XLK,DocuSign
+DLB,XLK,Dolby Laboratories
+DG,XLP,Dollar General
+DLTR,XLP,Dollar Tree
+D,XLU,Dominion Energy
+DPZ,XLY,Domino's
+DCI,XLI,Donaldson Company
+DASH,XLY,DoorDash
+DV,XLK,DoubleVerify
+DOV,XLI,Dover Corporation
+DOW,XLB,Dow Inc.
+DOCS,XLV,Doximity
+DKNG,XLY,DraftKings
+DBX,XLK,Dropbox
+DTM,XLE,DT Midstream
+DTE,XLU,DTE Energy
+DUK,XLU,Duke Energy
+DUOL,XLY,Duolingo
+DD,XLB,DuPont
+BROS,XLY,Dutch Bros Inc.
+DXC,XLK,DXC Technology
+DT,XLK,Dynatrace
+ELF,XLP,e.l.f. Beauty
+EXP,XLB,Eagle Materials
+EWBC,XLF,East West Bancorp
+EGP,XLRE,EastGroup Properties
+EMN,XLB,Eastman Chemical Company
+ETN,XLI,Eaton Corporation
+EBAY,XLY,eBay
+ECL,XLB,Ecolab
+EIX,XLU,Edison International
+EW,XLV,Edwards Lifesciences
+ELAN,XLV,Elanco
+ESTC,XLK,Elastic NV
+EA,XLC,Electronic Arts
+ESI,XLB,Element Solutions
+ELV,XLV,Elevance Health
+EME,XLI,Emcor
+EMR,XLI,Emerson Electric
+EHC,XLV,Encompass Health
+ENPH,XLK,Enphase Energy
+ENTG,XLK,Entegris
+ETR,XLU,Entergy
+NVST,XLV,Envista
+EOG,XLE,EOG Resources
+EPAM,XLK,EPAM Systems
+EPR,XLRE,EPR Properties
+EQT,XLE,EQT Corporation
+EFX,XLI,Equifax
+EQIX,XLRE,Equinix
+EQH,XLF,Equitable Holdings
+ELS,XLRE,Equity Lifestyle Properties
+EQR,XLRE,Equity Residential
+ESAB,XLI,ESAB
+WTRG,XLU,Essential Utilities
+ESS,XLRE,Essex Property Trust
+EL,XLP,Estée Lauder Companies (The)
+ETSY,XLY,Etsy
+EEFT,XLF,Euronet Worldwide
+EVR,XLF,Evercore
+EG,XLF,Everest Group
+EVRG,XLU,Evergy
+P,XLK,Everpure
+ES,XLU,Eversource Energy
+ECG,XLI,Everus Construction Group
+EXEL,XLV,Exelixis
+EXC,XLU,Exelon
+EXLS,XLI,EXL Service
+EXE,XLE,Expand Energy
+EXPE,XLY,Expedia Group
+EXPD,XLI,Expeditors International
+EXR,XLRE,Extra Space Storage
+XOM,XLE,ExxonMobil
+FFIV,XLK,"F5, Inc."
+FDS,XLF,FactSet
+FICO,XLK,Fair Isaac
+FAST,XLI,Fastenal
+FRT,XLRE,Federal Realty Investment Trust
+FDX,XLI,FedEx
+FDXF,XLI,FedEx Freight
+FERG,XLI,Ferguson Enterprises
+FRMI,XLRE,Fermi Inc.
+FNF,XLF,Fidelity National Financial
+FIS,XLF,Fidelity National Information Services
+FITB,XLF,Fifth Third Bancorp
+FIGR,XLF,Figure Technology Solutions
+FAF,XLF,First American Financial Corporation
+FCNCA,XLF,First Citizens BancShares
+FHB,XLF,"First Hawaiian, Inc."
+FHN,XLF,First Horizon Corporation
+FR,XLRE,First Industrial Realty Trust
+FSLR,XLK,First Solar
+FE,XLU,FirstEnergy
+FISV,XLF,Fiserv
+FIVE,XLY,Five Below
+FLEX,XLK,Flex Ltd.
+FND,XLY,Floor & Decor
+FLO,XLP,Flowers Foods
+FLS,XLI,Flowserve
+FLUT,XLY,Flutter Entertainment
+FMC,XLB,FMC Corporation
+FNB,XLF,FNB Corporation
+F,XLY,Ford Motor Company
+FTNT,XLK,Fortinet
+FTV,XLI,Fortive
+FBIN,XLI,Fortune Brands Innovations
+FOXA,XLC,Fox Corporation (Class A)
+FOX,XLC,Fox Corporation (Class B)
+BEN,XLF,Franklin Templeton Investments
+FRHC,XLF,Freedom Holding
+FCX,XLB,Freeport-McMoRan
+FRPT,XLP,Freshpet
+CFR,XLF,Frost Bank
+FTAI,XLI,FTAI Aviation
+FCN,XLI,FTI Consulting
+GME,XLY,GameStop
+GLPI,XLRE,Gaming and Leisure Properties
+GAP,XLY,Gap Inc.
+GRMN,XLY,Garmin
+IT,XLK,Gartner
+GTES,XLI,Gates Corporation
+GLIBA,XLC,GCI Liberty (Series A)
+GLIBK,XLC,GCI Liberty (Series C)
+GE,XLI,GE Aerospace
+GEHC,XLV,GE HealthCare
+GEV,XLI,GE Vernova
+GEN,XLK,Gen Digital
+GNRC,XLI,Generac
+GD,XLI,General Dynamics
+GIS,XLP,General Mills
+GM,XLY,General Motors
+G,XLI,Genpact
+GNTX,XLY,Gentex
+GPC,XLY,Genuine Parts Company
+GILD,XLV,Gilead Sciences
+GTLB,XLK,GitLab
+GPN,XLF,Global Payments
+GFS,XLK,GlobalFoundries
+GLOB,XLK,Globant
+GL,XLF,Globe Life
+GMED,XLV,Globus Medical
+GDDY,XLK,GoDaddy
+GS,XLF,Goldman Sachs
+GGG,XLI,Graco Inc.
+LOPE,XLY,Grand Canyon Education
+GPK,XLB,Graphic Packaging
+GWRE,XLK,Guidewire Software
+GXO,XLI,GXO Logistics
+HAL,XLE,Halliburton
+HALO,XLV,Halozyme
+HLNE,XLF,Hamilton Lane
+THG,XLF,Hanover Insurance
+HOG,XLY,Harley-Davidson
+HIG,XLF,Hartford (The)
+HAS,XLY,Hasbro
+HAYW,XLI,Hayward Holdings
+HCA,XLV,HCA Healthcare
+HR,XLRE,Healthcare Realty Trust
+DOC,XLRE,Healthpeak Properties
+HEI-A,XLI,HEICO (Class A)
+HEI,XLI,HEICO (Common)
+JKHY,XLF,Jack Henry & Associates
+HSY,XLP,Hershey Company (The)
+HPE,XLK,Hewlett Packard Enterprise
+HXL,XLI,Hexcel
+DINO,XLE,HF Sinclair
+HIW,XLRE,Highwoods Properties
+HLT,XLY,Hilton Worldwide
+HD,XLY,Home Depot (The)
+HONA,XLI,Honeywell Aerospace
+HON,XLI,Honeywell Technologies
+HRL,XLP,Hormel Foods
+HST,XLRE,Host Hotels & Resorts
+HLI,XLF,Houlihan Lokey
+HHH,XLRE,Howard Hughes Holdings
+HWM,XLI,Howmet Aerospace
+HPQ,XLK,HP Inc.
+HUBB,XLI,Hubbell Incorporated
+HUBS,XLK,HubSpot
+HUM,XLV,Humana
+HBAN,XLF,Huntington Bancshares
+HII,XLI,Huntington Ingalls Industries
+HUN,XLB,Huntsman Corporation
+H,XLY,Hyatt Hotels
+IBM,XLK,IBM
+IDA,XLU,Idacorp
+IEX,XLI,IDEX Corporation
+IDXX,XLV,Idexx Laboratories
+ITW,XLI,Illinois Tool Works
+ILMN,XLV,"Illumina, Inc."
+INCY,XLV,Incyte
+IR,XLI,Ingersoll Rand
+INGM,XLK,Ingram Micro
+INGR,XLP,Ingredion
+INSM,XLV,Insmed
+INSP,XLV,Inspire Medical Systems
+PODD,XLV,Insulet
+INTC,XLK,Intel
+IBKR,XLF,Interactive Brokers
+ICE,XLF,Intercontinental Exchange
+IFF,XLB,International Flavors & Fragrances
+IP,XLB,International Paper
+INTU,XLK,Intuit
+ISRG,XLV,Intuitive Surgical
+IVZ,XLF,Invesco
+INVH,XLRE,Invitation Homes
+IONS,XLV,Ionis Pharmaceuticals
+IPGP,XLK,IPG Photonics
+IQV,XLV,IQVIA
+IRDM,XLC,Iridium Communications
+IRM,XLRE,Iron Mountain
+ITT,XLI,ITT Inc.
+JBL,XLK,Jabil
+J,XLI,Jacobs Solutions
+JHX,XLB,James Hardie Industries
+JAZZ,XLV,Jazz Pharmaceuticals
+JBHT,XLI,J. B. Hunt
+JEF,XLF,Jefferies Financial Group
+JNJ,XLV,Johnson & Johnson
+JCI,XLI,Johnson Controls
+JLL,XLRE,Jones Lang LaSalle
+JPM,XLF,JPMorgan Chase
+KRMN,XLI,Karman Holdings
+KBR,XLI,"KBR, Inc."
+KMPR,XLF,Kemper Corporation
+KVUE,XLP,Kenvue
+KDP,XLP,Keurig Dr Pepper
+KEY,XLF,Keycorp
+KEYS,XLK,Keysight
+KRC,XLRE,Kilroy Realty
+KMB,XLP,Kimberly-Clark
+KIM,XLRE,Kimco Realty
+KMI,XLE,Kinder Morgan
+KNSL,XLF,Kinsale Capital Group
+KEX,XLI,Kirby Corporation
+KKR,XLF,KKR & Co. Inc.
+KLAC,XLK,KLA Corporation
+KNX,XLI,Knight-Swift
+KHC,XLP,Kraft Heinz
+KR,XLP,Kroger
+KD,XLK,Kyndryl
+LHX,XLI,L3Harris
+LH,XLV,Labcorp
+LRCX,XLK,Lam Research
+LAMR,XLRE,Lamar Advertising
+LW,XLP,Lamb Weston
+LSTR,XLI,Landstar
+LVS,XLY,Las Vegas Sands
+LSCC,XLK,Lattice Semiconductor
+LAZ,XLF,Lazard
+LEA,XLY,Lear Corporation
+LDOS,XLI,Leidos
+LEN,XLY,Lennar (Class A)
+LEN-B,XLY,Lennar (Class B)
+LII,XLI,Lennox International
+DRS,XLI,Leonardo DRS
+LBRDA,XLC,Liberty Broadband (Series A)
+LBRDK,XLC,Liberty Broadband (Series C)
+LBTYA,XLC,Liberty Global (Series A)
+LBTYK,XLC,Liberty Global (Series C)
+FWONA,XLC,Liberty Formula 1 (Series A)
+FWONK,XLC,Liberty Formula 1 (Series C)
+LLYVA,XLC,Liberty Live (Series A)
+LLYVK,XLC,Liberty Live (Series C)
+LLY,XLV,Lilly (Eli)
+LECO,XLI,Lincoln Electric
+LNC,XLF,Lincoln Financial
+LIN,XLB,Linde plc
+LINE,XLRE,"Lineage, Inc."
+LAD,XLY,Lithia Motors
+LFUS,XLK,Littelfuse
+LYV,XLC,Live Nation Entertainment
+LKQ,XLY,LKQ Corporation
+LOAR,XLI,Loar Holdings
+LMT,XLI,Lockheed Martin
+L,XLF,Loews Corporation
+LPX,XLB,Louisiana-Pacific
+LOW,XLY,Lowe's
+LPLA,XLF,LPL Financial
+LCID,XLY,Lucid Motors
+LULU,XLY,Lululemon Athletica
+LITE,XLK,Lumentum
+LYFT,XLI,Lyft
+LYB,XLB,LyondellBasell
+MTB,XLF,M&T Bank
+MTSI,XLK,MACOM Technology Solutions
+M,XLY,"Macy's, Inc."
+MSGS,XLC,Madison Square Garden Sports
+MANH,XLK,Manhattan Associates
+MAN,XLI,ManpowerGroup
+CART,XLP,Maplebear Inc.
+MPC,XLE,Marathon Petroleum
+MKL,XLF,Markel
+MKTX,XLF,MarketAxess
+MAR,XLY,Marriott International
+MRSH,XLF,Marsh McLennan
+MLM,XLB,Martin Marietta Materials
+MRVL,XLK,Marvell Technology
+MAS,XLI,Masco
+MASI,XLV,Masimo
+MTZ,XLI,MasTec
+MA,XLF,Mastercard
+MTDR,XLE,Matador Resources
+MTCH,XLC,Match Group
+MAT,XLY,Mattel
+MKC,XLP,McCormick & Company
+MCD,XLY,McDonald's
+MCK,XLV,McKesson Corporation
+MDU,XLU,MDU Resources
+MPT,XLRE,Medical Properties Trust
+MDLN,XLV,Medline Inc.
+MEDP,XLV,Medpace
+MDT,XLV,Medtronic
+MRK,XLV,Merck & Co.
+META,XLC,Meta Platforms
+MET,XLF,Metlife
+MTD,XLV,Mettler Toledo
+MTG,XLF,MGIC Investment Corporation
+MGM,XLY,MGM Resorts International
+MCHP,XLK,Microchip Technology
+MU,XLK,Micron Technology
+MSFT,XLK,Microsoft
+MSTR,XLK,MicroStrategy
+MAA,XLRE,Mid-America Apartment Communities
+MIDD,XLI,Middleby
+TIGO,XLC,Millicom
+MRP,XLY,Millrose Properties
+MKSI,XLK,MKS Instruments
+MRNA,XLV,Moderna
+MHK,XLY,Mohawk Industries
+MOH,XLV,Molina Healthcare
+TAP,XLP,Molson Coors
+MDLZ,XLP,Mondelez International
+MDB,XLK,MongoDB Inc.
+MPWR,XLK,Monolithic Power Systems
+MNST,XLP,Monster Beverage
+MCO,XLF,Moody's Corporation
+MS,XLF,Morgan Stanley
+MORN,XLF,"Morningstar, Inc."
+MOS,XLB,Mosaic Company (The)
+MSI,XLK,Motorola Solutions
+MP,XLB,MP Materials
+MSA,XLI,MSA Safety
+MSM,XLI,MSC Industrial Direct
+MSCI,XLF,MSCI
+MLI,XLI,Mueller Industries
+MUSA,XLY,Murphy USA
+NDAQ,XLF,"Nasdaq, Inc."
+NTRA,XLV,Natera
+NFG,XLU,National Fuel Gas
+NSA,XLRE,National Storage Affiliates
+NCNO,XLK,nCino
+NTAP,XLK,Netapp
+NFLX,XLC,Netflix
+NBIX,XLV,Neurocrine Biosciences
+NYT,XLC,New York Times Company
+NWL,XLY,Newell Brands
+NEU,XLB,NewMarket
+NEM,XLB,Newmont
+NWSA,XLC,News Corp (Class A)
+NWS,XLC,News Corp (Class B)
+NXST,XLC,Nexstar Media Group
+NEE,XLU,NextEra Energy
+NIQ,XLC,NIQ Global Intelligence
+NKE,XLY,"Nike, Inc."
+NI,XLU,NiSource
+NNN,XLRE,NNN Reit
+NDSN,XLI,Nordson
+NSC,XLI,Norfolk Southern
+NTRS,XLF,Northern Trust
+NOC,XLI,Northrop Grumman
+NCLH,XLY,Norwegian Cruise Line Holdings
+NOV,XLE,NOV Inc.
+NRG,XLU,NRG Energy
+NU,XLF,Nubank
+NUE,XLB,Nucor
+NTNX,XLK,Nutanix
+NVT,XLI,nVent Electric
+NVDA,XLK,Nvidia
+NVR,XLY,"NVR, Inc."
+ORLY,XLY,O'Reilly Auto Parts
+OXY,XLE,Occidental Petroleum
+OGE,XLU,OGE Energy
+OKTA,XLK,"Okta, Inc."
+ODFL,XLI,Old Dominion Freight Line
+ORI,XLF,Old Republic International
+OLN,XLB,Olin Corporation
+OLLI,XLY,Ollie's Bargain Outlet
+OHI,XLRE,Omega Healthcare Investors
+OMC,XLC,Omnicom Group
+ONON,XLY,On Holding AG
+ON,XLK,ON Semiconductor
+OMF,XLF,OneMain Financial
+OKE,XLE,Oneok
+ONTO,XLK,Onto Innovation
+ORCL,XLK,Oracle Corporation
+OGN,XLV,Organon & Co.
+OSK,XLI,Oshkosh Corporation
+OTIS,XLI,Otis Worldwide
+OVV,XLE,Ovintiv
+OC,XLI,Owens Corning
+PCAR,XLI,Paccar
+PKG,XLB,Packaging Corporation of America
+PLTR,XLK,Palantir Technologies
+PANW,XLK,Palo Alto Networks
+PK,XLRE,Park Hotels & Resorts
+PH,XLI,Parker Hannifin
+PSN,XLI,Parsons Corporation
+PAYX,XLI,Paychex
+PAYC,XLK,Paycom
+PCTY,XLK,Paylocity
+PYPL,XLF,PayPal
+PEGA,XLK,Pegasystems
+PENN,XLY,Penn Entertainment
+PAG,XLY,Penske Automotive Group
+PNR,XLI,Pentair
+PEN,XLV,"Penumbra, Inc."
+PPLI,XLC,People Inc.
+PEP,XLP,PepsiCo
+PFGC,XLP,Performance Food Group
+PR,XLE,Permian Resources
+PRGO,XLV,Perrigo
+PFE,XLV,Pfizer
+PCG,XLU,PG&E Corporation
+PM,XLP,Philip Morris International
+PSX,XLE,Phillips 66
+PPC,XLP,Pilgrim's Pride
+PNFP,XLF,Pinnacle Financial Partners
+PNW,XLU,Pinnacle West Capital
+PINS,XLC,Pinterest
+PLNT,XLY,Planet Fitness
+PNC,XLF,PNC Financial Services
+POOL,XLY,Pool Corporation
+BPOP,XLF,"Popular, Inc."
+POST,XLP,Post Holdings
+PPG,XLB,PPG Industries
+PPL,XLU,PPL Corporation
+TROW,XLF,T. Rowe Price
+PRI,XLF,Primerica
+PRMB,XLP,Primo Brands
+PFG,XLF,Principal Financial Group
+PCOR,XLK,Procore
+PG,XLP,Procter & Gamble
+PGR,XLF,Progressive Corporation
+PLD,XLRE,Prologis
+PB,XLF,Prosperity Bancshares
+PRU,XLF,Prudential Financial
+PTC,XLK,PTC Inc.
+PSA,XLRE,Public Storage
+PEG,XLU,Public Service Enterprise Group
+PHM,XLY,PulteGroup
+PVH,XLY,PVH Corp.
+QGEN,XLV,Qiagen
+Q,XLK,Qnity Electronics
+QRVO,XLK,Qorvo
+QCOM,XLK,Qualcomm
+PWR,XLI,Quanta Services
+QS,XLY,QuantumScape
+DGX,XLV,Quest Diagnostics
+QXO,XLI,"QXO, Inc."
+RAL,XLK,Ralliant
+RL,XLY,Ralph Lauren Corporation
+RRC,XLE,Range Resources
+RJF,XLF,Raymond James Financial
+RYN,XLRE,Rayonier
+RBA,XLI,RB Global
+RBC,XLI,RBC Bearings
+O,XLRE,Realty Income
+RDDT,XLC,Reddit
+RRX,XLI,Regal Rexnord
+REG,XLRE,Regency Centers
+REGN,XLV,Regeneron Pharmaceuticals
+RF,XLF,Regions Financial Corporation
+RGA,XLF,Reinsurance Group of America
+RS,XLB,"Reliance, Inc."
+RNR,XLF,RenaissanceRe
+RGEN,XLV,Repligen
+RSG,XLI,Republic Services
+RMD,XLV,Resmed
+QSR,XLY,Restaurant Brands International
+RVMD,XLV,Revolution Medicines
+RVTY,XLV,Revvity
+REXR,XLRE,Rexford Industrial
+REYN,XLP,Reynolds Consumer Products
+RH,XLY,RH
+RNG,XLK,RingCentral
+RITM,XLF,Rithm Capital
+RIVN,XLY,Rivian
+RLI,XLF,RLI Corp.
+RHI,XLI,Robert Half
+HOOD,XLF,Robinhood Markets
+RBLX,XLC,Roblox Corporation
+RKT,XLF,Rocket Companies
+RKLB,XLI,Rocket Lab
+ROK,XLI,Rockwell Automation
+ROIV,XLV,Roivant Sciences
+ROKU,XLC,"Roku, Inc."
+ROL,XLI,"Rollins, Inc."
+ROP,XLI,Roper Technologies
+ROST,XLY,Ross Stores
+RCL,XLY,Royal Caribbean Group
+RGLD,XLB,Royal Gold
+RPRX,XLV,Royalty Pharma
+RPM,XLB,RPM International
+RTX,XLI,RTX Corporation
+RBRK,XLK,Rubrik
+RYAN,XLF,Ryan Specialty
+R,XLI,Ryder
+SPGI,XLF,S&P Global
+SAIA,XLI,Saia
+SAIL,XLK,SailPoint
+SAIC,XLI,SAIC
+CRM,XLK,Salesforce
+SLM,XLF,Sallie Mae
+IOT,XLK,Samsara
+SNDK,XLK,SanDisk
+SRPT,XLV,Sarepta Therapeutics
+SBAC,XLRE,SBA Communications
+HSIC,XLV,Schein (Henry)
+SLB,XLE,Schlumberger
+SNDR,XLI,Schneider National
+SMG,XLB,Scotts Miracle-Gro Company
+SEB,XLP,Seaboard Corporation
+SEIC,XLF,SEI Investments Company
+SRE,XLU,Sempra
+ST,XLI,Sensata Technologies
+S,XLK,SentinelOne
+SCI,XLY,Service Corporation International
+NOW,XLK,ServiceNow
+SN,XLY,SharkNinja
+SHW,XLB,Sherwin-Williams
+FOUR,XLK,Shift4
+SLGN,XLB,Silgan Holdings
+SPG,XLRE,Simon Property Group
+SSD,XLI,Simpson Manufacturing Company
+SIRI,XLC,SiriusXM
+SITE,XLI,SiteOne Landscape Supply
+SWKS,XLK,Skyworks Solutions
+SFD,XLP,Smithfield Foods
+SJM,XLP,J.M. Smucker Company (The)
+SW,XLB,Smurfit Westrock
+SNA,XLI,Snap-on
+SNOW,XLK,Snowflake Inc.
+SOFI,XLF,SoFi
+SOLS,XLB,Solstice Advanced Materials
+SOLV,XLV,Solventum
+SGI,XLY,Somnigroup International
+SON,XLB,Sonoco
+SHC,XLV,Sotera Health
+SO,XLU,Southern Company
+SCCO,XLB,Southern Copper
+SSB,XLF,SouthState Corporation
+LUV,XLI,Southwest Airlines
+SPCX,XLC,SpaceX
+SPOT,XLC,Spotify
+SFM,XLP,Sprouts Farmers Market
+SSNC,XLK,SS&C Technologies
+STAG,XLRE,STAG Industrial
+SARO,XLI,StandardAero
+SWK,XLI,Stanley Black & Decker
+SBUX,XLY,Starbucks
+STWD,XLF,Starwood Property Trust
+STT,XLF,State Street Corporation
+STLD,XLB,Steel Dynamics
+STE,XLV,Steris
+SF,XLF,Stifel
+SYK,XLV,Stryker Corporation
+SMMT,XLV,Summit Therapeutics
+SUI,XLRE,Sun Communities
+SMCI,XLK,Supermicro
+SYF,XLF,Synchrony Financial
+SNPS,XLK,Synopsys
+SYY,XLP,Sysco
+TMUS,XLC,T-Mobile US
+TTWO,XLC,Take-Two Interactive
+TLN,XLU,Talen Energy
+TPR,XLY,"Tapestry, Inc."
+TRGP,XLE,Targa Resources
+TGT,XLP,Target Corporation
+SNX,XLK,TD Synnex
+FTI,XLE,TechnipFMC
+TDY,XLI,Teledyne Technologies
+TFX,XLV,Teleflex
+TEM,XLV,Tempus AI
+THC,XLV,Tenet Healthcare
+TDC,XLK,Teradata
+TER,XLK,Teradyne
+TSLA,XLY,"Tesla, Inc."
+TTEK,XLI,Tetra Tech
+TXN,XLK,Texas Instruments
+TPL,XLE,Texas Pacific Land Corporation
+TXRH,XLY,Texas Roadhouse
+TXT,XLI,Textron
+TMO,XLV,Thermo Fisher Scientific
+TFSL,XLF,Third Federal S&L
+THO,XLY,Thor Industries
+TKR,XLI,Timken Company
+TJX,XLY,TJX Companies
+TKO,XLC,TKO Group Holdings
+TOST,XLK,"Toast, Inc."
+TOL,XLY,Toll Brothers
+TTC,XLI,Toro Company (The)
+TPG,XLF,TPG Inc.
+TSCO,XLY,Tractor Supply Company
+TTD,XLC,Trade Desk (The)
+TW,XLF,Tradeweb
+TT,XLI,Trane Technologies
+TDG,XLI,TransDigm Group
+TRU,XLI,TransUnion
+TNL,XLY,Travel + Leisure Co.
+TRV,XLF,Travelers Companies (The)
+TREX,XLI,"Trex Company, Inc."
+TRMB,XLK,Trimble Inc.
+TFC,XLF,Truist Financial
+DJT,XLC,Trump Media & Technology Group
+TWLO,XLK,Twilio
+TYL,XLK,Tyler Technologies
+TSN,XLP,Tyson Foods
+UHAL,XLI,U-Haul
+UHAL-B,XLI,U-Haul (Series N)
+USB,XLF,U.S. Bancorp
+UBER,XLI,Uber
+UI,XLK,Ubiquiti
+UDR,XLRE,"UDR, Inc."
+UGI,XLU,UGI Corporation
+PATH,XLK,UiPath
+ULTA,XLY,Ulta Beauty
+RARE,XLV,Ultragenyx
+UAA,XLY,Under Armour (Class A)
+UA,XLY,Under Armour (Class C)
+UNP,XLI,Union Pacific Corporation
+UAL,XLI,United Airlines Holdings
+UPS,XLI,United Parcel Service
+URI,XLI,United Rentals
+UTHR,XLV,United Therapeutics
+UWMC,XLF,United Wholesale Mortgage
+UNH,XLV,UnitedHealth Group
+U,XLK,Unity Technologies
+OLED,XLK,Universal Display Corporation
+UHS,XLV,Universal Health Services
+UNM,XLF,Unum
+USFD,XLP,US Foods
+MTN,XLY,Vail Resorts
+VLO,XLE,Valero Energy
+VMI,XLI,Valmont Industries
+VVV,XLB,Valvoline
+VEEV,XLV,Veeva Systems
+VTR,XLRE,"Ventas, Inc."
+VLTO,XLI,Veralto
+VRSN,XLK,Verisign
+VRSK,XLI,Verisk Analytics
+VZ,XLC,Verizon
+VSNT,XLC,Versant
+VGNT,XLY,Versigent
+VRTX,XLV,Vertex Pharmaceuticals
+VRT,XLI,Vertiv
+VFC,XLY,VF Corporation
+VTRS,XLV,Viatris
+VICI,XLRE,Vici Properties
+VIK,XLY,Viking Holdings
+VKTX,XLV,Viking Therapeutics
+VNOM,XLE,Viper Energy
+VIRT,XLF,Virtu Financial
+V,XLF,Visa Inc.
+VST,XLU,Vistra Corp.
+VNT,XLK,Vontier
+VNO,XLRE,Vornado Realty Trust
+VOYA,XLF,Voya Financial
+VMC,XLB,Vulcan Materials
+WPC,XLRE,W. P. Carey
+WRB,XLF,W. R. Berkley Corporation
+GWW,XLI,W. W. Grainger
+WAB,XLI,Wabtec
+WMT,XLP,Walmart
+DIS,XLC,Walt Disney Company (The)
+WBD,XLC,Warner Bros. Discovery
+WM,XLI,"Waste Management, Inc."
+WAT,XLV,Waters Corporation
+WSO,XLI,Watsco
+W,XLY,Wayfair
+WFRD,XLE,Weatherford International
+WBS,XLF,Webster Bank
+WEC,XLU,WEC Energy Group
+WFC,XLF,Wells Fargo
+WELL,XLRE,Welltower
+WEN,XLY,Wendy's Company (The)
+WCC,XLI,Wesco International
+WST,XLV,West Pharmaceutical Services
+WAL,XLF,Western Alliance Bancorporation
+WDC,XLK,Western Digital
+WU,XLK,Western Union
+WLK,XLB,Westlake Corporation
+WEX,XLF,WEX Inc.
+WY,XLRE,Weyerhaeuser
+WHR,XLY,Whirlpool Corporation
+WTM,XLF,White Mountains Insurance Group
+WMB,XLE,Williams Companies
+WSM,XLY,"Williams-Sonoma, Inc."
+WTW,XLF,Willis Towers Watson
+WSC,XLI,WillScot Mobile Mini
+WING,XLY,Wingstop
+WTFC,XLF,Wintrust Financial
+WWD,XLI,"Woodward, Inc."
+WDAY,XLK,"Workday, Inc."
+WH,XLY,Wyndham Hotels & Resorts
+WYNN,XLY,Wynn Resorts
+XEL,XLU,Xcel Energy
+XP,XLF,XP Inc.
+XPO,XLI,"XPO, Inc."
+XYL,XLI,Xylem Inc.
+YETI,XLY,Yeti Holdings
+YUM,XLY,Yum! Brands
+ZBRA,XLK,Zebra Technologies
+ZG,XLRE,Zillow (Class A)
+Z,XLRE,Zillow (Class C)
+ZBH,XLV,Zimmer Biomet
+ZION,XLF,Zions Bancorporation
+ZTS,XLV,Zoetis
+ZM,XLK,Zoom Communications
+GTM,XLC,ZoomInfo
+ZS,XLK,Zscaler
