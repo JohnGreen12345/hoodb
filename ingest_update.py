@@ -62,7 +62,11 @@ def get_active_tickers(client: bigquery.Client, project_id: str, dataset: str, u
           AND COALESCE(type, 'stock') IN ('stock', 'etf', 'benchmark')
           AND ticker IS NOT NULL
     """
-    df = client.query(query).to_dataframe()
+    # create_bqstorage_client=False: these result sets are tiny (one row per
+    # ticker), and the BigQuery Storage API read path needs an extra IAM
+    # role (bigquery.readSessionUser) the ingest service account doesn't
+    # have -- not worth granting just to skip the plain REST download here.
+    df = client.query(query).to_dataframe(create_bqstorage_client=False)
     tickers = sorted(df["ticker"].dropna().astype(str).str.strip().unique().tolist())
     return [ticker for ticker in tickers if ticker]
 
@@ -78,7 +82,7 @@ def get_per_ticker_coverage(
         FROM `{project_id}.{dataset}.{price_table}`
         GROUP BY ticker
     """
-    df = client.query(query).result().to_dataframe()
+    df = client.query(query).result().to_dataframe(create_bqstorage_client=False)
     coverage: dict[str, tuple[dt.date | None, int]] = {}
     for _, row in df.iterrows():
         last_date = pd.Timestamp(row["last_date"]).date() if pd.notna(row["last_date"]) else None
