@@ -19,11 +19,12 @@
 ## D2 — events + bars/features (done)
 
 - `Hood.events` (vol_event: volume >= 2x trailing 50-day avg volume):
-  rebuilt against the full backfilled history, 63,482 rows.
+  rebuilt against the full backfilled history, 58,434 rows (see the full-window
+  fix below — this count supersedes the 63,482 first reported).
 - `Hood.weekly_bars` / `Hood.monthly_bars`: views over `Daily_prices`,
   first/last trading day per period, `is_complete` flag.
 - `tradelab.weekly_features` / `tradelab.monthly_features`: views over the
-  bars views (`close_location`, `range_atr`), authorized on `Hood`'s
+  bars views (`close_location`, `range_vs_avg10`), authorized on `Hood`'s
   dataset ACL so `tradelab-reader` can query them.
 - `build_events.py` wired into both `nightly_ingest.yml` and
   `weekly_full_refresh.yml`, so events stay current automatically.
@@ -70,3 +71,34 @@ redid the work:
 
 D1/D2 fully done and independently confirmed. Stopping here per instructions (report in this repo,
 not trade-lab's). D3/D4 still on hold.
+
+## D1/D2 review fixes (post-review, same day)
+
+Jo reviewed D1/D2 and flagged three issues in `build_events.py` / `build_feature_views.py`. All three
+fixed, re-run against BigQuery, and verified:
+
+1. **Partial windows were producing events/outliers judged on incomplete history.** `avg_vol_50d`
+   (`build_events.py`), and the weekly `avg_vol_10w` / `avg_range_10w` / `sma_10w` / `high_52w`
+   (`build_feature_views.py`, plus the monthly `avg_vol_10m` / `avg_range_10m` analogs), all used
+   BigQuery window frames that silently average over however many prior rows exist — so a ticker's
+   first 50 days (events) or first 10/52 weeks (features) were being flagged against 1-49 days or
+   1-9/1-51 weeks of history instead of a full window. Fixed by adding a `COUNT(*) OVER` guard on each
+   window and returning NULL (no event/outlier) until the window is actually full (50 days / 10
+   periods / 52 weeks). Verified: 0 vol_event rows now fall within a ticker's first 50 trading days
+   (was producing false positives there before); 0 weekly_features rows now carry a non-NULL
+   `vol_ratio_10w`/`range_vs_avg10` in a ticker's first 10 weeks, or a non-NULL `high_52w` before week
+   52. `Hood.events` vol_event count dropped from 63,482 to 58,434 as the early-history false
+   positives were removed.
+2. **`build_events.py` rebuilt the whole table, which would wipe non-`vol_event` rows (earnings,
+   etc.) once added.** Changed from `CREATE OR REPLACE TABLE` to `DELETE FROM ... WHERE type =
+   'vol_event'` + `INSERT ... SELECT` scoped to `vol_event` rows only, with `CREATE TABLE IF NOT
+   EXISTS` guarding first-run. Verified live: inserted a fake `type = 'earnings'` row, ran
+   `build_events.py`, confirmed the earnings row survived the rebuild while `vol_event` rows refreshed
+   normally (58,434, unchanged) — then removed the test row.
+3. **`range_atr` was not ATR** — it's each bar's own range vs. its own trailing-10-period average
+   range, not a true ATR. Renamed to `range_vs_avg10` in both `tradelab.weekly_features` and
+   `tradelab.monthly_features`.
+
+All three live in `build_events.py` and `build_feature_views.py`, re-run against BigQuery, output
+re-verified via direct queries (see counts above). Stopping here per instructions. D3 still waits on
+the strategy agent's trade-lab commit.
