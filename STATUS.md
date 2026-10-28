@@ -47,3 +47,26 @@ Commits: `527b698` (D1), `f4e9b59` (D2).
 D3/D4 (vectorized `daily_features`, `group_strength`, breadth views,
 `v_watchlist_tonight`, `v_brief_inputs`) not started — on hold until the
 strategy agent commits its trade-lab work.
+
+## Independent verification (separate session, same day)
+
+Jo asked a second session to finish push-universe / 3yr-backfill / D2 scripts / spot-checks and
+report here. By the time it checked, all four were already done (above) — it verified rather than
+redid the work:
+
+- `Hood.universe`: 1,116 rows, schema matches (ticker, name, type, source, sector, industry,
+  active_flag, added_at, classified_at).
+- `Hood.Daily_prices`: 1,116 distinct tickers, **0 under 260 rows**.
+- `Hood.events`: 63,482 rows, 1,116 distinct tickers.
+- `Hood.weekly_bars` / `monthly_bars` / `tradelab.weekly_features` / `monthly_features`: all queryable,
+  175,212 / 41,292 / 175,212 / 41,292 rows respectively.
+- `tradelab-reader` key: `weekly_features`/`monthly_features` both readable; `Hood.weekly_bars` queried
+  directly with the same key is still denied — confirms the authorized-view scoping holds for these
+  two new views too, not just `daily_market`.
+- Own spot-check (independent of the AAPL/AMD/NVDA check already logged above): each of AAPL, AMD,
+  NVDA has a real `vol_event` (volume 2.2–2.4x its trailing 50-day average, on a distinct real date)
+  and a real weekly `vol_outlier` (`vol_ratio_10w` 2.0–2.7x). AAPL's outlier week landed on
+  2026-06-26 — the same date this file's D2 section already named.
+
+D1/D2 fully done and independently confirmed. Stopping here per instructions (report in this repo,
+not trade-lab's). D3/D4 still on hold.
