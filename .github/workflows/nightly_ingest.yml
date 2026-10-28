@@ -1,0 +1,38 @@
+name: Nightly price ingest
+
+on:
+  schedule:
+    # 06:30 UTC = 01:30 ET (winter) / 02:30 ET (summer).
+    # Well after US market close + Yahoo EOD settle. Cron is always UTC.
+    - cron: "30 6 * * 2-6"   # Tue-Sat UTC = covers Mon-Fri US sessions
+  workflow_dispatch: {}       # manual "Run workflow" button for testing
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Run ingest
+        run: python ingest_update.py
+
+      - name: Summary
+        if: always()
+        run: echo "Ingest finished with status ${{ job.status }}"
