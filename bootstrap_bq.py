@@ -49,17 +49,30 @@ def main() -> None:
             print(f"    BigQuery said: {exc.message}")
 
     # --- 1. universe table from local CSV ---
-    df = pd.read_csv(UNIVERSE_CSV)
+    df = pd.read_csv(UNIVERSE_CSV, keep_default_na=False)
     df["ticker"] = df["ticker"].astype(str).str.strip()
     df["name"] = df["name"].fillna(df["ticker"]).astype(str)
     df["type"] = df["type"].fillna("stock").astype(str)
-    df["active_flag"] = df["active_flag"].fillna(True).astype(bool)
+    df["active_flag"] = df["active_flag"].fillna(True).astype(str).str.lower().map({"true": True, "false": False})
+    if df["active_flag"].isna().any():
+        raise ValueError("active_flag must contain only True/False values")
+    df["sector"] = df["sector"].replace("", None)
+    df["industry"] = df["industry"].replace("", None)
+    df["added_at"] = pd.to_datetime(df["added_at"]).dt.date
+    df["classified_at"] = pd.to_datetime(df["classified_at"], errors="coerce").dt.date
+    df["inactive_reason"] = df["inactive_reason"].replace("", None)
 
     universe_schema = [
         bigquery.SchemaField("ticker", "STRING", mode="REQUIRED"),
         bigquery.SchemaField("name", "STRING"),
         bigquery.SchemaField("type", "STRING"),
+        bigquery.SchemaField("source", "STRING"),
+        bigquery.SchemaField("sector", "STRING"),
+        bigquery.SchemaField("industry", "STRING"),
         bigquery.SchemaField("active_flag", "BOOLEAN"),
+        bigquery.SchemaField("added_at", "DATE"),
+        bigquery.SchemaField("classified_at", "DATE"),
+        bigquery.SchemaField("inactive_reason", "STRING"),
     ]
     job = client.load_table_from_dataframe(
         df,

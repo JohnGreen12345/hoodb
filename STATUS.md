@@ -1,5 +1,238 @@
 # STATUS — hoodb
 
+## Corporate-action cleanup and placeholder deletion (2026-10-29)
+
+This section supersedes the live counts in the 2026-10-28 audit below (that
+section is retained as the investigation record).
+
+### Outcome
+
+- Deleted **23,315** incomplete `Daily_prices` rows, scoped exactly to the
+  authorized categories: all rows belonging to the seven wholly unavailable
+  symbols, plus incomplete rows on or before the verified first-valid-bar
+  cutoff for 47 symbols. No complete price row was targeted or deleted.
+- Verification now returns **0 pre-first-bar incomplete rows** and **0 rows for
+  a ticker with no complete history**.
+- **705 incomplete rows remain outside that deletion scope:** 319 holiday
+  alignment rows (159 on 2026-05-25 and 160 on 2026-09-07), 384 post-last-trade
+  rows for eight inactive securities, and one 2026-10-29 Yahoo miss each for
+  active `MSGS` and `QRVO`. A concurrent nightly run, started before this fix
+  was pushed, briefly added 33 new latest-day placeholders; individual Yahoo
+  requests repaired 23 active symbols. The ingestion guard below prevents
+  another batch-alignment recurrence after this commit is deployed.
+- Added `inactive_reason` to `Hood.universe` and the local schema. Final
+  universe: **1,118 rows, 1,103 active, 15 inactive**; every inactive row has
+  exactly one of `delisted` or `renamed`, and no active row has a reason.
+- Added active successor symbols `DFTX` and `VMRK` (`source=corporate_action`).
+  Each has **753 complete rows**, 2023-10-30 through 2026-10-29, with no
+  incomplete values. Yahoo carries the predecessor history continuously under
+  both current symbols.
+- Rebuilt `Hood.events` after all price changes: **36,632** `vol_event` rows.
+
+### Corporate-action findings
+
+The seven formerly “unavailable” symbols are fully reconciled:
+
+- `AL` — acquired and taken private by Sumisho Air Lease on 2026-04-08;
+  `delisted`, no public successor. ([Sumitomo completion notice](https://www.sumitomocorp.com/en/europe/news/release/2026/group/20970))
+- `CNTA` — acquired by Lilly on 2026-06-24; `delisted`, no ticker continuity.
+  ([Lilly completion notice](https://investor.lilly.com/news-releases/news-release-details/lilly-completes-acquisition-centessa-pharmaceuticals-advance))
+- `CWEN-A` — Class A converted one-for-one into the still-active Class C
+  `CWEN`; `renamed`. `CWEN` was already in the universe with its own valid
+  history, so no cross-class price copy was made. ([Clearway 10-Q](https://www.sec.gov/Archives/edgar/data/1567683/000162828026053421/cwen-20260630.htm))
+- `MASI` — acquired for cash by Danaher on 2026-06-10; `delisted`, no ticker
+  continuity. ([Masimo completion notice](https://www.masimo.com/media/danaher-completes-acquisition-of-masimo-corporation))
+- `MNMD` — same issuer renamed Definium Therapeutics and changed ticker to
+  `DFTX` on 2026-01-15; `renamed`. `DFTX` was added and its continuous history
+  loaded. ([Definium 10-K](https://ir.definiumtx.com/sec-filings/all-sec-filings/content/0001193125-26-076742/dftx-20251231.htm))
+- `NSA` — acquired by Public Storage on 2026-07-22; `delisted`. `PSA` remains
+  a distinct security, so NSA history was not copied into PSA. ([Public Storage completion notice](https://investors.publicstorage.com/news-events/press-releases/news-details/2026/Public-Storage-Announces-Closing-of-National-Storage-Affiliates-Acquisition/default.aspx))
+- `TERN` — acquired by MSD/Merck on 2026-05-05; `delisted`, no ticker
+  continuity. ([MSD completion notice](https://www.msd.com/news/msd-completes-acquisition-of-terns-pharmaceuticals-inc/))
+
+The requested sparse-history review found:
+
+- `EA` — cash acquisition closed after trading on 2026-08-04; `delisted`, no
+  successor history. ([Nasdaq corporate-action notice](https://www.nasdaqtrader.com/TraderNews.aspx?id=ECA2026-545))
+- `AVB` + `EQR` — merger completed 2026-08-17; the legal EQR issuer became
+  Vivmark Residential and began trading as `VMRK` on 2026-08-18. `AVB` is
+  `delisted`; `EQR` is `renamed`; continuous EQR/VMRK history is now stored
+  under active `VMRK`. AVB history was not spliced into VMRK because AVB was
+  the acquired security. ([Vivmark closing release](https://investors.avalonbay.com/sec-filings/all-sec-filings/content/0001104659-26-097833/tm2623381d1_ex99-1.htm))
+- `WBD` — acquired for cash by Skydance on 2026-10-06 and ceased trading;
+  `delisted`. `SKYD` is a different surviving security, so WBD history was not
+  copied. ([Skydance completion notice](https://www.skydance.com/news/press/paramount-completes-acquisition-of-warner-bros-discovery-creating-a-new-global-entertainment-leader-skydance))
+- `WBS` — Santander completed its acquisition on 2026-08-20; `delisted`, no
+  direct ticker-history continuation. ([Santander completion notice](https://www.santander.com/en/press-room/press-releases/2026/08/santander-expands-us-presence-with-completion-of-webster-acquisition))
+- `LBRDA` / `LBRDK` — Liberty Broadband merged into Charter on 2026-08-20;
+  both `delisted`. Holders received `CHTR`, but Charter is a distinct issuer
+  with its own existing history, so no splice was made. ([Nasdaq corporate-action notice](https://www.nasdaqtrader.com/TraderNews.aspx?id=ECA2026-577))
+- `BEDZ` was the only additional >=1-year sparse symbol that was not a new
+  listing. The ETF liquidated, with 2026-08-21 its final trading day;
+  `delisted`. ([SEC liquidation supplement](https://www.sec.gov/Archives/edgar/data/1408970/000182912626008328/advisorshares-hotel_497.htm))
+
+All other >=1-year pre-first-bar cases were current-security IPOs or spinoffs,
+not missing predecessor history: `BLSH`, `CAI`, `CBC`, `CRCL`, `FDXF`, `FIGR`,
+`FRMI`, `GLIBA`, `GLIBK`, `HONA`, `KRMN`, `MDLN`, `MRP`, `NIQ`, `Q`, `RAL`,
+`SAIL`, `SFD`, `SNDK`, `SOLS`, `SPCX`, `VGNT`, and `VSNT`.
+
+### Code and checks
+
+- `ingest_update.py` drops a yfinance row if any OHLC, adjusted-close, or
+  volume field is missing, before integer casting or upload.
+- `build_universe.py`, `rebuild_universe_table.py`, and `bootstrap_bq.py`
+  preserve/load `inactive_reason`; `build_universe.py` also preserves existing
+  lifecycle/source metadata on rebuild.
+- Compile checks passed for all four modified scripts.
+- Synthetic two-symbol alignment test passed: three complete rows retained,
+  one incomplete shared-index row dropped.
+- `git diff --check` passed.
+
+## Initial D3 cloud-run data-quality audit (2026-10-28; historical)
+
+### 1. `Hood.Daily_prices` incomplete OHLCV
+
+**Result:** the 24,756 rows were not partial trading bars. In every case,
+`open`, `high`, `low`, `close`, and `adj_close` were all NULL and `volume` was
+0. `ingest_update.fetch_yahoo_prices()` had retained all-NaN alignment rows
+from multi-symbol yfinance downloads, then converted the missing volume to 0.
+There were no isolated missing fields and no evidence of trading halts.
+
+I refetched all 210 affected symbols individually for the full date window.
+Only complete OHLCV+adjusted-close responses were eligible for repair. The
+first pass found 2,462 matching bars, but 1,709 of those preceded the current
+security's first known bar (`BLSH`, `SNDK`, `SPCX`, `TEM`, `VIK`) and were
+symbol-reuse/pre-listing collisions. Those 1,709 changes were reverted. No
+placeholder rows were deleted.
+
+Final outcome:
+
+- **753 rows repaired:** `QRVO` 751 missing dates (the existing 2026-10-02
+  bar was already complete), `MSGS` 2026-10-28, and `BEDZ` 2026-08-14.
+- **24,003 rows remain incomplete across 208 tickers.** These were left
+  unchanged because an individual Yahoo request did not return a defensible
+  complete bar for that ticker/date.
+- **2026-10-28:** 17 before, 2 repaired (`MSGS`, `QRVO`), 15 unresolved:
+  `AL`, `AVB`, `BEDZ`, `CNTA`, `CWEN-A`, `EA`, `EQR`, `LBRDA`, `LBRDK`,
+  `MASI`, `MNMD`, `NSA`, `TERN`, `WBD`, `WBS`.
+- `Hood.events` was rebuilt after the final correction: **57,759**
+  `vol_event` rows.
+
+The 24,003 unresolved rows break down exactly as follows (categories can
+overlap by ticker):
+
+1. **18,037 pre-first-Yahoo-bar placeholders, 47 tickers.** This category
+   includes genuine new listings/spinoffs and symbol-reuse cases. It also
+   includes several established-looking symbols for which Yahoo returned only
+   sparse late history; those are Yahoo coverage/symbol-lifecycle anomalies,
+   not asserted to be IPOs. Format is `ticker: rows [first..last]`:
+
+   `ALAB:97 [2023-10-30..2024-03-19]`; `AMTM:226
+   [2023-10-30..2024-09-23]`; `AS:64 [2023-10-30..2024-01-31]`; `AVB:699
+   [2023-10-30..2026-08-13]`; `BEDZ:699 [2023-10-30..2026-08-13]`;
+   `BLSH:447 [2023-10-30..2025-08-12]`; `CAI:409
+   [2023-10-30..2025-06-17]`; `CBC:518 [2023-10-30..2025-11-20]`;
+   `CRCL:400 [2023-10-30..2025-06-04]`; `EA:691
+   [2023-10-30..2026-08-03]`; `ECG:250 [2023-10-30..2024-10-25]`;
+   `EQR:700 [2023-10-30..2026-08-14]`; `FDXF:644
+   [2023-10-30..2026-05-26]`; `FIGR:467 [2023-10-30..2025-09-10]`;
+   `FRMI:481 [2023-10-30..2025-09-30]`; `GEV:102
+   [2023-10-30..2024-03-26]`; `GLIBA:424 [2023-10-30..2025-07-10]`;
+   `GLIBK:424 [2023-10-30..2025-07-10]`; `HONA:657
+   [2023-10-30..2026-06-12]`; `INGM:248 [2023-10-30..2024-10-23]`;
+   `KRMN:323 [2023-10-30..2025-02-12]`; `LBRDK:702
+   [2023-10-30..2026-08-18]`; `LINE:184 [2023-10-30..2024-07-24]`;
+   `LOAR:122 [2023-10-30..2024-04-24]`; `MDLN:535
+   [2023-10-30..2025-12-16]`; `MRP:317 [2023-10-30..2025-02-04]`;
+   `NBIS:245 [2023-10-30..2024-10-18]`; `NIQ:432
+   [2023-10-30..2025-07-22]`; `Q:499 [2023-10-30..2025-10-24]`;
+   `RAL:413 [2023-10-30..2025-06-24]`; `RBRK:122
+   [2023-10-30..2024-04-24]`; `RDDT:98 [2023-10-30..2024-03-20]`;
+   `RR:14 [2023-10-30..2023-11-16]`; `SAIL:323
+   [2023-10-30..2025-02-12]`; `SARO:232 [2023-10-30..2024-10-01]`;
+   `SERV:89 [2023-10-30..2024-03-07]`; `SFD:311
+   [2023-10-30..2025-01-27]`; `SNDK:323 [2023-10-30..2025-02-12]`;
+   `SOLS:494 [2023-10-30..2025-10-17]`; `SOLV:101
+   [2023-10-30..2024-03-25]`; `SPCX:656 [2023-10-30..2026-06-11]`;
+   `TEM:157 [2023-10-30..2024-06-13]`; `VGNT:603
+   [2023-10-30..2026-03-26]`; `VIK:126 [2023-10-30..2024-04-30]`;
+   `VSNT:533 [2023-10-30..2025-12-12]`; `WBD:734
+   [2023-10-30..2026-10-02]`; `WBS:702 [2023-10-30..2026-08-18]`.
+
+2. **5,264 symbol-unavailable placeholders, 7 tickers:** `AL`, `CNTA`,
+   `CWEN-A`, `MASI`, `MNMD`, `NSA`, `TERN`; 752 session-shaped rows each,
+   spanning 2023-10-30 through 2026-10-28. Individual Yahoo requests returned
+   no usable history (404/delisted/no-timezone/authorization-style failures).
+
+3. **376 post-last-Yahoo-bar placeholders, 8 tickers:** `AVB:52
+   [2026-08-17..2026-10-28]`; `BEDZ:51 [2026-08-17..2026-10-28]`;
+   `EA:60 [2026-08-05..2026-10-28]`; `EQR:51
+   [2026-08-18..2026-10-28]`; `LBRDA:47 [2026-08-24..2026-10-28]`;
+   `LBRDK:49 [2026-08-20..2026-10-28]`; `WBD:17
+   [2026-10-06..2026-10-28]`; `WBS:49 [2026-08-20..2026-10-28]`.
+   These are Yahoo history cutoffs/symbol-lifecycle anomalies; the data does
+   not support calling them halts.
+
+4. **326 US-market-holiday alignment placeholders:** 163 tickers on each of
+   2026-05-25 and 2026-09-07. The exact ticker set is:
+
+   `AA`, `AAPL`, `ABNB`, `ACHR`, `AFRM`, `AIQ`, `ALB`, `AMAT`, `AMD`,
+   `AMKR`, `AMZN`, `APLD`, `APPN`, `ARKK`, `ARKQ`, `ARM`, `ARQT`, `ASML`,
+   `ATEC`, `BE`, `BEDZ`, `BKCH`, `BOTZ`, `BTDR`, `CHWY`, `CIBR`, `CIFR`,
+   `CNTA`, `COHR`, `COIN`, `CRDO`, `CRM`, `CRML`, `CRSP`, `CRWD`, `DAL`,
+   `DIA`, `DQ`, `DTCR`, `EVTL`, `FCX`, `FINX`, `FROG`, `FRPT`, `FSLR`,
+   `FTAI`, `FXI`, `GDX`, `GE`, `HAL`, `HIMS`, `HOOD`, `HUT`, `ICLN`,
+   `IDRV`, `IGV`, `IHF`, `IHI`, `ILMN`, `INOD`, `INSM`, `INTC`, `IONQ`,
+   `ISRG`, `ITA`, `IWM`, `JETS`, `JOBY`, `KVYO`, `LAR`, `LASR`, `LIND`,
+   `LIT`, `MAGS`, `MDY`, `META`, `MNMD`, `MP`, `MU`, `NAMS`, `NB`, `NBIS`,
+   `NEM`, `NET`, `NUE`, `NUGT`, `NVDA`, `NXE`, `NXT`, `ODD`, `OIH`,
+   `OKLO`, `ONON`, `OSCR`, `OUT`, `PEJ`, `PL`, `PLTR`, `QBTS`, `QQQ`,
+   `QTUM`, `RBLX`, `RCL`, `RDDT`, `REMX`, `RERE`, `RIVN`, `RKLB`, `ROBO`,
+   `RR`, `RSP`, `RYAAY`, `RYTM`, `SERV`, `SGML`, `SKYY`, `SLB`, `SLX`,
+   `SMH`, `SMR`, `SNDK`, `SNOW`, `SOCL`, `SOFI`, `SONO`, `SOUN`, `SOXX`,
+   `SPHR`, `SPY`, `STX`, `SYM`, `TAN`, `TERN`, `TEVA`, `TME`, `TSLA`,
+   `TTMI`, `U`, `UAMY`, `UBER`, `UNH`, `URA`, `USAR`, `VIK`, `WGS`, `WMT`,
+   `XBI`, `XLB`, `XLC`, `XLE`, `XLF`, `XLI`, `XLK`, `XLP`, `XLRE`, `XLU`,
+   `XLV`, `XLY`, `XME`, `XPEV`, `XRT`, `XYZ`, `ZETA`.
+
+There were **no unresolved interior Yahoo gaps** once holidays and
+pre/post-history ranges were separated.
+
+Prevention: `ingest_update.py` now drops any Yahoo row missing one or more of
+OHLC, adjusted close, or volume before casting/upload. A synthetic two-symbol
+alignment test passed: one incomplete row was dropped and all three complete
+rows were retained. `python -m py_compile ingest_update.py` also passed.
+
+### 2. Sector reconciliation: 10 vs 49
+
+Both counts are correct but measured different scopes:
+
+- `Hood.universe` contains **65 raw NULL-sector rows**: 10 rows typed `stock`,
+  54 typed `etf`, and the `VIX` benchmark.
+- The earlier **10 unresolved** report came from `classify_universe.py`, which
+  deliberately classifies only rows whose `type == "stock"`; it skips ETFs
+  and benchmarks.
+- D3 supplies **16 context overrides** for `SPY`, `QQQ`, `IWM`, `DIA`, `VIX`
+  and the 11 sector ETFs (`XLB`, `XLC`, `XLE`, `XLF`, `XLI`, `XLK`, `XLP`,
+  `XLRE`, `XLU`, `XLV`, `XLY`). Therefore 65 - 16 = **49** rows remain
+  without sector after D3 overrides.
+
+The exact 49 are:
+
+- **10 stock-typed rows:** `AL`, `CNTA`, `CWEN-A`, `FISV`, `MASI`, `MNMD`,
+  `NIQ`, `NSA`, `NUGT`, `TERN`.
+- **39 ETF-typed rows outside D3's overrides:** `AIQ`, `ARKK`, `ARKQ`,
+  `BEDZ`, `BKCH`, `BOTZ`, `CIBR`, `DTCR`, `EVTL`, `FINX`, `FXI`, `GDX`,
+  `ICLN`, `IDRV`, `IGV`, `IHF`, `IHI`, `ITA`, `JETS`, `LIT`, `MAGS`, `MDY`,
+  `OIH`, `PEJ`, `QTUM`, `REMX`, `ROBO`, `RSP`, `SKYY`, `SLX`, `SMH`,
+  `SNDK`, `SOCL`, `SOXX`, `TAN`, `URA`, `XBI`, `XME`, `XRT`.
+
+Two universe type labels also deserve follow-up: `NUGT` is a leveraged ETF
+but is typed `stock`, while `SNDK` is typed `etf` even though its universe name
+is `ScanDisk`. No sector values or type labels were changed in this audit; the
+49-count difference is entirely the stock-only classifier versus D3's broader
+post-override feature population.
+
 ## D1 — universe rebuild (done)
 
 - `universe.csv`: 164 -> 1,116 tickers. 952 Russell 1000 (from the archived

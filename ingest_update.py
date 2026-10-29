@@ -172,7 +172,18 @@ def fetch_yahoo_prices(tickers: list[str], start: dt.date, end: dt.date) -> pd.D
     out = out[(out["date"] >= start) & (out["date"] <= end)].copy()
     if out.empty:
         return pd.DataFrame(columns=out_cols)
-    out["volume"] = out["volume"].fillna(0).astype("int64")
+    # Multi-symbol yfinance responses share one date index. When a symbol has
+    # no bar for a date that another symbol does, yfinance leaves an all-NaN
+    # alignment row. These are not zero-volume market bars and must not reach
+    # BigQuery as synthetic history.
+    required_values = ["open", "high", "low", "close", "adj_close", "volume"]
+    incomplete_count = int(out[required_values].isna().any(axis=1).sum())
+    if incomplete_count:
+        print(f"[i] Dropped {incomplete_count:,} incomplete Yahoo alignment row(s)")
+    out = out.dropna(subset=required_values).copy()
+    if out.empty:
+        return pd.DataFrame(columns=out_cols)
+    out["volume"] = out["volume"].astype("int64")
     out = out[out_cols]
     out = out.drop_duplicates(subset=["date", "ticker"])
     return out

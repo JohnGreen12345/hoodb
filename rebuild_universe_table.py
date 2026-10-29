@@ -1,6 +1,7 @@
 r"""
 Push the rebuilt universe.csv (DATA_MODEL.md D1 shape: ticker, name, type,
-source, sector, industry, active_flag, added_at, classified_at) to
+source, sector, industry, active_flag, added_at, classified_at,
+inactive_reason) to
 BigQuery, replacing the `universe` table's schema and contents.
 
 Run build_universe.py then classify_universe.py first.
@@ -29,6 +30,7 @@ SCHEMA = [
     bigquery.SchemaField("active_flag", "BOOLEAN"),
     bigquery.SchemaField("added_at", "DATE"),
     bigquery.SchemaField("classified_at", "DATE"),
+    bigquery.SchemaField("inactive_reason", "STRING"),
 ]
 
 
@@ -42,10 +44,13 @@ def main() -> None:
     df["source"] = df["source"].astype(str)
     df["sector"] = df["sector"].replace("", None)
     df["industry"] = df["industry"].replace("", None)
-    df["active_flag"] = df["active_flag"].astype(bool)
+    df["active_flag"] = df["active_flag"].astype(str).str.lower().map({"true": True, "false": False})
+    if df["active_flag"].isna().any():
+        raise ValueError("active_flag must contain only True/False values")
     df["added_at"] = pd.to_datetime(df["added_at"]).dt.date
     df["classified_at"] = df["classified_at"].replace("", None)
     df["classified_at"] = pd.to_datetime(df["classified_at"], errors="coerce").dt.date
+    df["inactive_reason"] = df["inactive_reason"].replace("", None)
 
     target = f"{PROJECT_ID}.{DATASET}.universe"
     job = client.load_table_from_dataframe(
