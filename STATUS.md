@@ -1,3 +1,30 @@
+# EODHD All-in-One validation (2026-10-30)
+
+All paid-endpoint responses below are cached in gitignored `.eodhd_cache/`; no token or raw cache file is committed. Historical 401/403 cache entries are automatically retried because a plan entitlement can change after a response was cached.
+
+| Check | Expected | Got | Pass |
+|---|---|---|---|
+| NUE earnings calendar | Date/timing and actual vs estimate | 2026-10-26, AfterMarket, EPS 5.80 vs 5.71 estimate | Yes |
+| INGM earnings calendar | 2026-10-29 AMC; adjusted EPS 0.91 vs 0.78; sales 15.2B vs 13.9B | 2026-10-29, AfterMarket, EPS **0.72** vs 0.78. Calendar has no sales fields. | **No** — EPS differs; sales unavailable here. |
+| XMTR earnings calendar | 2026-11-03 BMO | 2026-11-03, BeforeMarket, EPS estimate 0.00; actual pending | Yes |
+| HNGE earnings calendar | Date/timing and actual vs estimate | 2026-11-02, AfterMarket, EPS estimate 0.27; actual pending | Yes (upcoming) |
+| HTFL earnings calendar | Date/timing and actual vs estimate | 2026-11-12, AfterMarket, EPS estimate -0.18; actual pending | Yes (upcoming) |
+| NUE Q3 2026 fundamentals | EPS 5.80; sales 11.25B | EPS 5.80; revenue 11.249B | Yes |
+| Eight-quarter fundamentals | Sales and EPS history for all five | Eight sales quarters returned for each. INGM stops at 2026-Q2; HNGE/HTFL have missing EPS history for older periods. | Partial |
+| Delisted history | A known delisted ticker has historical bars | `TWTR.US`: six bars from 2022-10-20 through its last session, 2022-10-27 | Yes |
+| NUE close differences | Match Hood or identify cause | 2026-10-28: Hood 266.700012 / 274,076 volume vs EODHD 271.79 / 2,044,056. 2026-10-29: Hood 273.859985 / 21,657 vs EODHD 275.29 / 1,485,697. | **No** — not a corporate-action adjustment (both `adj_close == close`); Hood’s Yahoo-sourced rows are incomplete/corrupt (including 2026-10-28 `open` 270 > `high` 269.90). |
+| GitHub Actions secret call | One Action call using `EODHD_API_TOKEN` | Secret-safe manual workflow committed as `.github/workflows/eodhd_secret_smoke.yml`; local dispatch blocked because `gh` has no authenticated account. | Blocked |
+
+### Eight-quarter compact history (sales USD billions / actual EPS)
+
+| Ticker | Latest eight fundamental periods, newest first |
+|---|---|
+| NUE | 2026-Q3 11.249 / 5.80; Q2 10.397 / 4.84; Q1 9.496 / 3.23; 2025-Q4 7.687 / 1.73; Q3 8.521 / 2.63; Q2 8.456 / 2.65; Q1 7.830 / 0.77; 2024-Q4 7.076 / 1.22 |
+| INGM | 2026-Q2 14.531 / 0.82; Q1 13.963 / 0.75; 2025-Q4 14.878 / 0.96; Q3 12.604 / 0.72; Q2 12.794 / 0.61; Q1 12.281 / 0.61; 2024-Q4 13.345 / 0.92; Q3 11.763 / 0.72 |
+| XMTR | 2026-Q2 0.229 / -0.05; Q1 0.205 / 0.12; 2025-Q4 0.192 / 0.16; Q3 0.181 / 0.11; Q2 0.163 / 0.09; Q1 0.151 / 0.02; 2024-Q4 0.149 / 0.06; Q3 0.142 / 0.02 |
+| HNGE | 2026-Q2 0.213 / 0.66; Q1 0.182 / 0.45; 2025-Q4 0.171 / 0.49; Q3 0.154 / 0.44; Q2 0.139 / 0.70; Q1 0.124 / 0.2044; 2024-Q4 0.117 / —; Q3 0.101 / — |
+| HTFL | 2026-Q2 0.064 / -0.16; Q1 0.053 / -0.16; 2025-Q4 0.049 / -0.1182; Q3 0.046 / -0.27; Q2 0.043 / -1.10; Q1 0.037 / —; 2024-Q4 0.035 / —; Q3 0.033 / — |
+
 # EODHD Sandbox smoke test (2026-10-30)
 
 ### Result
