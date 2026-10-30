@@ -13,7 +13,7 @@ All paid-endpoint responses below are cached in gitignored `.eodhd_cache/`; no t
 | Eight-quarter fundamentals | Sales and EPS history for all five | Eight sales quarters returned for each. INGM stops at 2026-Q2; HNGE/HTFL have missing EPS history for older periods. | Partial |
 | Delisted history | A known delisted ticker has historical bars | `TWTR.US`: six bars from 2022-10-20 through its last session, 2022-10-27 | Yes |
 | NUE close differences | Match Hood or identify cause | 2026-10-28: Hood 266.700012 / 274,076 volume vs EODHD 271.79 / 2,044,056. 2026-10-29: Hood 273.859985 / 21,657 vs EODHD 275.29 / 1,485,697. | **No** — not a corporate-action adjustment (both `adj_close == close`); Hood’s Yahoo-sourced rows are incomplete/corrupt (including 2026-10-28 `open` 270 > `high` 269.90). |
-| GitHub Actions secret call | One Action call using `EODHD_API_TOKEN` | Secret-safe manual workflow committed as `.github/workflows/eodhd_secret_smoke.yml`; local dispatch blocked because `gh` has no authenticated account. | Blocked |
+| GitHub Actions secret call | One Action call using `EODHD_API_TOKEN` | Jo manually ran the secret-safe `.github/workflows/eodhd_secret_smoke.yml` workflow; smoke test passed. | Yes |
 
 ### Eight-quarter compact history (sales USD billions / actual EPS)
 
