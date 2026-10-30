@@ -17,3 +17,6 @@ venv/
 *.docx
 *.xlsx
 BA/
+
+# EODHD smoke-test response cache (contains vendor data; never commit)
+.eodhd_cache/

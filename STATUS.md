@@ -1,3 +1,30 @@
+# EODHD Sandbox smoke test (2026-10-30)
+
+### Result
+
+**Live smoke test not run.** The `EODHD_API_TOKEN` variable was absent from the shell process and from the current user's and machine's environment. No API request was made, so no response data was fetched or cached, and the daily call budget used is **0 / 20** (task maximum: 15). I did not use a demo key or attempt to read the GitHub secret.
+
+### Requested checks
+
+| Endpoint / check | Works on free tier? | Matches expected? | Notes |
+|---|---|---|---|
+| User / limits | Not tested | Not tested | Requires token; no request made. |
+| EOD prices: NUE, last 30 days | Listed as available with limited one-year EOD history | Not tested | Compare against `Hood.Daily_prices` still outstanding. |
+| Earnings calendar: INGM around 2026-10-29 | Calendar is a paid-plan feature (Fundamentals or All-in-One) | Not tested | Expected EPS/timing not checked. |
+| Earnings calendar: XMTR around 2026-11-03 | Calendar is a paid-plan feature (Fundamentals or All-in-One) | Not tested | Expected date/timing not checked. |
+| News: XMTR, prior 7 days | Listed on Free; API usage cost is 5 calls per request | Not tested | Headlines/count not fetched. |
+| US exchange symbols with delisted names | Not tested | Not tested | Endpoint plan entitlement and returned ticker count unknown. |
+| NUE fundamentals: quarterly sales/EPS | Not included on Free; Fundamentals or All-in-One is paid | Not tested | Not run; fundamentals requests cost 10 calls per request on the published price table. |
+
+### Client and safety
+
+- Added `eodhd_client.py` with one method per requested endpoint, 429 exponential backoff, sanitized 401/403 errors, and a local `.eodhd_cache/` response cache.
+- Added `.eodhd_cache/` to `.gitignore`; no response data or credential was added to Git.
+- `python -m py_compile eodhd_client.py`, mock 429/cache/403 checks, and `git diff --check` passed.
+
+**Next step:** make `EODHD_API_TOKEN` available in the shell process running this smoke test, then rerun. The client reuses cached responses; follow the requested endpoint order and stop before exceeding 15 total API calls.
+
+---
 # STATUS — hoodb
 
 ## Corporate-action cleanup and placeholder deletion (2026-10-29)
