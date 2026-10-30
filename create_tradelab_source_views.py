@@ -1,4 +1,4 @@
-"""Create the two authorized, read-only Hood source views for tradelab.
+"""Create authorized, read-only Hood source views for tradelab.
 
 The views are intentionally daily-grain only. Weekly/monthly bars are built
 from v_daily_prices in application code, not duplicated here.
@@ -11,7 +11,12 @@ from google.cloud import bigquery
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT", "pricesz")
 HOOD_DATASET = os.getenv("BIGQUERY_DATASET", "Hood")
 TRADELAB_DATASET = os.getenv("TRADELAB_DATASET", "tradelab")
-SOURCE_VIEWS = {"v_daily_prices": "Daily_prices", "v_universe": "universe"}
+SOURCE_VIEWS = {
+    "v_daily_prices": "Daily_prices",
+    "v_universe": "universe",
+    "v_fundamentals_quarterly": "fundamentals_quarterly",
+    "v_earnings_calendar": "earnings_calendar",
+}
 
 
 def authorize_view_on_hood(client: bigquery.Client, view_name: str) -> bool:

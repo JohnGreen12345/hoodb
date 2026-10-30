@@ -1,3 +1,10 @@
+# M2 fundamentals and earnings sample (2026-10-30)
+
+- Loaded only NUE, INGM, XMTR, HNGE and HTFL: 40 `Hood.fundamentals_quarterly` rows and 47 `Hood.earnings_calendar` rows. Each fact carries EODHD source text and `retrieved_at`.
+- Added `tradelab.v_fundamentals_quarterly` and `tradelab.v_earnings_calendar` as authorized Hood views. `tradelab-reader` can read both views and is denied both raw Hood fact tables.
+- M2 validation: NUE Q3 matches its release ($11.249B sales, $5.80 EPS); XMTR/HNGE/HTFL future dates and BMO/AMC timing match their announcements. INGM remains intentionally flagged: EODHD has Q3 EPS $0.72 vs its release’s $0.57 GAAP / $0.91 non-GAAP and its fundamental facts only reach Q2.
+- No full ticker sweep and no scheduled refresh were added. Stop for Jo’s approval.
+
 # Price-data repairs (2026-10-30)
 
 - Deleted the 161 Labor Day (2026-09-07) `Hood.Daily_prices` rows after the earlier Memorial Day cleanup. A fresh 2023-10-30 through 2026-10-30 NYSE audit finds **zero** non-session dates.
