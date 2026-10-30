@@ -175,7 +175,7 @@ def main() -> None:
                 failures.append(f"{ticker} fundamentals: {fundamentals_error}")
             if calendar_error:
                 failures.append(f"{ticker} earnings: {calendar_error}")
-            if completed % 100 == 0 or completed == len(tickers):
+            if completed % 10 == 0 or completed == len(tickers):
                 print(f"[i] Fetched {completed}/{len(tickers)} tickers", flush=True)
 
     retrieved_at = dt.datetime.now(dt.timezone.utc)

@@ -1,3 +1,9 @@
+# M2 full-universe sweep and refresh cadence (2026-10-30)
+
+- Explaining `vol_event` **58,434 → 36,603**: 58,434 already included the 50-prior-session guard. Removing 23,315 all-null placeholder/lifecycle price rows and rebuilding yielded 36,632 (a 21,802-event drop); deleting the two NYSE-holiday dates and repairing two NUE bars yielded the final 36,603 (29 net fewer). This is a data-cleanup effect, not a changed event threshold.
+- Swept **1,049 active common stocks** through the master loader. Active coverage: 1,047 tickers with fundamentals and 1,048 with earnings-calendar facts. `NIQ` returned no fundamentals; `NUGT` returned no facts; both responses were successful but empty and remain absent.
+- Added `.github/workflows/eodhd_facts_refresh.yml`: earnings calendar refreshes every trading-day run (Tue-Sat UTC) and fundamentals refresh weekly (Sunday). No post-sweep manual refresh run was started.
+
 # M2 fundamentals and earnings sample (2026-10-30)
 
 - Loaded only NUE, INGM, XMTR, HNGE and HTFL: 40 `Hood.fundamentals_quarterly` rows and 47 `Hood.earnings_calendar` rows. Each fact carries EODHD source text and `retrieved_at`.
