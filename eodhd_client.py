@@ -1,6 +1,7 @@
 """Small EODHD REST client with a local, token-free response cache.
 
-Set EODHD_API_TOKEN in the process environment. Response bodies and request
+Secrets are loaded from the file named by TRADE_ENV_FILE, or from
+C:\\Users\\Mindrix\\.secrets\\trade.env by default. Response bodies and request
 metadata (with the token omitted) are cached under .eodhd_cache/ by default.
 """
 from __future__ import annotations
@@ -18,7 +19,11 @@ from dotenv import load_dotenv
 
 BASE_URL = "https://eodhd.com/api"
 REPO_DIR = Path(__file__).resolve().parent
-load_dotenv(dotenv_path=REPO_DIR / ".env", override=False)
+DEFAULT_TRADE_ENV_FILE = Path(r"C:\Users\Mindrix\.secrets\trade.env")
+TRADE_ENV_FILE = Path(os.environ.get("TRADE_ENV_FILE", DEFAULT_TRADE_ENV_FILE))
+# Deliberately never load a repo-level .env: secrets belong outside every
+# checkout/worktree. python-dotenv quietly ignores a missing external file.
+load_dotenv(dotenv_path=TRADE_ENV_FILE, override=False)
 DEFAULT_CACHE_DIR = REPO_DIR / ".eodhd_cache"
 
 
@@ -122,7 +127,7 @@ class EODHDClient:
         params: dict[str, Any] = {"fmt": "json"}
         if filter:
             params["filter"] = filter
-        return self.request_json(f"v1.1/fundamentals/{symbol}", params)
+        return self.request_json(f"v1.1/fundamentals/{self._us_symbol(symbol)}", params)
 
 
 def masked_url(endpoint: str, params: Mapping[str, Any] | None = None) -> str:

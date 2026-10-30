@@ -2,27 +2,38 @@
 
 ### Result
 
-**Live smoke test not run.** `.env` is listed in `.gitignore`, but there is no `.env` file in this local `hoodb` checkout, and `EODHD_API_TOKEN` was absent from the shell process and current-user/machine environments. No API request was made, so no response data was fetched or cached, and the daily call budget used is **0 / 20** (task maximum: 15). I did not use a demo key or attempt to read the GitHub secret.
+Live smoke test completed with **10 assumed calls of the 15-call task cap**. The initial `/user` response reported `apiRequests: 0` and `dailyRateLimit: 20`. Every response is cached in gitignored `.eodhd_cache/`; credentials and raw cache data are not in Git.
+
+The client now loads `EODHD_API_TOKEN` only from the external file named by `TRADE_ENV_FILE`, defaulting to `C:\Users\Mindrix\.secrets\trade.env`. It deliberately does **not** load a checkout `.env`.
 
 ### Requested checks
 
 | Endpoint / check | Works on free tier? | Matches expected? | Notes |
 |---|---|---|---|
-| User / limits | Not tested | Not tested | Requires token; no request made. |
-| EOD prices: NUE, last 30 days | Listed as available with limited one-year EOD history | Not tested | Compare against `Hood.Daily_prices` still outstanding. |
-| Earnings calendar: INGM around 2026-10-29 | Calendar is a paid-plan feature (Fundamentals or All-in-One) | Not tested | Expected EPS/timing not checked. |
-| Earnings calendar: XMTR around 2026-11-03 | Calendar is a paid-plan feature (Fundamentals or All-in-One) | Not tested | Expected date/timing not checked. |
-| News: XMTR, prior 7 days | Listed on Free; API usage cost is 5 calls per request | Not tested | Headlines/count not fetched. |
-| US exchange symbols with delisted names | Not tested | Not tested | Endpoint plan entitlement and returned ticker count unknown. |
-| NUE fundamentals: quarterly sales/EPS | Not included on Free; Fundamentals or All-in-One is paid | Not tested | Not run; fundamentals requests cost 10 calls per request on the published price table. |
+| User / limits | Yes | Yes | Reported 20 daily calls. |
+| EOD prices: NUE, last 30 days | Yes | Partly | 22 matching trading dates in both sources. 20 closes matched; Hood differed on 2026-10-28 (266.700012 vs EODHD 271.79) and 2026-10-29 (273.859985 vs 275.29). |
+| Earnings calendar: INGM around 2026-10-29 | No | Not tested | Confirmed HTTP 403: endpoint not in plan; BMO/AMC and estimate/actual cannot be checked on Sandbox. |
+| Earnings calendar: XMTR around 2026-11-03 | No | Not tested | Confirmed HTTP 403: endpoint not in plan; timing cannot be checked on Sandbox. |
+| News: XMTR, prior 7 days | Yes | Fetched | 3 articles. Latest returned headlines: “ACM Research And 2 Other Great Automation Stocks To Own”; “Illinois Tool Works (ITW) Surpasses Q3 Earnings Estimates”; “RiskVantage AI Unveils Explainable, Sovereign AI for the $75 Billion Contract and Deal Legal Market at Dubai AI Festival”. |
+| US exchange symbols with `delisted=1` | Yes | Fetched | 59,978 US entries returned. Response has no per-row delisted flag, so inclusion/count of delisted entries cannot be independently established from this payload. |
+| NUE fundamentals: quarterly sales/EPS | Not run | Not tested | Skipped: it costs 10 calls, while only 5 remained under the task cap. It also requires a paid Fundamentals/All-in-One entitlement. |
+
+### Paid-plan endpoints confirmed or required
+
+- `calendar/earnings`: confirmed unavailable on Sandbox (HTTP 403).
+- `v1.1/fundamentals`: not called to preserve the cap; requires a paid Fundamentals/All-in-One entitlement.
 
 ### Client and safety
 
-- Added `eodhd_client.py` with one method per requested endpoint, `python-dotenv` loading from this repo's `.env`, 429 exponential backoff, sanitized 401/403 errors, and a local `.eodhd_cache/` response cache.
-- Added `.eodhd_cache/` to `.gitignore`; no response data or credential was added to Git.
-- Added `python-dotenv` to `requirements.txt`. `python -m py_compile eodhd_client.py`, mock 429/cache/403 checks, and `git diff --check` passed. `.env` ignore rule was confirmed before checking for the file.
+- `eodhd_client.py` provides one method per requested endpoint, 429 exponential backoff, clear sanitized 401/403 plan errors, and token-free caching.
+- `.eodhd_cache/` is gitignored. No token, secret-file path contents, or response payloads were committed.
 
-**Next step:** place the ignored `.env` at the root of this `hoodb` checkout (or set `EODHD_API_TOKEN` in the invoking process), then rerun. The client reuses cached responses; follow the requested endpoint order and stop before exceeding 15 total API calls.
+# tradelab authorized Hood source views (2026-10-30)
+
+- Created `pricesz.tradelab.v_daily_prices` over `pricesz.Hood.Daily_prices` and `pricesz.tradelab.v_universe` over `pricesz.Hood.universe`.
+- Added only those two views to the Hood dataset authorized-view ACL. No weekly/monthly views were created.
+- Verified with the `tradelab-reader` credential: both new views are readable (`818,868` price rows; `1,118` universe rows), while direct reads of both Hood source tables are denied.
+- `create_tradelab_source_views.py` reproduces the two views and their authorized-view ACL entries.
 
 ---
 # STATUS — hoodb
