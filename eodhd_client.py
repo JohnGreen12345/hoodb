@@ -61,13 +61,16 @@ class EODHDClient:
             if isinstance(cached, dict) and "_http_status" in cached:
                 status = int(cached["_http_status"])
                 if status in (401, 403):
-                    raise EODHDPlanError(
-                        f"Cached EODHD HTTP {status} for /{endpoint}: invalid token or endpoint not in plan."
-                    )
-                if status >= 400:
+                    # An entitlement can change without a token change (for
+                    # example, a plan upgrade). Do not let an old denial make
+                    # a newly available endpoint permanently unavailable.
+                    cache_file.unlink()
+                elif status >= 400:
                     raise EODHDError(f"Cached EODHD HTTP {status} for /{endpoint}.")
-                return cached.get("_body")
-            return cached
+                else:
+                    return cached.get("_body")
+            else:
+                return cached
 
         request_params = dict(safe_params)
         request_params["api_token"] = self._token
@@ -84,13 +87,13 @@ class EODHDClient:
                 body = response.json()
             except ValueError:
                 body = {"_non_json_response": True}
-            self.cache_dir.mkdir(parents=True, exist_ok=True)
-            cache_file.write_text(json.dumps({"_http_status": response.status_code, "_body": body},
-                                             ensure_ascii=False, indent=2), encoding="utf-8")
             if response.status_code in (401, 403):
                 raise EODHDPlanError(
                     f"EODHD HTTP {response.status_code} for /{endpoint}: invalid token or endpoint not in plan."
                 )
+            self.cache_dir.mkdir(parents=True, exist_ok=True)
+            cache_file.write_text(json.dumps({"_http_status": response.status_code, "_body": body},
+                                             ensure_ascii=False, indent=2), encoding="utf-8")
             if response.status_code >= 400:
                 raise EODHDError(f"EODHD HTTP {response.status_code} for /{endpoint}.")
             if isinstance(body, dict) and body.get("_non_json_response"):
