@@ -1,14 +1,16 @@
-"""Load the bounded M2 EODHD sample into Hood BigQuery tables.
+"""Load EODHD fundamentals and earnings facts into Hood BigQuery tables.
 
-This is deliberately not a universe sweep or a scheduled job. It replaces
-only the five named sample tickers in the two facts tables, retaining the
-provider's reported EPS and nulling fields that EODHD does not supply.
+`--scope sample` is the bounded M2 proof. `--scope active` refreshes every
+active common-stock ticker; ETFs and benchmarks are intentionally excluded
+because they do not have corporate earnings/fundamentals.
 """
 
 from __future__ import annotations
 
 import datetime as dt
 import os
+import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from decimal import Decimal
 from typing import Any
 
@@ -103,9 +105,9 @@ def ensure_tables(client: bigquery.Client) -> tuple[str, str]:
     return fundamentals_id, earnings_id
 
 
-def replace_sample_rows(client: bigquery.Client, table_id: str, rows: list[dict[str, Any]]) -> None:
+def replace_rows(client: bigquery.Client, table_id: str, tickers: list[str], rows: list[dict[str, Any]]) -> None:
     config = bigquery.QueryJobConfig(query_parameters=[
-        bigquery.ArrayQueryParameter("tickers", "STRING", list(SAMPLE_TICKERS))
+        bigquery.ArrayQueryParameter("tickers", "STRING", tickers)
     ])
     client.query(f"DELETE FROM `{table_id}` WHERE ticker IN UNNEST(@tickers)", job_config=config).result()
     if rows:
@@ -116,23 +118,78 @@ def replace_sample_rows(client: bigquery.Client, table_id: str, rows: list[dict[
         client.load_table_from_json(json_rows, table_id, job_config=bigquery.LoadJobConfig(write_disposition="WRITE_APPEND")).result()
 
 
-def main() -> None:
+def active_stock_tickers(client: bigquery.Client) -> list[str]:
+    query = f"""
+        SELECT ticker FROM `{PROJECT_ID}.{DATASET}.universe`
+        WHERE COALESCE(active_flag, TRUE) = TRUE AND COALESCE(type, 'stock') = 'stock'
+        ORDER BY ticker
+    """
+    return [str(row.ticker).strip().upper() for row in client.query(query).result() if row.ticker]
+
+
+def fetch_one(ticker: str, refresh: str) -> tuple[str, list[dict[str, Any]] | None, list[dict[str, Any]] | None, str | None, str | None]:
+    """Fetch one ticker without deleting its existing facts if a call fails."""
     api = EODHDClient()
+    fundamentals = calendar = None
+    fundamentals_error = calendar_error = None
+    if refresh in {"fundamentals", "both"}:
+        try:
+            fundamentals = fundamentals_rows(ticker, api.get_fundamentals(ticker))
+        except Exception as exc:
+            fundamentals_error = f"{type(exc).__name__}: {exc}"
+    if refresh in {"earnings", "both"}:
+        try:
+            calendar = calendar_rows(ticker, api.get_earnings_calendar(ticker, CALENDAR_START, CALENDAR_END))
+        except Exception as exc:
+            calendar_error = f"{type(exc).__name__}: {exc}"
+    return ticker, fundamentals, calendar, fundamentals_error, calendar_error
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--scope", choices=("sample", "active"), default="sample")
+    parser.add_argument("--refresh", choices=("fundamentals", "earnings", "both"), default="both")
+    parser.add_argument("--workers", type=int, default=8)
+    args = parser.parse_args()
+
+    client = bigquery.Client(project=PROJECT_ID)
+    tickers = list(SAMPLE_TICKERS) if args.scope == "sample" else active_stock_tickers(client)
+    if not tickers:
+        raise RuntimeError("No eligible tickers found for EODHD refresh.")
     fundamentals: list[dict[str, Any]] = []
     calendar: list[dict[str, Any]] = []
-    for ticker in SAMPLE_TICKERS:
-        fundamentals.extend(fundamentals_rows(ticker, api.get_fundamentals(ticker)))
-        calendar.extend(calendar_rows(ticker, api.get_earnings_calendar(ticker, CALENDAR_START, CALENDAR_END)))
+    fundamental_successes: list[str] = []
+    calendar_successes: list[str] = []
+    failures: list[str] = []
+    with ThreadPoolExecutor(max_workers=max(1, args.workers)) as executor:
+        futures = [executor.submit(fetch_one, ticker, args.refresh) for ticker in tickers]
+        for completed, future in enumerate(as_completed(futures), start=1):
+            ticker, ticker_fundamentals, ticker_calendar, fundamentals_error, calendar_error = future.result()
+            if ticker_fundamentals is not None:
+                fundamentals.extend(ticker_fundamentals)
+                fundamental_successes.append(ticker)
+            if ticker_calendar is not None:
+                calendar.extend(ticker_calendar)
+                calendar_successes.append(ticker)
+            if fundamentals_error:
+                failures.append(f"{ticker} fundamentals: {fundamentals_error}")
+            if calendar_error:
+                failures.append(f"{ticker} earnings: {calendar_error}")
+            if completed % 100 == 0 or completed == len(tickers):
+                print(f"[i] Fetched {completed}/{len(tickers)} tickers", flush=True)
 
     retrieved_at = dt.datetime.now(dt.timezone.utc)
     for row in fundamentals + calendar:
         row["retrieved_at"] = retrieved_at
 
-    client = bigquery.Client(project=PROJECT_ID)
     fundamentals_id, earnings_id = ensure_tables(client)
-    replace_sample_rows(client, fundamentals_id, fundamentals)
-    replace_sample_rows(client, earnings_id, calendar)
-    print(f"Loaded M2 sample: {len(fundamentals)} fundamentals and {len(calendar)} earnings rows for {len(SAMPLE_TICKERS)} tickers")
+    if fundamental_successes:
+        replace_rows(client, fundamentals_id, fundamental_successes, fundamentals)
+    if calendar_successes:
+        replace_rows(client, earnings_id, calendar_successes, calendar)
+    print(f"EODHD {args.scope}/{args.refresh}: {len(tickers)} tickers; {len(fundamentals)} fundamentals; {len(calendar)} earnings; {len(failures)} failed fact fetches")
+    for failure in failures[:20]:
+        print(f"[!] {failure}")
 
 
 if __name__ == "__main__":

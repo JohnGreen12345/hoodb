@@ -1,0 +1,47 @@
+name: EODHD facts refresh
+
+on:
+  schedule:
+    # Tue-Sat UTC processes the preceding US trading day: earnings every run.
+    - cron: "45 6 * * 2-6"
+    # Fundamentals change more slowly; refresh active stocks weekly.
+    - cron: "45 6 * * 0"
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: "Fact family to refresh"
+        required: true
+        default: earnings
+        type: choice
+        options: [earnings, fundamentals, both]
+
+jobs:
+  earnings:
+    if: github.event_name == 'workflow_dispatch' && (inputs.refresh == 'earnings' || inputs.refresh == 'both') || github.event.schedule == '45 6 * * 2-6'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - uses: google-github-actions/auth@v2
+        with: {credentials_json: "${{ secrets.GCP_SA_KEY }}"}
+      - name: Refresh active-stock earnings calendar
+        env: {EODHD_API_TOKEN: "${{ secrets.EODHD_API_TOKEN }}"}
+        run: python load_eodhd_m2_sample.py --scope active --refresh earnings --workers 8
+
+  fundamentals:
+    if: github.event_name == 'workflow_dispatch' && (inputs.refresh == 'fundamentals' || inputs.refresh == 'both') || github.event.schedule == '45 6 * * 0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - uses: google-github-actions/auth@v2
+        with: {credentials_json: "${{ secrets.GCP_SA_KEY }}"}
+      - name: Refresh active-stock fundamentals
+        env: {EODHD_API_TOKEN: "${{ secrets.EODHD_API_TOKEN }}"}
+        run: python load_eodhd_m2_sample.py --scope active --refresh fundamentals --workers 8
