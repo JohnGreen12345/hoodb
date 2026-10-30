@@ -5,3 +5,4 @@ google-cloud-bigquery-storage
 pyarrow
 pandas-gbq
 db-dtypes
+python-dotenv

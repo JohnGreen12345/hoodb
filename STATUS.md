@@ -2,7 +2,7 @@
 
 ### Result
 
-**Live smoke test not run.** The `EODHD_API_TOKEN` variable was absent from the shell process and from the current user's and machine's environment. No API request was made, so no response data was fetched or cached, and the daily call budget used is **0 / 20** (task maximum: 15). I did not use a demo key or attempt to read the GitHub secret.
+**Live smoke test not run.** `.env` is listed in `.gitignore`, but there is no `.env` file in this local `hoodb` checkout, and `EODHD_API_TOKEN` was absent from the shell process and current-user/machine environments. No API request was made, so no response data was fetched or cached, and the daily call budget used is **0 / 20** (task maximum: 15). I did not use a demo key or attempt to read the GitHub secret.
 
 ### Requested checks
 
@@ -18,11 +18,11 @@
 
 ### Client and safety
 
-- Added `eodhd_client.py` with one method per requested endpoint, 429 exponential backoff, sanitized 401/403 errors, and a local `.eodhd_cache/` response cache.
+- Added `eodhd_client.py` with one method per requested endpoint, `python-dotenv` loading from this repo's `.env`, 429 exponential backoff, sanitized 401/403 errors, and a local `.eodhd_cache/` response cache.
 - Added `.eodhd_cache/` to `.gitignore`; no response data or credential was added to Git.
-- `python -m py_compile eodhd_client.py`, mock 429/cache/403 checks, and `git diff --check` passed.
+- Added `python-dotenv` to `requirements.txt`. `python -m py_compile eodhd_client.py`, mock 429/cache/403 checks, and `git diff --check` passed. `.env` ignore rule was confirmed before checking for the file.
 
-**Next step:** make `EODHD_API_TOKEN` available in the shell process running this smoke test, then rerun. The client reuses cached responses; follow the requested endpoint order and stop before exceeding 15 total API calls.
+**Next step:** place the ignored `.env` at the root of this `hoodb` checkout (or set `EODHD_API_TOKEN` in the invoking process), then rerun. The client reuses cached responses; follow the requested endpoint order and stop before exceeding 15 total API calls.
 
 ---
 # STATUS — hoodb

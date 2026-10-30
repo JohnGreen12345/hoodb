@@ -14,9 +14,12 @@ from typing import Any, Mapping
 from urllib.parse import urlencode
 
 import requests
+from dotenv import load_dotenv
 
 BASE_URL = "https://eodhd.com/api"
-DEFAULT_CACHE_DIR = Path(__file__).resolve().parent / ".eodhd_cache"
+REPO_DIR = Path(__file__).resolve().parent
+load_dotenv(dotenv_path=REPO_DIR / ".env", override=False)
+DEFAULT_CACHE_DIR = REPO_DIR / ".eodhd_cache"
 
 
 class EODHDError(RuntimeError):
