@@ -15,6 +15,7 @@ import datetime as dt
 import os
 
 import pandas as pd
+import pandas_market_calendars as mcal
 import yfinance as yf
 from google.cloud import bigquery
 
@@ -128,6 +129,26 @@ def to_yahoo_symbol(ticker: str) -> str:
     return ticker.replace(".", "-")
 
 
+def filter_to_nyse_sessions(df: pd.DataFrame) -> pd.DataFrame:
+    """Drop vendor rows dated on an NYSE non-session.
+
+    Yahoo occasionally emits synthetic/holiday-aligned rows.  Both the
+    incremental nightly job and weekly full refresh flow through this helper,
+    so a non-session can neither enter nor be retained after a refresh.
+    """
+    if df.empty:
+        return df
+    start = pd.Timestamp(df["date"].min()).date()
+    end = pd.Timestamp(df["date"].max()).date()
+    nyse = mcal.get_calendar("NYSE")
+    valid_dates = set(nyse.valid_days(start_date=start, end_date=end).date)
+    invalid = ~df["date"].isin(valid_dates)
+    if invalid.any():
+        invalid_dates = sorted(df.loc[invalid, "date"].astype(str).unique().tolist())
+        print(f"[i] Dropped {int(invalid.sum()):,} NYSE non-session row(s): {', '.join(invalid_dates)}")
+    return df.loc[~invalid].copy()
+
+
 def fetch_yahoo_prices(tickers: list[str], start: dt.date, end: dt.date) -> pd.DataFrame:
     yahoo_tickers = [to_yahoo_symbol(ticker) for ticker in tickers]
     yahoo_to_canonical = {to_yahoo_symbol(ticker): ticker for ticker in tickers}
@@ -181,6 +202,9 @@ def fetch_yahoo_prices(tickers: list[str], start: dt.date, end: dt.date) -> pd.D
     if incomplete_count:
         print(f"[i] Dropped {incomplete_count:,} incomplete Yahoo alignment row(s)")
     out = out.dropna(subset=required_values).copy()
+    if out.empty:
+        return pd.DataFrame(columns=out_cols)
+    out = filter_to_nyse_sessions(out)
     if out.empty:
         return pd.DataFrame(columns=out_cols)
     out["volume"] = out["volume"].astype("int64")

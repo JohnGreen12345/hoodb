@@ -6,3 +6,4 @@ pyarrow
 pandas-gbq
 db-dtypes
 python-dotenv
+pandas-market-calendars
