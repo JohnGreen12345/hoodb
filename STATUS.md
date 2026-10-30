@@ -1,3 +1,11 @@
+# Price-data repairs (2026-10-30)
+
+- Deleted the 161 Labor Day (2026-09-07) `Hood.Daily_prices` rows after the earlier Memorial Day cleanup. A fresh 2023-10-30 through 2026-10-30 NYSE audit finds **zero** non-session dates.
+- The shared ingest calendar test now verifies every 2026 full NYSE holiday is rejected; the same `fetch_yahoo_prices()` path is used by nightly incremental and weekly full-refresh jobs.
+- Replaced only NUE 2026-10-28 and 2026-10-29 after a date-scoped Yahoo re-fetch passed OHLC checks. The new closes are 271.790009 and 275.290009, respectively.
+- Created `pricesz.Hood.price_repairs` and recorded both before/after bars, source, reason, repair ID, and timestamp. Repair ID: `a0cb22da-8e3d-4d3b-bff1-130e94759925`.
+- Rebuilt `Hood.events`: **36,603** `vol_event` rows.
+
 # EODHD All-in-One validation (2026-10-30)
 
 All paid-endpoint responses below are cached in gitignored `.eodhd_cache/`; no token or raw cache file is committed. Historical 401/403 cache entries are automatically retried because a plan entitlement can change after a response was cached.
