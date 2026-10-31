@@ -1,14 +1,10 @@
 name: Weekly full price refresh
 
 on:
-  schedule:
-    # Sundays 12:00 UTC -- markets closed, well clear of the Tue-Sat nightly
-    # ingest job. Re-fetches and replaces every active ticker's full history
-    # so a split that happened mid-week gets corrected everywhere at once,
-    # instead of the nightly job's append-only incremental fetch leaving a
-    # discontinuity at the split boundary (PUBLISH_SPEC.md sec4a point 3).
-    - cron: "0 12 * * 0"
-  workflow_dispatch: {}       # manual "Run workflow" button for testing
+  # Paused: this job deletes and reloads each returned ticker's full history.
+  # Keep manual dispatch available until it has validation, provenance
+  # preservation, and a dry-run mode (DATA_LESSONS / ISSUES).
+  workflow_dispatch: {}
 
 jobs:
   full_refresh:
