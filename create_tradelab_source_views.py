@@ -16,6 +16,7 @@ SOURCE_VIEWS = {
     "v_universe": "universe",
     "v_fundamentals_quarterly": "fundamentals_quarterly",
     "v_earnings_calendar": "earnings_calendar",
+    "v_earnings_quality_quarterly": "earnings_quality_quarterly",
 }
 
 

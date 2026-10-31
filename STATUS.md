@@ -1,3 +1,10 @@
+# M2 earnings-quality sample (F16--F18, 2026-10-30)
+
+- Existing cadence verified, not duplicated: the calendar workflow runs on every trading-day processing run and fundamentals weekly.
+- Loaded only NUE, INGM, XMTR, HNGE and HTFL into `Hood.earnings_quality_quarterly`; `tradelab.v_earnings_quality_quarterly` is an authorized read-only Hood view.
+- F16/F17 are issuer release / 8-K reconciliation facts (`source_url` retained); F18 is an independently labelled four-quarter EODHD operating-cash-flow versus GAAP-net-income comparison. Null adjusted EPS means no comparable reconciliation was published (NUE Q3), never zero or inferred.
+- Sample reconciliation gaps: INGM +$0.34/share (0.57 to 0.91), XMTR +$0.26 (-0.10 to 0.16), HNGE +$0.07 (0.52 to 0.59), HTFL +$0.11 (-0.18 to -0.07). No full quality sweep or quality refresh schedule was started.
+
 # M2 full-universe sweep and refresh cadence (2026-10-30)
 
 - Explaining `vol_event` **58,434 → 36,603**: 58,434 already included the 50-prior-session guard. Removing 23,315 all-null placeholder/lifecycle price rows and rebuilding yielded 36,632 (a 21,802-event drop); deleting the two NYSE-holiday dates and repairing two NUE bars yielded the final 36,603 (29 net fewer). This is a data-cleanup effect, not a changed event threshold.
