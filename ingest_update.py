@@ -27,6 +27,11 @@ DEFAULT_PRICE_TABLE = "Daily_prices"
 YAHOO_SYMBOL_MAP = {
     "VIX": "^VIX",
 }
+BENCHMARK_TICKERS = frozenset({
+    "SPY", "QQQ", "IWM", "DIA", "VIX",
+    "XLB", "XLC", "XLE", "XLF", "XLI", "XLK", "XLP", "XLRE", "XLU", "XLV", "XLY",
+    "SMH", "IGV",
+})
 # PUBLISH_SPEC.md sec4a point 2: "fewer than ~260 rows" is the per-ticker
 # backfill trigger -- 260 trading days is one year, enough for a 200-day
 # moving average plus margin.
@@ -149,6 +154,46 @@ def filter_to_nyse_sessions(df: pd.DataFrame) -> pd.DataFrame:
     return df.loc[~invalid].copy()
 
 
+def validate_ohlc(df: pd.DataFrame) -> None:
+    """Reject a source bar whose OHLC range is internally impossible."""
+    if df.empty:
+        return
+    invalid = (df["high"] < df[["open", "close", "low"]].max(axis=1)) | (
+        df["low"] > df[["open", "close", "high"]].min(axis=1)
+    )
+    if invalid.any():
+        examples = ", ".join(
+            f"{row.ticker} {row.date}" for row in df.loc[invalid, ["ticker", "date"]].itertuples(index=False)
+        )
+        raise ValueError(f"Yahoo returned impossible OHLC bar(s): {examples}")
+
+
+def assert_latest_session_benchmarks(
+    fetched: pd.DataFrame,
+    active_tickers: list[str],
+    coverage: dict[str, tuple[dt.date | None, int]],
+) -> None:
+    """Fail before upload when a benchmark lacks a session other names received.
+
+    Existing coverage counts: a benchmark already stored for the newly fetched
+    session need not be fetched again in that run.
+    """
+    if fetched.empty:
+        return
+    latest_session = max(fetched["date"])
+    fetched_on_latest = set(fetched.loc[fetched["date"] == latest_session, "ticker"])
+    required = BENCHMARK_TICKERS & set(active_tickers)
+    missing = sorted(
+        ticker for ticker in required
+        if ticker not in fetched_on_latest and coverage.get(ticker, (None, 0))[0] != latest_session
+    )
+    if missing:
+        raise RuntimeError(
+            f"Benchmark completeness failure for {latest_session}: missing {', '.join(missing)}. "
+            "No rows were uploaded."
+        )
+
+
 def fetch_yahoo_prices(tickers: list[str], start: dt.date, end: dt.date) -> pd.DataFrame:
     yahoo_tickers = [to_yahoo_symbol(ticker) for ticker in tickers]
     yahoo_to_canonical = {to_yahoo_symbol(ticker): ticker for ticker in tickers}
@@ -210,6 +255,7 @@ def fetch_yahoo_prices(tickers: list[str], start: dt.date, end: dt.date) -> pd.D
     out["volume"] = out["volume"].astype("int64")
     out = out[out_cols]
     out = out.drop_duplicates(subset=["date", "ticker"])
+    validate_ohlc(out)
     return out
 
 
@@ -342,6 +388,7 @@ def main() -> None:
         fetched_frames.append(fetched)
 
     all_fetched = pd.concat(fetched_frames, ignore_index=True) if fetched_frames else pd.DataFrame()
+    assert_latest_session_benchmarks(all_fetched, tickers, coverage)
     new_rows = filter_new_rows_per_ticker(all_fetched, last_dates)
 
     if new_rows.empty:
