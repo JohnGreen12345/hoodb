@@ -1,10 +1,12 @@
 # 2026-10-30 partial-session price ingest: SPY repair and guard (2026-10-31)
 
-- **Scope finding:** this was not an isolated SPY skip. Before repair, only **VIX** had an active-universe bar for the 2026-10-30 NYSE session: **1 / 1,103** active tickers present and **1,102** absent. After the targeted SPY insert: **2 / 1,103** present and **1,101** absent. The remaining-missing count excludes SPY and includes normal equities, ETFs, and other context symbols.
+- **Scope finding:** this was not an isolated SPY skip. Before repair, only **VIX** had an active-universe bar for the 2026-10-30 NYSE session: **1 / 1,103** active tickers present and **1,102** absent. After the targeted SPY insert: **2 / 1,103** present and **1,101** absent.
+- **Authorized recovery:** ran the normal guarded Yahoo incremental ingest for the 1,101 remaining active tickers. It loaded **1,100** validated bars, taking coverage to **1,102 / 1,103**. `Hood.events` was rebuilt afterward: **36,730** `vol_event` rows.
+- **Outstanding source exception:** **QRVO** is the sole remaining missing active ticker. Its batch request and a separate one-ticker date-scoped retry both returned Yahoo `YFPricesMissingError` / no 2026-10-30 bar. No synthetic row was inserted. This is now an explicit vendor-availability exception, not an unnoticed gap.
 - **Cause evidence:** the stored table state shows the overnight batch made at most a partial session write (VIX only). The configured nightly job is the Yahoo/yfinance source at 06:30 UTC; the local GitHub CLI is not authenticated, so the corresponding Actions run/log cannot be retrieved here. No claim is made about a Yahoo error versus an interrupted Action without that log.
 - **SPY repair:** `fetch_yahoo_prices(["SPY"], 2026-10-30, 2026-10-30)` returned exactly one NYSE-session, complete and internally valid OHLC bar, which was appended through the ordinary shared Yahoo upload path. Stored values: O 761.380005, H 761.460022, L 750.359985, C/adj C 755.719971, V 77,625,800. There was no pre-existing SPY row, so no replacement occurred and no `price_repairs` provenance row was created.
 - **Prevention:** `ingest_update.py` now validates every fetched OHLC bar and aborts *before upload* if any active benchmark (SPY, QQQ, IWM, DIA, VIX, the 11 sector ETFs, SMH, IGV) is absent from the newest session received by other names, unless that benchmark is already stored for that session. This catches partial Yahoo/batch results rather than silently accepting them.
-- **Tests:** `test_ingest_calendar_guard.py` + new `test_ingest_benchmark_guard.py`: **4 passed**. No universe-wide 2026-10-30 backfill was started; the 1,101 outstanding bars need a separate authorized recovery run.
+- **Tests:** `test_ingest_calendar_guard.py` + new `test_ingest_benchmark_guard.py`: **4 passed**. Root-cause analysis is paused for Jo’s 2026-10-31 06:30 UTC Actions log.
 
 # M2 earnings-quality sample (F16--F18, 2026-10-30)
 
